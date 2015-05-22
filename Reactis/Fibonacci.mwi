@@ -1,0 +1,43 @@
+//DEPEND: "C:\Users\yoshi12\Downloads\Lab-master\Lab-master\Fibonacci\Fibonacci.slx" 1432270958.000 13945
+\version "V2014.2.2";
+
+// ------------------------------------------ Simulink --------------------------------------
+
+\simulinkModel Fibonacci : [\simulinkVersion 89999999999918X4, \wordSize32,  \sample 8X1, \intOverflow\warning, \intSaturation\none, \infNanCheck\none]
+
+\begin
+  \system Fibonacci() 
+  \begin
+    \outport @Out1: \double,
+             @approximate_095golden_095ratio: \double,
+             @error_091_037_093: \double;
+
+    \var @Abs: \double \sample ~8X1,
+         @Add: \double,
+         @Divide: \double,
+         @Fn: \double \sample ~8X1 \init  8X1,
+         @Fn_0951: \double \sample ~8X1 \init  0X0,
+         @Gain: \double,
+         @Golden_095ratio: \double \sample \inf,
+         @Saturation: \double,
+         @Subtract: \double,
+         @Scope: \double \sample ~8X1;
+
+    \define @Abs := \if @Subtract<0X0 \then ({\abs(@Subtract)}: B: 2) \else ({\abs(@Subtract)}: B: 2),
+            @Add := @Fn+@Fn_0951,
+            @Divide := (/(@Fn, @Saturation, \double, \roundFloor, \overflow)),
+            @Fn := \delay(@Add),
+            @Fn_0951 := \delay(@Fn),
+            @Gain := @Abs *87a4f79b9773e9X0,
+            @Golden_095ratio := 45afbcdcbb1fcX1,
+            @Saturation := \if 8X1>\inf \then \EXCEPTION"Lower limit of Saturate block cannot be higher than upper limit" \else \if @Fn_0951<8X1 \then ({8X1}: B: 3) \else \if @Fn_0951>\inf \then ({\inf}: B: 3) \else ({@Fn_0951}: B: 3),
+            @Subtract := @Divide-@Golden_095ratio,
+            @Out1 := @Fn,
+            @approximate_095golden_095ratio := @Divide,
+            @error_091_037_093 := @Gain,
+            @Scope := @Fn;
+
+  \end;
+
+
+\end;
