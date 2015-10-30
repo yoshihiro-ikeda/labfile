@@ -1,0 +1,9 @@
+XMLREADER_SRC = xmlreader.cxx
+XMLREADER_OBJ = $(XMLREADER_SRC:.cxx=.o)
+XMLREADER_PROG = $(XMLREADER_SRC:.cxx=)
+XMLREADER_DEPS = $(XMLREADER_SRC:.cxx=.d)
+$(XMLREADER_PROG): LDLIBS += -lxerces-c
+$(XMLREADER_PROG): LDLIBS += -lboost_regex
+$(XMLREADER_PROG): libSimulinkXSD.a
+all: $(XMLREADER_PROG)
+depend: $(XMLREADER_DEPS)
