@@ -3,4 +3,5 @@
 #include "SimulinkXML.h"
 using namespace std;
 void print_usage(char*);
-void print_blocks(SimulinkModel::XSD::blocks_T &blks);
+void search_blocks(SimulinkModel::XSD::blocks_T &blks);
+void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks);
