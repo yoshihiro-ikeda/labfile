@@ -5,8 +5,12 @@
 #include <algorithm>
 #include "xmlreader.hxx"
 
-std::vector <std::string> blk_list;
-int first_flag = 0;
+/*
+std::vector <std::string> blk_b_list;
+std::vector <std::string> blk_a_list;
+int first_flag_b = 0;
+int first_flag_a = 0;
+*/
 
 int main(int argc, char *argv[])
 {
@@ -25,19 +29,74 @@ int main(int argc, char *argv[])
     print_usage(argv[0]);
     return 1;
   }
+  
   SimulinkModel::XSD::blocks_T root_blks = xrd.xml_blocks();
-  search_blocks(root_blks);
-  std::vector<std::string>::iterator blk_list_ii;
-  for(blk_list_ii = blk_list.begin();blk_list_ii != blk_list.end();blk_list_ii++){
-	  cout << *blk_list_ii << endl;
+  
+  /* クラス定義
+   * state:状態方程式
+   * out  :出力方程式
+  */
+  equation state(0,"green");
+  //state.first_flag = 0;
+  //state.color = "green";
+  equation out(0,"red"); 
+  //state.first_flag = 0;
+  //state.color = "red";
+  
+  search_blocks(root_blks,&state,&out);
+  
+  /*blk_listの中身を表示*/
+  std::vector<std::string>::iterator blk_list_si;
+  cout << "state" << endl;
+  for(blk_list_si = state.vec_begin();blk_list_si != state.vec_end();blk_list_si++){
+	  cout << *blk_list_si << endl;
   }
+  std::vector<std::string>::iterator blk_list_oi;
+  cout << "out" << endl;
+  for(blk_list_oi = out.vec_begin();blk_list_oi != out.vec_end();blk_list_oi++){
+	  cout << *blk_list_oi << endl;
+  }
+  
   fclose(fp_out);
+  /*選ばれたブロックのpeinfo色情報を付加*/
+  color_set(root_blks,&state);
+  color_set(root_blks,&out);
+  /*xmlを出力*/
+  print_xml(root_blks);
+  /*色付けツール用にcsvファイルを出力*/
+  print_csv(root_blks,&state,&out);
 }
+
 void print_usage(char *progname)
 {
   cerr << "Usage: " << progname << " <input-xml>" << endl;
 }
-void search_blocks(SimulinkModel::XSD::blocks_T &blks)
+
+void print_xml(SimulinkModel::XSD::blocks_T &blks)
+{
+  xml_schema::namespace_infomap map;
+  map["SM"].name = "http://example.com/SimulinkModel"; // namespace is "SM"
+  map["SM"].schema = "SimulinkModel.xsd"; // SimulinkModel XML Schema
+  ::std::ofstream os ("result.xml");
+  blocks (os,blks,map);
+}
+
+void print_csv(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
+{
+	ofstream ofs("result.csv");
+	//std::vector<std::string>::iterator blk_list_i;
+	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	SimulinkModel::XSD::blocks_T::block_iterator bi;
+	//for(blk_list_i = blk_list.begin();blk_list_i != blk_list.end();blk_list_i++){
+	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
+		//std::string tmp(bi->name());
+		//if(tmp == *blk_list_i){
+		ofs << bi->name() << "," << "," << bi->peinfo() << endl;
+				//break;
+	}
+}
+
+void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
 {
   SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
   SimulinkModel::XSD::blocks_T::block_iterator bi;
@@ -46,7 +105,7 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks)
       SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
       SimulinkModel::XSD::block_T::blocks_iterator bsi;
       for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++)
-	search_blocks(*bsi);
+	search_blocks(*bsi,state,out);
     }
     else {		/*積分ブロックの探索*/
       if(bi->blocktype() == "UnitDelay"){
@@ -61,12 +120,10 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks)
 	           for(bi2 = blk2_seq.begin();bi2 != blk2_seq.end();bi2++){
 	             if(bi2->name() == ci->block() && bi2->blocktype() == "Sum"){
 					cout << bi->name() << endl;
-		            //cout << (bool)bi->peinfo() << endl;
-					before_block(blks,bi->name());
-		            if(!(bool)bi->peinfo()){
-						bi->peinfo() = "green";
-					}
-						//cout << bi->peinfo() << endl;
+					/*状態方程式はunitdelayから探索*/
+					before_block(blks,bi->name(),state);
+					/*出力方程式はsumまで探索*/
+					after_block(blks,bi2->name(),out);
 	             }
 	           }
 	         }
@@ -78,10 +135,10 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks)
      }
   }
 }
+
 /*ブロック遡り関数*/
-void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk)
+void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *state)
 {
-	cout << "ok" << endl;
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for( bi = blk_seq.begin(); bi != blk_seq.end(); bi++){
@@ -93,15 +150,14 @@ void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk)
 				SimulinkModel::XSD::ioport_T::connect_iterator ci;
 				for(ci = con_seq.begin();ci != con_seq.end();ci++){
 					std::string tmp(ci->block());
-					if(first_flag == 0){
-						blk_list.push_back(tmp);
-						before_block(blks,tmp);
-						first_flag = 1;
+					if(state->get_flagval() == 0){
+						state->add_blk(tmp);
+						before_block(blks,tmp,state);
+						state->set_flagval();
 					}else{
-						std::vector<std::string>::iterator blk_list_i = find(blk_list.begin(),blk_list.end(),tmp);
-						if(blk_list_i == blk_list.end()){
-							blk_list.push_back(tmp);
-							before_block(blks,tmp);
+						if(state->find_l(tmp) == 0){
+							state->add_blk(tmp);
+							before_block(blks,tmp,state);
 						}
 					}
 				}
@@ -109,4 +165,106 @@ void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk)
 			break;
 		}
 	} 
+}
+
+/*ブロック辿り関数*/
+void after_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *out)
+{
+	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	SimulinkModel::XSD::blocks_T::block_iterator bi;
+	for( bi = blk_seq.begin(); bi != blk_seq.end(); bi++){
+		std::string cmpname(bi->name());
+		if(bi->name() == target_blk && rtnNameToType(blks,target_blk) != "Outport"){	
+			cout << "test  " << rtnNameToType(blks,cmpname) << endl;
+			SimulinkModel::XSD::block_T::output_sequence op_seq = bi->output();
+			SimulinkModel::XSD::block_T::output_iterator oi;
+			for(oi = op_seq.begin();oi != op_seq.end();oi++){
+				SimulinkModel::XSD::ioport_T::connect_sequence con_seq = oi->connect();
+				SimulinkModel::XSD::ioport_T::connect_iterator ci;
+				for(ci = con_seq.begin();ci != con_seq.end();ci++){
+					std::string tmp(ci->block());
+					if(out->get_flagval() == 0){
+						if(rtnNameToType(blks,cmpname) != "UnitDelay"){
+							out->add_blk(tmp);
+							after_block(blks,tmp,out);
+							out->set_flagval();
+						}
+					}else{
+						SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
+						SimulinkModel::XSD::block_T::input_iterator ii;
+						int sum_flag = 0;
+						if(rtnNameToType(blks,cmpname) == "UnitDelay"){
+							for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
+								SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
+								SimulinkModel::XSD::ioport_T::connect_iterator ci;
+								for(ci = con_seq.begin();ci != con_seq.end();ci++){
+									std::string search_sum(ci->block());
+									if(rtnNameToType(blks,search_sum) == "Sum"){
+										sum_flag = 1;
+										goto SOTO;
+									}
+								}
+							}
+						}
+						SOTO:
+						if(out->find_l(tmp) == 0 && ii == ip_seq.end() && sum_flag == 0){
+							cout << "ok" << endl;
+							out->add_blk(tmp);
+							after_block(blks,tmp,out);
+						}
+					}
+				}
+			}
+			break;
+		}
+	}
+}
+
+/*モデルの最後から指定されたブロックまで戻る関数*/
+//~ void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *out)
+//~ {
+	//~ SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	//~ SimulinkModel::XSD::blocks_T::block_iterator bi;
+//~ }
+
+/*ブロック名からブロックタイプを返す関数*/
+string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name)
+{
+	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	SimulinkModel::XSD::blocks_T::block_iterator bi;
+	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
+		std::string tmp(bi->name());
+		if(tmp == name){
+			std::string rtnType(bi->blocktype());
+			return rtnType;
+		}
+	}
+}
+
+void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set)
+{
+	std::vector<std::string>::iterator blk_list_i;
+	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	SimulinkModel::XSD::blocks_T::block_iterator bi;
+	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
+		std::string tmp(bi->name());
+		if(set->find_l(tmp) == 1){
+			bi->peinfo() = set->get_colorval();
+		}
+	}
+	//~ for(blk_list_i = set->vec_begin();blk_list_i != set->vec_end();blk_list_i++){
+		//~ for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
+			//~ std::string tmp(bi->name());
+			//~ if(tmp == *blk_list_i){
+				//~ if(!(bool)bi->peinfo()){
+					//~ bi->peinfo() = set->get_colorval();
+				//~ }else{
+					//~ bi->peinfo() = set->get_colorval();
+				//~ }
+				//~ break;
+			//~ }
+		//~ }
+	//~ }
+	/*変更点更新のため*/
+	blks.block(blk_seq);
 }
