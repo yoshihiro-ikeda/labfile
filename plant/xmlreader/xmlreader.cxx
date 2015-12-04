@@ -5,13 +5,6 @@
 #include <algorithm>
 #include "xmlreader.hxx"
 
-/*
-std::vector <std::string> blk_b_list;
-std::vector <std::string> blk_a_list;
-int first_flag_b = 0;
-int first_flag_a = 0;
-*/
-
 int main(int argc, char *argv[])
 {
   Simulink::XML::Reader xrd;
@@ -61,7 +54,7 @@ int main(int argc, char *argv[])
   /*xmlを出力*/
   print_xml(root_blks);
   /*色付けツール用にcsvファイルを出力*/
-  print_csv(root_blks,&state,&out);
+  print_csv(root_blks);
 }
 
 void print_usage(char *progname)
@@ -69,6 +62,7 @@ void print_usage(char *progname)
   cerr << "Usage: " << progname << " <input-xml>" << endl;
 }
 
+/*xmlファイルに出力する用の関数*/
 void print_xml(SimulinkModel::XSD::blocks_T &blks)
 {
   xml_schema::namespace_infomap map;
@@ -77,8 +71,8 @@ void print_xml(SimulinkModel::XSD::blocks_T &blks)
   ::std::ofstream os ("result.xml");
   blocks (os,blks,map);
 }
-
-void print_csv(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
+/*csv形式にして必要情報を出力*/
+void print_csv(SimulinkModel::XSD::blocks_T &blks)
 {
 	ofstream ofs("result.csv");
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
@@ -87,7 +81,7 @@ void print_csv(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
 		ofs << bi->name() << "," << "," << bi->peinfo() << endl;
 	}
 }
-
+/*sumとunitdelayの組み合わせを検索してそこから状態又は出力方程式を探す関数を呼び出す*/
 void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
 {
   SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
@@ -129,6 +123,7 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *
 }
 
 /*ブロック遡り関数*/
+/*状態方程式を検索するために使用*/
 void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *state)
 {
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
@@ -160,6 +155,7 @@ void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation 
 }
 
 /*ブロック辿り関数*/
+/*現在使用されていない*/
 void after_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *out)
 {
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
@@ -211,7 +207,8 @@ void after_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation *
 		}
 	}
 }
-
+/*出力方程式を検索するために使用*/
+/*outputを検索してfollow_block_from_lastを呼び出す*/
 void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equation *out)
 {
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
@@ -296,6 +293,7 @@ string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name)
 	}
 }
 
+/*引数のXMLのpeinfoに色付け用の情報を付加する関数*/
 void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set)
 {
 	std::vector<std::string>::iterator blk_list_i;

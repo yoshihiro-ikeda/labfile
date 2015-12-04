@@ -36,7 +36,7 @@ class equation {
 
 void print_usage(char*);
 void print_xml(SimulinkModel::XSD::blocks_T &blks);
-void print_csv(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out);
+void print_csv(SimulinkModel::XSD::blocks_T &blks);
 void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out);
 void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *state);
 void after_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *out);
