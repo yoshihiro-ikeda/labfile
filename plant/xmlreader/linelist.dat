@@ -1,7 +1,4 @@
 tank2_UnitDelay2
-test  Sum
-test  Demux
-test  DotProduct
 state
 tank2_Add
 tank2_Gain
@@ -18,6 +15,19 @@ tank2_Add2
 tank2_Gain1
 tank2_Gain2
 out
-tank2_Demux
-tank2_DotProduct
 tank2_Out1
+tank2_DotProduct
+tank2_Demux
+tank2_Add
+tank2_Gain
+tank2_Add1
+tank2_Gain3
+tank2_In1
+tank2_Mux
+tank2_Gain4
+tank2_Demux1
+tank2_Sqrt
+tank2_Saturation
+tank2_Add2
+tank2_Gain1
+tank2_Gain2

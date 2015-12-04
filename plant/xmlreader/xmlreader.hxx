@@ -40,5 +40,7 @@ void print_csv(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out)
 void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *out);
 void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *state);
 void after_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *out);
+void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equation *out);
+void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,equation *out,string target_blk,string exblk);
 string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name);
 void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set);

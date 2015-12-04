@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <SM:blocks xmlns:SM="http://example.com/SimulinkModel" name="tank2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
-  <block blocktype="Inport" name="tank2_In1" peinfo="green" rate="-1">
+  <block blocktype="Inport" name="tank2_In1" peinfo="red" rate="-1">
     <output line="tank2_In1_1" port="tank2_In1_1" usename="true">
       <connect block="tank2_Gain3" port="tank2_Gain3_1"/>
     </output>
   </block>
-  <block blocktype="Sum" name="tank2_Add" peinfo="green" rate="-1">
+  <block blocktype="Sum" name="tank2_Add" peinfo="red" rate="-1">
     <input line="tank2_Gain_1" port="tank2_Add_1">
       <connect block="tank2_Gain" port="tank2_Gain_1"/>
     </input>
@@ -17,7 +17,7 @@
       <connect block="tank2_UnitDelay2" port="tank2_UnitDelay2_1"/>
     </output>
   </block>
-  <block blocktype="Sum" name="tank2_Add1" peinfo="green" rate="-1">
+  <block blocktype="Sum" name="tank2_Add1" peinfo="red" rate="-1">
     <input line="tank2_Gain3_1" port="tank2_Add1_1">
       <connect block="tank2_Gain3" port="tank2_Gain3_1"/>
     </input>
@@ -28,7 +28,7 @@
       <connect block="tank2_Gain" port="tank2_Gain_1"/>
     </output>
   </block>
-  <block blocktype="Sum" name="tank2_Add2" peinfo="green" rate="-1">
+  <block blocktype="Sum" name="tank2_Add2" peinfo="red" rate="-1">
     <input line="tank2_Gain1_1" port="tank2_Add2_1">
       <connect block="tank2_Gain1" port="tank2_Gain1_1"/>
     </input>
@@ -50,7 +50,7 @@
       <connect block="tank2_DotProduct" port="tank2_DotProduct_2"/>
     </output>
   </block>
-  <block blocktype="Demux" name="tank2_Demux1" peinfo="green">
+  <block blocktype="Demux" name="tank2_Demux1" peinfo="red">
     <input line="tank2_Sqrt_1" port="tank2_Demux1_1">
       <connect block="tank2_Sqrt" port="tank2_Sqrt_1"/>
     </input>
@@ -73,7 +73,7 @@
       <connect block="tank2_Out1" port="tank2_Out1_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tank2_Gain" peinfo="green" rate="-1">
+  <block blocktype="Gain" name="tank2_Gain" peinfo="red" rate="-1">
     <input line="tank2_Add1_1" port="tank2_Gain_1">
       <connect block="tank2_Add1" port="tank2_Add1_1"/>
     </input>
@@ -81,7 +81,7 @@
       <connect block="tank2_Add" port="tank2_Add_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tank2_Gain1" peinfo="green" rate="-1">
+  <block blocktype="Gain" name="tank2_Gain1" peinfo="red" rate="-1">
     <input line="tank2_Demux1_1" port="tank2_Gain1_1">
       <connect block="tank2_Demux1" port="tank2_Demux1_1"/>
     </input>
@@ -89,7 +89,7 @@
       <connect block="tank2_Add2" port="tank2_Add2_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tank2_Gain2" peinfo="green" rate="-1">
+  <block blocktype="Gain" name="tank2_Gain2" peinfo="red" rate="-1">
     <input line="tank2_Demux1_2" port="tank2_Gain2_1">
       <connect block="tank2_Demux1" port="tank2_Demux1_2"/>
     </input>
@@ -97,7 +97,7 @@
       <connect block="tank2_Add2" port="tank2_Add2_2"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tank2_Gain3" peinfo="green" rate="-1">
+  <block blocktype="Gain" name="tank2_Gain3" peinfo="red" rate="-1">
     <input line="tank2_In1_1" port="tank2_Gain3_1">
       <connect block="tank2_In1" port="tank2_In1_1"/>
     </input>
@@ -105,7 +105,7 @@
       <connect block="tank2_Add1" port="tank2_Add1_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tank2_Gain4" peinfo="green" rate="-1">
+  <block blocktype="Gain" name="tank2_Gain4" peinfo="red" rate="-1">
     <input line="tank2_Demux1_1" port="tank2_Gain4_1">
       <connect block="tank2_Demux1" port="tank2_Demux1_1"/>
     </input>
@@ -113,7 +113,7 @@
       <connect block="tank2_Mux" port="tank2_Mux_1"/>
     </output>
   </block>
-  <block blocktype="Mux" name="tank2_Mux" peinfo="green">
+  <block blocktype="Mux" name="tank2_Mux" peinfo="red">
     <input line="tank2_Gain4_1" port="tank2_Mux_1">
       <connect block="tank2_Gain4" port="tank2_Gain4_1"/>
     </input>
@@ -124,7 +124,7 @@
       <connect block="tank2_Add1" port="tank2_Add1_2"/>
     </output>
   </block>
-  <block blocktype="Saturate" name="tank2_Saturation" peinfo="green" rate="-1">
+  <block blocktype="Saturate" name="tank2_Saturation" peinfo="red" rate="-1">
     <input line="tank2_UnitDelay2_1" port="tank2_Saturation_1">
       <connect block="tank2_UnitDelay2" port="tank2_UnitDelay2_1"/>
     </input>
@@ -132,7 +132,7 @@
       <connect block="tank2_Sqrt" port="tank2_Sqrt_1"/>
     </output>
   </block>
-  <block blocktype="Sqrt" name="tank2_Sqrt" peinfo="green" rate="-1">
+  <block blocktype="Sqrt" name="tank2_Sqrt" peinfo="red" rate="-1">
     <input line="tank2_Saturation_1" port="tank2_Sqrt_1">
       <connect block="tank2_Saturation" port="tank2_Saturation_1"/>
     </input>
