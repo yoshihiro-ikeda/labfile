@@ -1,17 +1,11 @@
-tank2/In1,tank2/In1,tank2_In1
-tank2/Add,tank2/Add,tank2_Add
-tank2/Add1,tank2/Add1,tank2_Add1
-tank2/Add2,tank2/Add2,tank2_Add2
-tank2/Demux,tank2/Demux,tank2_Demux
-tank2/Demux1,tank2/Demux1,tank2_Demux1
-tank2/DotProduct,tank2/DotProduct,tank2_DotProduct
-tank2/Gain,tank2/Gain,tank2_Gain
-tank2/Gain1,tank2/Gain1,tank2_Gain1
-tank2/Gain2,tank2/Gain2,tank2_Gain2
-tank2/Gain3,tank2/Gain3,tank2_Gain3
-tank2/Gain4,tank2/Gain4,tank2_Gain4
-tank2/Mux,tank2/Mux,tank2_Mux
-tank2/Saturation,tank2/Saturation,tank2_Saturation
-tank2/Sqrt,tank2/Sqrt,tank2_Sqrt
-tank2/UnitDelay2,tank2/UnitDelay2,tank2_UnitDelay2
-tank2/Out1,tank2/Out1,tank2_Out1
+tekitou/In1,tekitou/In1,tekitou_In1
+tekitou/Bias,tekitou/Bias,tekitou_Bias
+tekitou/Gain,tekitou/Gain,tekitou_Gain
+tekitou/Gain1,tekitou/Gain1,tekitou_Gain1
+tekitou/Gain2,tekitou/Gain2,tekitou_Gain2
+tekitou/Math Function,tekitou/MathFunction,tekitou_MathFunction
+tekitou/Product,tekitou/Product,tekitou_Product
+tekitou/Saturation,tekitou/Saturation,tekitou_Saturation
+tekitou/Sum,tekitou/Sum,tekitou_Sum
+tekitou/Unit Delay,tekitou/UnitDelay,tekitou_UnitDelay
+tekitou/Out1,tekitou/Out1,tekitou_Out1

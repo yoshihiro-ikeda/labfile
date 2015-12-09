@@ -32,6 +32,11 @@ int main(int argc, char *argv[])
   equation state(0,"green");
   equation out(0,"red"); 
   
+  /*それぞれのcsv出力用*/
+  SimulinkModel::XSD::blocks_T state_blks = xrd.xml_blocks();
+  SimulinkModel::XSD::blocks_T out_blks = xrd.xml_blocks();
+  
+  /*状態方程式・出力方程式の探索*/
   search_blocks(root_blks,&state,&out);
   search_output(root_blks,"UnitDelay",&out);
   
@@ -49,12 +54,15 @@ int main(int argc, char *argv[])
   
   fclose(fp_out);
   /*選ばれたブロックのpeinfo色情報を付加*/
-  color_set(root_blks,&state);
-  color_set(root_blks,&out);
+  color_set(state_blks,&state);
+  color_set(out_blks,&out);
+  
   /*xmlを出力*/
-  print_xml(root_blks);
+  //print_xml(root_blks);
+  
   /*色付けツール用にcsvファイルを出力*/
-  print_csv(root_blks);
+  print_csv(state_blks,"result_state.csv");
+  print_csv(out_blks,"result_out.csv");
 }
 
 void print_usage(char *progname)
@@ -72,9 +80,9 @@ void print_xml(SimulinkModel::XSD::blocks_T &blks)
   blocks (os,blks,map);
 }
 /*csv形式にして必要情報を出力*/
-void print_csv(SimulinkModel::XSD::blocks_T &blks)
+void print_csv(SimulinkModel::XSD::blocks_T &blks,const char *filename)
 {
-	ofstream ofs("result.csv");
+	ofstream ofs(filename);
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
