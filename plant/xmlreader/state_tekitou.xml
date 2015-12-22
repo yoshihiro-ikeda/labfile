@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="state_tekitou" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="state_tekitou_In1" rate="-1">
+      <output line="state_tekitou_In1_1" port="state_tekitou_In1_1" usename="true">
+         <connect block="state_tekitou_Gain" port="state_tekitou_Gain_1"/>
+         <connect block="state_tekitou_Gain1" port="state_tekitou_Gain1_1"/>
+      </output>
+   </block>
+   <block blocktype="Bias" name="state_tekitou_Bias">
+      <input line="state_tekitou_Gain1_1" port="state_tekitou_Bias_1">
+         <connect block="state_tekitou_Gain1" port="state_tekitou_Gain1_1"/>
+      </input>
+      <output line="state_tekitou_Bias_1" port="state_tekitou_Bias_1" usename="true">
+         <connect block="state_tekitou_MathFunction" port="state_tekitou_MathFunction_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_tekitou_Gain" rate="-1">
+      <input line="state_tekitou_In1_1" port="state_tekitou_Gain_1">
+         <connect block="state_tekitou_In1" port="state_tekitou_In1_1"/>
+      </input>
+      <output line="state_tekitou_Gain_1" port="state_tekitou_Gain_1" usename="true">
+         <connect block="state_tekitou_Product" port="state_tekitou_Product_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_tekitou_Gain1" rate="-1">
+      <input line="state_tekitou_In1_1" port="state_tekitou_Gain1_1">
+         <connect block="state_tekitou_In1" port="state_tekitou_In1_1"/>
+      </input>
+      <output line="state_tekitou_Gain1_1" port="state_tekitou_Gain1_1" usename="true">
+         <connect block="state_tekitou_Bias" port="state_tekitou_Bias_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_tekitou_Gain2" rate="-1">
+      <input line="state_tekitou_UnitDelay_1" port="state_tekitou_Gain2_1">
+         <connect block="state_tekitou_UnitDelay" port="state_tekitou_UnitDelay_1"/>
+      </input>
+      <output line="state_tekitou_Gain2_1" port="state_tekitou_Gain2_1" usename="true">
+         <connect block="state_tekitou_Sum" port="state_tekitou_Sum_2"/>
+      </output>
+   </block>
+   <block blocktype="Math" name="state_tekitou_MathFunction" rate="-1">
+      <input line="state_tekitou_Bias_1" port="state_tekitou_MathFunction_1">
+         <connect block="state_tekitou_Bias" port="state_tekitou_Bias_1"/>
+      </input>
+      <output line="state_tekitou_MathFunction_1" port="state_tekitou_MathFunction_1" usename="true">
+         <connect block="state_tekitou_Sum" port="state_tekitou_Sum_1"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="state_tekitou_Product" rate="-1">
+      <input line="state_tekitou_Gain_1" port="state_tekitou_Product_1">
+         <connect block="state_tekitou_Gain" port="state_tekitou_Gain_1"/>
+      </input>
+      <input line="state_tekitou_UnitDelay_1" port="state_tekitou_Product_2">
+         <connect block="state_tekitou_UnitDelay" port="state_tekitou_UnitDelay_1"/>
+      </input>
+      <output line="state_tekitou_Product_1" port="state_tekitou_Product_1" usename="true">
+         <connect block="state_tekitou_Saturation" port="state_tekitou_Saturation_1"/>
+      </output>
+   </block>
+   <block blocktype="Saturate" name="state_tekitou_Saturation" rate="-1">
+      <input line="state_tekitou_Product_1" port="state_tekitou_Saturation_1">
+         <connect block="state_tekitou_Product" port="state_tekitou_Product_1"/>
+      </input>
+      <output line="state_tekitou_Saturation_1" port="state_tekitou_Saturation_1" usename="true">
+         <connect block="state_tekitou_Out1" port="state_tekitou_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="state_tekitou_Sum" rate="-1">
+      <input line="state_tekitou_MathFunction_1" port="state_tekitou_Sum_1">
+         <connect block="state_tekitou_MathFunction" port="state_tekitou_MathFunction_1"/>
+      </input>
+      <input line="state_tekitou_Gain2_1" port="state_tekitou_Sum_2">
+         <connect block="state_tekitou_Gain2" port="state_tekitou_Gain2_1"/>
+      </input>
+      <output line="state_tekitou_Sum_1" port="state_tekitou_Sum_1" usename="true">
+         <connect block="state_tekitou_UnitDelay" port="state_tekitou_UnitDelay_1"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="state_tekitou_UnitDelay" rate="-1">
+      <input line="state_tekitou_Sum_1" port="state_tekitou_UnitDelay_1">
+         <connect block="state_tekitou_Sum" port="state_tekitou_Sum_1"/>
+      </input>
+      <output line="state_tekitou_UnitDelay_1" port="state_tekitou_UnitDelay_1" usename="true">
+         <connect block="state_tekitou_Gain2" port="state_tekitou_Gain2_1"/>
+         <connect block="state_tekitou_Product" port="state_tekitou_Product_2"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="state_tekitou_Out1" rate="-1">
+      <input line="state_tekitou_Saturation_1" port="state_tekitou_Out1_1">
+         <connect block="state_tekitou_Saturation" port="state_tekitou_Saturation_1"/>
+      </input>
+   </block>
+</sm:blocks>

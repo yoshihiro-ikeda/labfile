@@ -1,0 +1,11 @@
+function exist_file()
+
+if exist('result_state.csv','file') ~= 2  
+    return;
+elseif exist('result_out.csv','file') ~= 2
+    return;
+end
+
+statesys = sprintf('state_%s',sys);
+outsys = sprintf('out_%s',sys);
+if exist(statesys,)

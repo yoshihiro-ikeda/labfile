@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="no_out_tekitou" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="no_out_tekitou_In1" rate="-1">
+      <output line="no_out_tekitou_In1_1" port="no_out_tekitou_In1_1" usename="true">
+         <connect block="no_out_tekitou_Gain" port="no_out_tekitou_Gain_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="no_out_tekitou_Gain" rate="-1">
+      <input line="no_out_tekitou_In1_1" port="no_out_tekitou_Gain_1">
+         <connect block="no_out_tekitou_In1" port="no_out_tekitou_In1_1"/>
+      </input>
+      <output line="no_out_tekitou_Gain_1" port="no_out_tekitou_Gain_1" usename="true">
+         <connect block="no_out_tekitou_Product" port="no_out_tekitou_Product_1"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="no_out_tekitou_Product" rate="-1">
+      <input line="no_out_tekitou_Gain_1" port="no_out_tekitou_Product_1">
+         <connect block="no_out_tekitou_Gain" port="no_out_tekitou_Gain_1"/>
+      </input>
+      <input line="" port="no_out_tekitou_Product_2" type="none"/>
+      <output line="no_out_tekitou_Product_1" port="no_out_tekitou_Product_1" usename="true">
+         <connect block="no_out_tekitou_Saturation" port="no_out_tekitou_Saturation_1"/>
+      </output>
+   </block>
+   <block blocktype="Saturate" name="no_out_tekitou_Saturation" rate="-1">
+      <input line="no_out_tekitou_Product_1" port="no_out_tekitou_Saturation_1">
+         <connect block="no_out_tekitou_Product" port="no_out_tekitou_Product_1"/>
+      </input>
+      <output line="no_out_tekitou_Saturation_1" port="no_out_tekitou_Saturation_1" usename="true">
+         <connect block="no_out_tekitou_Out1" port="no_out_tekitou_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="no_out_tekitou_Out1" rate="-1">
+      <input line="no_out_tekitou_Saturation_1" port="no_out_tekitou_Out1_1">
+         <connect block="no_out_tekitou_Saturation" port="no_out_tekitou_Saturation_1"/>
+      </input>
+   </block>
+</sm:blocks>
