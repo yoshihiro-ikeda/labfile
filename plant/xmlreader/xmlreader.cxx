@@ -52,13 +52,13 @@ int main(int argc, char *argv[])
 	  cout << *blk_list_oi << endl;
   }
   
-  fclose(fp_out);
+
   /*選ばれたブロックのpeinfo色情報を付加*/
-  color_set(state_blks,&state);
-  color_set(out_blks,&out);
-  
+  //color_set(state_blks,&state);
+  //color_set(out_blks,&out);
+  fclose(fp_out);
   /*xmlを出力*/
-  //print_xml(root_blks);
+  //print_xml(state_blks);
   
   /*色付けツール用にcsvファイルを出力*/
   print_csv(state_blks,"result_state.csv");
@@ -82,11 +82,20 @@ void print_xml(SimulinkModel::XSD::blocks_T &blks)
 /*csv形式にして必要情報を出力*/
 void print_csv(SimulinkModel::XSD::blocks_T &blks,const char *filename)
 {
-	ofstream ofs(filename);
+	ofstream ofs(filename,ios::app);
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
-		ofs << bi->name() << "," << "," << bi->peinfo() << endl;
+		if(bi->blocktype() == "SubSystem"){
+			SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
+			SimulinkModel::XSD::block_T::blocks_iterator bsi;
+			for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
+				ofs.close();
+				print_csv(*bsi,filename);
+			}
+		}else{
+			ofs << bi->name() << "," << "," << bi->peinfo() << endl;
+		}
 	}
 }
 /*sumとunitdelayの組み合わせを検索してそこから状態又は出力方程式を探す関数を呼び出す*/
@@ -96,10 +105,11 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks,equation *state,equation *
   SimulinkModel::XSD::blocks_T::block_iterator bi;
   for( bi = blk_seq.begin(); bi != blk_seq.end(); bi++){
     if( bi->blocktype() == "SubSystem" ){
+	  cout << "ok" << endl;
       SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
       SimulinkModel::XSD::block_T::blocks_iterator bsi;
       for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++)
-	search_blocks(*bsi,state,out);
+		search_blocks(*bsi,state,out);
     }
     else {		/*積分ブロックの探索*/
       if(bi->blocktype() == "UnitDelay"){
@@ -143,6 +153,11 @@ void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blk,equation 
 			for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
 				SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
 				SimulinkModel::XSD::ioport_T::connect_iterator ci;
+				/*Subsystem内のInportブロックに到達した場合の処理*/
+				if(con_seq.empty()){
+					
+				}
+				/*ここまで*/
 				for(ci = con_seq.begin();ci != con_seq.end();ci++){
 					std::string tmp(ci->block());
 					if(state->get_flagval() == 0){
@@ -238,6 +253,7 @@ void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equ
 				for(ci = con_seq.begin();ci != con_seq.end();ci++){
 					std::string tmp(ci->block());
 					if(rtnNameToType(blks,tmp) == target_blk){
+						cout << "okokokokokokokok" << endl;
 						goto NEXT;
 					}else if(out->get_flagval() == 0){
 						out->add_blk(tmp);
@@ -261,7 +277,15 @@ void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,equation *out,str
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
-		if(bi->name() == target_blk){
+		if( bi->blocktype() == "SubSystem" ){
+			cout << "ok" << endl;
+			SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
+			SimulinkModel::XSD::block_T::blocks_iterator bsi;
+			for(bsi = blks_seq.begin();bsi != blks_seq.end();bsi++){
+				search_output(*bsi,"UnitDelay",out);
+			}
+		}
+		else if(bi->name() == target_blk){
 			SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
 			SimulinkModel::XSD::block_T::input_iterator ii;
 			for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
@@ -302,17 +326,33 @@ string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name)
 }
 
 /*引数のXMLのpeinfoに色付け用の情報を付加する関数*/
+/*SubSystem内のpeinfo情報を書き換えられないため一旦保留*/
 void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set)
 {
 	std::vector<std::string>::iterator blk_list_i;
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
-		std::string tmp(bi->name());
-		if(set->find_l(tmp) == 1){
-			bi->peinfo() = set->get_colorval();
+		cout << bi->name() << endl;
+		if(bi->blocktype() == "SubSystem"){
+			SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
+			SimulinkModel::XSD::block_T::blocks_iterator bsi;
+			for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
+				// このループは一度しか行われない<sm:blocks>
+				color_set(*bsi,set);
+			}
+		}else{
+			std::string tmp(bi->name());
+			if(set->find_l(tmp) == 1){
+				cout << "peinfo " << bi->peinfo() << set->get_colorval() << endl;
+				bi->peinfo(set->get_colorval());
+				//bi->peinfo() = set->get_colorval();
+			}else{
+				cout << "false" << tmp <<  endl;
+			}
 		}
 	}
 	/*変更点更新のため*/
 	blks.block(blk_seq);
+
 }

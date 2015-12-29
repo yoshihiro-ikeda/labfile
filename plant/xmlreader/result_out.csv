@@ -1,11 +1,168 @@
-out_tekitou_In1,,red
-out_tekitou_Bias,,<not present>
-out_tekitou_Gain,,red
-out_tekitou_Gain1,,<not present>
-out_tekitou_Gain2,,<not present>
-out_tekitou_MathFunction,,<not present>
-out_tekitou_Product,,red
-out_tekitou_Saturation,,red
-out_tekitou_Sum,,<not present>
-out_tekitou_UnitDelay,,<not present>
-out_tekitou_Out1,,red
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,green
+dus_Bias,,<not present>
+dus_Gain,,green
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,green
+dus_Saturation,,green
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,red
+dus_Bias,,<not present>
+dus_Gain,,red
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,red
+dus_Saturation,,red
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,<not present>
+dus_Bias,,<not present>
+dus_Gain,,<not present>
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,<not present>
+dus_Saturation,,<not present>
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,<not present>
+dus_Bias,,<not present>
+dus_Gain,,<not present>
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,<not present>
+dus_Saturation,,<not present>
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>

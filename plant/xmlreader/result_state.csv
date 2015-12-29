@@ -1,11 +1,29 @@
-out_tekitou_In1,,green
-out_tekitou_Bias,,green
-out_tekitou_Gain,,<not present>
-out_tekitou_Gain1,,green
-out_tekitou_Gain2,,green
-out_tekitou_MathFunction,,green
-out_tekitou_Product,,<not present>
-out_tekitou_Saturation,,<not present>
-out_tekitou_Sum,,green
-out_tekitou_UnitDelay,,green
-out_tekitou_Out1,,<not present>
+
+dus_In1,,<not present>
+dus_Bias,,<not present>
+dus_Gain,,<not present>
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,<not present>
+dus_Saturation,,<not present>
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>
+dus_In1,,<not present>
+dus_Bias,,<not present>
+dus_Gain,,<not present>
+dus_Gain1,,<not present>
+dus_Gain3,,<not present>
+dus_MathFunction1,,<not present>
+dus_Product,,<not present>
+dus_Saturation,,<not present>
+dus_Subsystem_In1,,<not present>
+dus_Subsystem_Gain2,,<not present>
+dus_Subsystem_MathFunction,,<not present>
+dus_Subsystem_Sum,,<not present>
+dus_Subsystem_UnitDelay,,<not present>
+dus_Subsystem_Out1,,<not present>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="state_double_UnitDelay" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="state_double_UnitDelay_In1" rate="-1">
+      <output line="state_double_UnitDelay_In1_1" port="state_double_UnitDelay_In1_1" usename="true">
+         <connect block="state_double_UnitDelay_Gain" port="state_double_UnitDelay_Gain_1"/>
+         <connect block="state_double_UnitDelay_Gain1" port="state_double_UnitDelay_Gain1_1"/>
+         <connect block="state_double_UnitDelay_Gain3" port="state_double_UnitDelay_Gain3_1"/>
+      </output>
+   </block>
+   <block blocktype="Bias" name="state_double_UnitDelay_Bias">
+      <input line="state_double_UnitDelay_Gain1_1" port="state_double_UnitDelay_Bias_1">
+         <connect block="state_double_UnitDelay_Gain1" port="state_double_UnitDelay_Gain1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Bias_1" port="state_double_UnitDelay_Bias_1" usename="true">
+         <connect block="state_double_UnitDelay_MathFunction" port="state_double_UnitDelay_MathFunction_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_double_UnitDelay_Gain" rate="-1">
+      <input line="state_double_UnitDelay_In1_1" port="state_double_UnitDelay_Gain_1">
+         <connect block="state_double_UnitDelay_In1" port="state_double_UnitDelay_In1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Gain_1" port="state_double_UnitDelay_Gain_1" usename="true">
+         <connect block="state_double_UnitDelay_Product" port="state_double_UnitDelay_Product_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_double_UnitDelay_Gain1" rate="-1">
+      <input line="state_double_UnitDelay_In1_1" port="state_double_UnitDelay_Gain1_1">
+         <connect block="state_double_UnitDelay_In1" port="state_double_UnitDelay_In1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Gain1_1" port="state_double_UnitDelay_Gain1_1" usename="true">
+         <connect block="state_double_UnitDelay_Bias" port="state_double_UnitDelay_Bias_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_double_UnitDelay_Gain2" rate="-1">
+      <input line="state_double_UnitDelay_UnitDelay_1" port="state_double_UnitDelay_Gain2_1">
+         <connect block="state_double_UnitDelay_UnitDelay" port="state_double_UnitDelay_UnitDelay_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Gain2_1" port="state_double_UnitDelay_Gain2_1" usename="true">
+         <connect block="state_double_UnitDelay_Sum" port="state_double_UnitDelay_Sum_2"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="state_double_UnitDelay_Gain3" rate="-1">
+      <input line="state_double_UnitDelay_In1_1" port="state_double_UnitDelay_Gain3_1">
+         <connect block="state_double_UnitDelay_In1" port="state_double_UnitDelay_In1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Gain3_1" port="state_double_UnitDelay_Gain3_1" usename="true">
+         <connect block="state_double_UnitDelay_MathFunction1" port="state_double_UnitDelay_MathFunction1_1"/>
+      </output>
+   </block>
+   <block blocktype="Math" name="state_double_UnitDelay_MathFunction" rate="-1">
+      <input line="state_double_UnitDelay_Bias_1" port="state_double_UnitDelay_MathFunction_1">
+         <connect block="state_double_UnitDelay_Bias" port="state_double_UnitDelay_Bias_1"/>
+      </input>
+      <output line="state_double_UnitDelay_MathFunction_1" port="state_double_UnitDelay_MathFunction_1" usename="true">
+         <connect block="state_double_UnitDelay_Sum" port="state_double_UnitDelay_Sum_1"/>
+      </output>
+   </block>
+   <block blocktype="Math" name="state_double_UnitDelay_MathFunction1" rate="-1">
+      <input line="state_double_UnitDelay_Gain3_1" port="state_double_UnitDelay_MathFunction1_1">
+         <connect block="state_double_UnitDelay_Gain3" port="state_double_UnitDelay_Gain3_1"/>
+      </input>
+      <output line="state_double_UnitDelay_MathFunction1_1" port="state_double_UnitDelay_MathFunction1_1" usename="true">
+         <connect block="state_double_UnitDelay_Sum1" port="state_double_UnitDelay_Sum1_1"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="state_double_UnitDelay_Product" rate="-1">
+      <input line="state_double_UnitDelay_Gain_1" port="state_double_UnitDelay_Product_1">
+         <connect block="state_double_UnitDelay_Gain" port="state_double_UnitDelay_Gain_1"/>
+      </input>
+      <input line="state_double_UnitDelay_UnitDelay_1" port="state_double_UnitDelay_Product_2">
+         <connect block="state_double_UnitDelay_UnitDelay" port="state_double_UnitDelay_UnitDelay_1"/>
+      </input>
+      <input line="state_double_UnitDelay_UnitDelay1_1" port="state_double_UnitDelay_Product_3">
+         <connect block="state_double_UnitDelay_UnitDelay1" port="state_double_UnitDelay_UnitDelay1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Product_1" port="state_double_UnitDelay_Product_1" usename="true">
+         <connect block="state_double_UnitDelay_Saturation" port="state_double_UnitDelay_Saturation_1"/>
+      </output>
+   </block>
+   <block blocktype="Saturate" name="state_double_UnitDelay_Saturation" rate="-1">
+      <input line="state_double_UnitDelay_Product_1" port="state_double_UnitDelay_Saturation_1">
+         <connect block="state_double_UnitDelay_Product" port="state_double_UnitDelay_Product_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Saturation_1" port="state_double_UnitDelay_Saturation_1" usename="true">
+         <connect block="state_double_UnitDelay_Out1" port="state_double_UnitDelay_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="state_double_UnitDelay_Sum" rate="-1">
+      <input line="state_double_UnitDelay_MathFunction_1" port="state_double_UnitDelay_Sum_1">
+         <connect block="state_double_UnitDelay_MathFunction" port="state_double_UnitDelay_MathFunction_1"/>
+      </input>
+      <input line="state_double_UnitDelay_Gain2_1" port="state_double_UnitDelay_Sum_2">
+         <connect block="state_double_UnitDelay_Gain2" port="state_double_UnitDelay_Gain2_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Sum_1" port="state_double_UnitDelay_Sum_1" usename="true">
+         <connect block="state_double_UnitDelay_UnitDelay" port="state_double_UnitDelay_UnitDelay_1"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="state_double_UnitDelay_Sum1" rate="-1">
+      <input line="state_double_UnitDelay_MathFunction1_1" port="state_double_UnitDelay_Sum1_1">
+         <connect block="state_double_UnitDelay_MathFunction1" port="state_double_UnitDelay_MathFunction1_1"/>
+      </input>
+      <input line="state_double_UnitDelay_UnitDelay1_1" port="state_double_UnitDelay_Sum1_2">
+         <connect block="state_double_UnitDelay_UnitDelay1" port="state_double_UnitDelay_UnitDelay1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_Sum1_1" port="state_double_UnitDelay_Sum1_1" usename="true">
+         <connect block="state_double_UnitDelay_UnitDelay1" port="state_double_UnitDelay_UnitDelay1_1"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="state_double_UnitDelay_UnitDelay" rate="-1">
+      <input line="state_double_UnitDelay_Sum_1" port="state_double_UnitDelay_UnitDelay_1">
+         <connect block="state_double_UnitDelay_Sum" port="state_double_UnitDelay_Sum_1"/>
+      </input>
+      <output line="state_double_UnitDelay_UnitDelay_1" port="state_double_UnitDelay_UnitDelay_1" usename="true">
+         <connect block="state_double_UnitDelay_Gain2" port="state_double_UnitDelay_Gain2_1"/>
+         <connect block="state_double_UnitDelay_Product" port="state_double_UnitDelay_Product_2"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="state_double_UnitDelay_UnitDelay1" rate="-1">
+      <input line="state_double_UnitDelay_Sum1_1" port="state_double_UnitDelay_UnitDelay1_1">
+         <connect block="state_double_UnitDelay_Sum1" port="state_double_UnitDelay_Sum1_1"/>
+      </input>
+      <output line="state_double_UnitDelay_UnitDelay1_1" port="state_double_UnitDelay_UnitDelay1_1" usename="true">
+         <connect block="state_double_UnitDelay_Product" port="state_double_UnitDelay_Product_3"/>
+         <connect block="state_double_UnitDelay_Sum1" port="state_double_UnitDelay_Sum1_2"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="state_double_UnitDelay_Out1" rate="-1">
+      <input line="state_double_UnitDelay_Saturation_1" port="state_double_UnitDelay_Out1_1">
+         <connect block="state_double_UnitDelay_Saturation" port="state_double_UnitDelay_Saturation_1"/>
+      </input>
+   </block>
+</sm:blocks>

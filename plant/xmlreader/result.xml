@@ -1,93 +1,153 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<SM:blocks xmlns:SM="http://example.com/SimulinkModel" name="tekitou" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
-  <block blocktype="Inport" name="tekitou_In1" peinfo="red" rate="-1">
-    <output line="tekitou_In1_1" port="tekitou_In1_1" usename="true">
-      <connect block="tekitou_Gain" port="tekitou_Gain_1"/>
-      <connect block="tekitou_Gain1" port="tekitou_Gain1_1"/>
+<SM:blocks xmlns:SM="http://example.com/SimulinkModel" name="dus" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="dus_In1" peinfo="green" rate="-1">
+    <output line="dus_In1_1" port="dus_In1_1" usename="true">
+      <connect block="dus_Gain" port="dus_Gain_1"/>
+      <connect block="dus_Gain1" port="dus_Gain1_1"/>
+      <connect block="dus_Gain3" port="dus_Gain3_1"/>
     </output>
   </block>
-  <block blocktype="Bias" name="tekitou_Bias" peinfo="green">
-    <input line="tekitou_Gain1_1" port="tekitou_Bias_1">
-      <connect block="tekitou_Gain1" port="tekitou_Gain1_1"/>
+  <block blocktype="Bias" name="dus_Bias">
+    <input line="dus_Gain1_1" port="dus_Bias_1">
+      <connect block="dus_Gain1" port="dus_Gain1_1"/>
     </input>
-    <output line="tekitou_Bias_1" port="tekitou_Bias_1" usename="true">
-      <connect block="tekitou_MathFunction" port="tekitou_MathFunction_1"/>
+    <output line="dus_Bias_1" port="dus_Bias_1" usename="true">
+      <connect block="dus_Subsystem" port="dus_Subsystem_In1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tekitou_Gain" peinfo="red" rate="-1">
-    <input line="tekitou_In1_1" port="tekitou_Gain_1">
-      <connect block="tekitou_In1" port="tekitou_In1_1"/>
+  <block blocktype="Gain" name="dus_Gain" rate="-1">
+    <input line="dus_In1_1" port="dus_Gain_1">
+      <connect block="dus_In1" port="dus_In1_1"/>
     </input>
-    <output line="tekitou_Gain_1" port="tekitou_Gain_1" usename="true">
-      <connect block="tekitou_Product" port="tekitou_Product_1"/>
+    <output line="dus_Gain_1" port="dus_Gain_1" usename="true">
+      <connect block="dus_Product" port="dus_Product_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tekitou_Gain1" peinfo="green" rate="-1">
-    <input line="tekitou_In1_1" port="tekitou_Gain1_1">
-      <connect block="tekitou_In1" port="tekitou_In1_1"/>
+  <block blocktype="Gain" name="dus_Gain1" rate="-1">
+    <input line="dus_In1_1" port="dus_Gain1_1">
+      <connect block="dus_In1" port="dus_In1_1"/>
     </input>
-    <output line="tekitou_Gain1_1" port="tekitou_Gain1_1" usename="true">
-      <connect block="tekitou_Bias" port="tekitou_Bias_1"/>
+    <output line="dus_Gain1_1" port="dus_Gain1_1" usename="true">
+      <connect block="dus_Bias" port="dus_Bias_1"/>
     </output>
   </block>
-  <block blocktype="Gain" name="tekitou_Gain2" peinfo="green" rate="-1">
-    <input line="tekitou_UnitDelay_1" port="tekitou_Gain2_1">
-      <connect block="tekitou_UnitDelay" port="tekitou_UnitDelay_1"/>
+  <block blocktype="Gain" name="dus_Gain3" peinfo="green" rate="-1">
+    <input line="dus_In1_1" port="dus_Gain3_1">
+      <connect block="dus_In1" port="dus_In1_1"/>
     </input>
-    <output line="tekitou_Gain2_1" port="tekitou_Gain2_1" usename="true">
-      <connect block="tekitou_Sum" port="tekitou_Sum_2"/>
+    <output line="dus_Gain3_1" port="dus_Gain3_1" usename="true">
+      <connect block="dus_MathFunction1" port="dus_MathFunction1_1"/>
     </output>
   </block>
-  <block blocktype="Math" name="tekitou_MathFunction" peinfo="green" rate="-1">
-    <input line="tekitou_Bias_1" port="tekitou_MathFunction_1">
-      <connect block="tekitou_Bias" port="tekitou_Bias_1"/>
+  <block blocktype="Math" name="dus_MathFunction1" peinfo="green" rate="-1">
+    <input line="dus_Gain3_1" port="dus_MathFunction1_1">
+      <connect block="dus_Gain3" port="dus_Gain3_1"/>
     </input>
-    <output line="tekitou_MathFunction_1" port="tekitou_MathFunction_1" usename="true">
-      <connect block="tekitou_Sum" port="tekitou_Sum_1"/>
+    <output line="dus_MathFunction1_1" port="dus_MathFunction1_1" usename="true">
+      <connect block="dus_Sum1" port="dus_Sum1_1"/>
     </output>
   </block>
-  <block blocktype="Product" name="tekitou_Product" peinfo="red" rate="-1">
-    <input line="tekitou_Gain_1" port="tekitou_Product_1">
-      <connect block="tekitou_Gain" port="tekitou_Gain_1"/>
+  <block blocktype="Product" name="dus_Product" rate="-1">
+    <input line="dus_Gain_1" port="dus_Product_1">
+      <connect block="dus_Gain" port="dus_Gain_1"/>
     </input>
-    <input line="tekitou_UnitDelay_1" port="tekitou_Product_2">
-      <connect block="tekitou_UnitDelay" port="tekitou_UnitDelay_1"/>
+    <input line="dus_Subsystem_1" port="dus_Product_2">
+      <connect block="dus_Subsystem" port="dus_Subsystem_Out1"/>
     </input>
-    <output line="tekitou_Product_1" port="tekitou_Product_1" usename="true">
-      <connect block="tekitou_Saturation" port="tekitou_Saturation_1"/>
+    <input line="dus_UnitDelay1_1" port="dus_Product_3">
+      <connect block="dus_UnitDelay1" port="dus_UnitDelay1_1"/>
+    </input>
+    <output line="dus_Product_1" port="dus_Product_1" usename="true">
+      <connect block="dus_Saturation" port="dus_Saturation_1"/>
     </output>
   </block>
-  <block blocktype="Saturate" name="tekitou_Saturation" peinfo="red" rate="-1">
-    <input line="tekitou_Product_1" port="tekitou_Saturation_1">
-      <connect block="tekitou_Product" port="tekitou_Product_1"/>
+  <block blocktype="Saturate" name="dus_Saturation" rate="-1">
+    <input line="dus_Product_1" port="dus_Saturation_1">
+      <connect block="dus_Product" port="dus_Product_1"/>
     </input>
-    <output line="tekitou_Saturation_1" port="tekitou_Saturation_1" usename="true">
-      <connect block="tekitou_Out1" port="tekitou_Out1_1"/>
+    <output line="dus_Saturation_1" port="dus_Saturation_1" usename="true">
+      <connect block="dus_Out1" port="dus_Out1_1"/>
     </output>
   </block>
-  <block blocktype="Sum" name="tekitou_Sum" peinfo="green" rate="-1">
-    <input line="tekitou_MathFunction_1" port="tekitou_Sum_1">
-      <connect block="tekitou_MathFunction" port="tekitou_MathFunction_1"/>
+  <block blocktype="SubSystem" name="dus_Subsystem">
+    <input line="dus_Bias_1" port="dus_Subsystem_In1">
+      <connect block="dus_Bias" port="dus_Bias_1"/>
     </input>
-    <input line="tekitou_Gain2_1" port="tekitou_Sum_2">
-      <connect block="tekitou_Gain2" port="tekitou_Gain2_1"/>
+    <output line="dus_Subsystem_1" port="dus_Subsystem_Out1" usename="false">
+      <connect block="dus_Product" port="dus_Product_2"/>
+    </output>
+    <SM:blocks>
+      <block blocktype="Inport" name="dus_Subsystem_In1" rate="-1">
+        <output line="dus_Subsystem_In1_1" port="dus_Subsystem_In1_1" usename="false">
+          <connect block="dus_Subsystem_MathFunction" port="dus_Subsystem_MathFunction_1"/>
+        </output>
+      </block>
+      <block blocktype="Gain" name="dus_Subsystem_Gain2" rate="-1">
+        <input line="dus_Subsystem_UnitDelay_1" port="dus_Subsystem_Gain2_1">
+          <connect block="dus_Subsystem_UnitDelay" port="dus_Subsystem_UnitDelay_1"/>
+        </input>
+        <output line="dus_Subsystem_Gain2_1" port="dus_Subsystem_Gain2_1" usename="true">
+          <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_2"/>
+        </output>
+      </block>
+      <block blocktype="Math" name="dus_Subsystem_MathFunction" rate="-1">
+        <input line="dus_Subsystem_In1_1" port="dus_Subsystem_MathFunction_1">
+          <connect block="dus_Subsystem_In1" port="dus_Subsystem_In1_1"/>
+        </input>
+        <output line="dus_Subsystem_MathFunction_1" port="dus_Subsystem_MathFunction_1" usename="true">
+          <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_1"/>
+        </output>
+      </block>
+      <block blocktype="Sum" name="dus_Subsystem_Sum" rate="-1">
+        <input line="dus_Subsystem_MathFunction_1" port="dus_Subsystem_Sum_1">
+          <connect block="dus_Subsystem_MathFunction" port="dus_Subsystem_MathFunction_1"/>
+        </input>
+        <input line="dus_Subsystem_Gain2_1" port="dus_Subsystem_Sum_2">
+          <connect block="dus_Subsystem_Gain2" port="dus_Subsystem_Gain2_1"/>
+        </input>
+        <output line="dus_Subsystem_Sum_1" port="dus_Subsystem_Sum_1" usename="true">
+          <connect block="dus_Subsystem_UnitDelay" port="dus_Subsystem_UnitDelay_1"/>
+        </output>
+      </block>
+      <block blocktype="UnitDelay" name="dus_Subsystem_UnitDelay" rate="-1">
+        <input line="dus_Subsystem_Sum_1" port="dus_Subsystem_UnitDelay_1">
+          <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_1"/>
+        </input>
+        <output line="dus_Subsystem_UnitDelay_1" port="dus_Subsystem_UnitDelay_1" usename="true">
+          <connect block="dus_Subsystem_Gain2" port="dus_Subsystem_Gain2_1"/>
+          <connect block="dus_Subsystem_Out1" port="dus_Subsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="Outport" name="dus_Subsystem_Out1" rate="-1">
+        <input line="dus_Subsystem_UnitDelay_1" port="dus_Subsystem_Out1_1">
+          <connect block="dus_Subsystem_UnitDelay" port="dus_Subsystem_UnitDelay_1"/>
+        </input>
+      </block>
+    </SM:blocks>
+  </block>
+  <block blocktype="Sum" name="dus_Sum1" peinfo="green" rate="-1">
+    <input line="dus_MathFunction1_1" port="dus_Sum1_1">
+      <connect block="dus_MathFunction1" port="dus_MathFunction1_1"/>
     </input>
-    <output line="tekitou_Sum_1" port="tekitou_Sum_1" usename="true">
-      <connect block="tekitou_UnitDelay" port="tekitou_UnitDelay_1"/>
+    <input line="dus_UnitDelay1_1" port="dus_Sum1_2">
+      <connect block="dus_UnitDelay1" port="dus_UnitDelay1_1"/>
+    </input>
+    <output line="dus_Sum1_1" port="dus_Sum1_1" usename="true">
+      <connect block="dus_UnitDelay1" port="dus_UnitDelay1_1"/>
     </output>
   </block>
-  <block blocktype="UnitDelay" name="tekitou_UnitDelay" peinfo="green" rate="-1">
-    <input line="tekitou_Sum_1" port="tekitou_UnitDelay_1">
-      <connect block="tekitou_Sum" port="tekitou_Sum_1"/>
+  <block blocktype="UnitDelay" name="dus_UnitDelay1" peinfo="green" rate="-1">
+    <input line="dus_Sum1_1" port="dus_UnitDelay1_1">
+      <connect block="dus_Sum1" port="dus_Sum1_1"/>
     </input>
-    <output line="tekitou_UnitDelay_1" port="tekitou_UnitDelay_1" usename="true">
-      <connect block="tekitou_Gain2" port="tekitou_Gain2_1"/>
-      <connect block="tekitou_Product" port="tekitou_Product_2"/>
+    <output line="dus_UnitDelay1_1" port="dus_UnitDelay1_1" usename="true">
+      <connect block="dus_Product" port="dus_Product_3"/>
+      <connect block="dus_Sum1" port="dus_Sum1_2"/>
     </output>
   </block>
-  <block blocktype="Outport" name="tekitou_Out1" peinfo="red" rate="-1">
-    <input line="tekitou_Saturation_1" port="tekitou_Out1_1">
-      <connect block="tekitou_Saturation" port="tekitou_Saturation_1"/>
+  <block blocktype="Outport" name="dus_Out1" rate="-1">
+    <input line="dus_Saturation_1" port="dus_Out1_1">
+      <connect block="dus_Saturation" port="dus_Saturation_1"/>
     </input>
   </block>
 </SM:blocks>
