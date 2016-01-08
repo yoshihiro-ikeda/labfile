@@ -1,6 +1,21 @@
-ok
-dus_Subsystem_UnitDelay
+subok
+sub_search_blocks
+subdus_Subsystem_UnitDelay
+subbeforeblock
+subbeforeblock
+subbeforeblock
+subbeforeblock
+subbeforeblock
+subbeforeblock
 dus_UnitDelay1
+ok
+okokokokokokokok
+ok
+okokokokokokokok
+ok
+okokokokokokokok
+ok
+okokokokokokokok
 ok
 okokokokokokokok
 ok
@@ -22,6 +37,7 @@ dus_MathFunction1
 dus_Gain3
 dus_In1
 dus_UnitDelay1
+test
 out
 dus_Out1
 dus_Saturation
@@ -30,3 +46,78 @@ dus_Gain
 dus_In1
 dus_Subsystem_Out1
 dus_Subsystem
+dus_UnitDelay1
+dus_Sum1
+dus_MathFunction1
+dus_Gain3
+endend
+dus_In1
+peinfo <not present>green
+dus_Bias
+falsedus_Bias
+dus_Gain
+falsedus_Gain
+dus_Gain1
+falsedus_Gain1
+dus_Gain3
+peinfo <not present>green
+dus_MathFunction1
+peinfo <not present>green
+dus_Product
+falsedus_Product
+dus_Saturation
+falsedus_Saturation
+dus_Subsystem
+dus_Subsystem_In1
+peinfo <not present>green
+dus_Subsystem_Gain2
+peinfo <not present>green
+dus_Subsystem_MathFunction
+peinfo <not present>green
+dus_Subsystem_Sum
+peinfo <not present>green
+dus_Subsystem_UnitDelay
+peinfo <not present>green
+dus_Subsystem_Out1
+falsedus_Subsystem_Out1
+dus_Sum1
+peinfo <not present>green
+dus_UnitDelay1
+peinfo <not present>green
+dus_Out1
+falsedus_Out1
+dus_In1
+peinfo <not present>red
+dus_Bias
+falsedus_Bias
+dus_Gain
+peinfo <not present>red
+dus_Gain1
+falsedus_Gain1
+dus_Gain3
+peinfo <not present>red
+dus_MathFunction1
+peinfo <not present>red
+dus_Product
+peinfo <not present>red
+dus_Saturation
+peinfo <not present>red
+dus_Subsystem
+dus_Subsystem_In1
+falsedus_Subsystem_In1
+dus_Subsystem_Gain2
+falsedus_Subsystem_Gain2
+dus_Subsystem_MathFunction
+falsedus_Subsystem_MathFunction
+dus_Subsystem_Sum
+falsedus_Subsystem_Sum
+dus_Subsystem_UnitDelay
+falsedus_Subsystem_UnitDelay
+dus_Subsystem_Out1
+peinfo <not present>red
+dus_Sum1
+peinfo <not present>red
+dus_UnitDelay1
+peinfo <not present>red
+dus_Out1
+peinfo <not present>red

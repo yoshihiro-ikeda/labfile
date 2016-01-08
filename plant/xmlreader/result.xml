@@ -77,12 +77,12 @@
       <connect block="dus_Product" port="dus_Product_2"/>
     </output>
     <SM:blocks>
-      <block blocktype="Inport" name="dus_Subsystem_In1" rate="-1">
+      <block blocktype="Inport" name="dus_Subsystem_In1" peinfo="green" rate="-1">
         <output line="dus_Subsystem_In1_1" port="dus_Subsystem_In1_1" usename="false">
           <connect block="dus_Subsystem_MathFunction" port="dus_Subsystem_MathFunction_1"/>
         </output>
       </block>
-      <block blocktype="Gain" name="dus_Subsystem_Gain2" rate="-1">
+      <block blocktype="Gain" name="dus_Subsystem_Gain2" peinfo="green" rate="-1">
         <input line="dus_Subsystem_UnitDelay_1" port="dus_Subsystem_Gain2_1">
           <connect block="dus_Subsystem_UnitDelay" port="dus_Subsystem_UnitDelay_1"/>
         </input>
@@ -90,7 +90,7 @@
           <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_2"/>
         </output>
       </block>
-      <block blocktype="Math" name="dus_Subsystem_MathFunction" rate="-1">
+      <block blocktype="Math" name="dus_Subsystem_MathFunction" peinfo="green" rate="-1">
         <input line="dus_Subsystem_In1_1" port="dus_Subsystem_MathFunction_1">
           <connect block="dus_Subsystem_In1" port="dus_Subsystem_In1_1"/>
         </input>
@@ -98,7 +98,7 @@
           <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_1"/>
         </output>
       </block>
-      <block blocktype="Sum" name="dus_Subsystem_Sum" rate="-1">
+      <block blocktype="Sum" name="dus_Subsystem_Sum" peinfo="green" rate="-1">
         <input line="dus_Subsystem_MathFunction_1" port="dus_Subsystem_Sum_1">
           <connect block="dus_Subsystem_MathFunction" port="dus_Subsystem_MathFunction_1"/>
         </input>
@@ -109,7 +109,7 @@
           <connect block="dus_Subsystem_UnitDelay" port="dus_Subsystem_UnitDelay_1"/>
         </output>
       </block>
-      <block blocktype="UnitDelay" name="dus_Subsystem_UnitDelay" rate="-1">
+      <block blocktype="UnitDelay" name="dus_Subsystem_UnitDelay" peinfo="green" rate="-1">
         <input line="dus_Subsystem_Sum_1" port="dus_Subsystem_UnitDelay_1">
           <connect block="dus_Subsystem_Sum" port="dus_Subsystem_Sum_1"/>
         </input>
