@@ -1,17 +1,384 @@
-dus_In1,,green
-dus_Bias,,<not present>
-dus_Gain,,<not present>
-dus_Gain1,,<not present>
-dus_Gain3,,green
-dus_MathFunction1,,green
-dus_Product,,<not present>
-dus_Saturation,,<not present>
-dus_Subsystem_In1,,green
-dus_Subsystem_Gain2,,green
-dus_Subsystem_MathFunction,,green
-dus_Subsystem_Sum,,green
-dus_Subsystem_UnitDelay,,green
-dus_Subsystem_Out1,,<not present>
-dus_Sum1,,green
-dus_UnitDelay1,,green
-dus_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+state_dus3_In1,,green
+state_dus3_Gain,,<not present>
+state_dus3_Gain3,,green
+state_dus3_MathFunction1,,green
+state_dus3_Product,,<not present>
+state_dus3_Saturation,,<not present>
+state_dus3_Subsystem,,green
+state_dus3_Subsystem_In1,,green
+state_dus3_Subsystem_MathFunction,,green
+state_dus3_Subsystem_Subsystem,,green
+state_dus3_Subsystem_Subsystem_In1,,green
+state_dus3_Subsystem_Subsystem_Gain2,,green
+state_dus3_Subsystem_Subsystem_Sum,,green
+state_dus3_Subsystem_Subsystem_UnitDelay,,green
+state_dus3_Subsystem_Subsystem_Out1,,<not present>
+state_dus3_Subsystem_Out1,,<not present>
+state_dus3_Subsystem1,,green
+state_dus3_Subsystem1_In1,,green
+state_dus3_Subsystem1_Bias,,green
+state_dus3_Subsystem1_Gain1,,green
+state_dus3_Subsystem1_Out1,,green
+state_dus3_Sum1,,green
+state_dus3_UnitDelay1,,green
+state_dus3_Out1,,<not present>
+out_dus3_In1,,green
+out_dus3_Gain,,<not present>
+out_dus3_Gain3,,green
+out_dus3_MathFunction1,,green
+out_dus3_Product,,<not present>
+out_dus3_Saturation,,<not present>
+out_dus3_Subsystem,,green
+out_dus3_Subsystem_In1,,green
+out_dus3_Subsystem_MathFunction,,green
+out_dus3_Subsystem_Subsystem,,green
+out_dus3_Subsystem_Subsystem_In1,,green
+out_dus3_Subsystem_Subsystem_Gain2,,green
+out_dus3_Subsystem_Subsystem_Sum,,green
+out_dus3_Subsystem_Subsystem_UnitDelay,,green
+out_dus3_Subsystem_Subsystem_Out1,,<not present>
+out_dus3_Subsystem_Out1,,<not present>
+out_dus3_Subsystem1,,green
+out_dus3_Subsystem1_In1,,green
+out_dus3_Subsystem1_Bias,,green
+out_dus3_Subsystem1_Gain1,,green
+out_dus3_Subsystem1_Out1,,green
+out_dus3_Sum1,,green
+out_dus3_UnitDelay1,,green
+out_dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
+dus3_In1,,green
+dus3_Gain,,<not present>
+dus3_Gain3,,green
+dus3_MathFunction1,,green
+dus3_Product,,<not present>
+dus3_Saturation,,<not present>
+dus3_Subsystem,,green
+dus3_Subsystem_In1,,green
+dus3_Subsystem_MathFunction,,green
+dus3_Subsystem_Subsystem,,green
+dus3_Subsystem_Subsystem_In1,,green
+dus3_Subsystem_Subsystem_Gain2,,green
+dus3_Subsystem_Subsystem_Sum,,green
+dus3_Subsystem_Subsystem_UnitDelay,,green
+dus3_Subsystem_Subsystem_Out1,,<not present>
+dus3_Subsystem_Out1,,<not present>
+dus3_Subsystem1,,green
+dus3_Subsystem1_In1,,green
+dus3_Subsystem1_Bias,,green
+dus3_Subsystem1_Gain1,,green
+dus3_Subsystem1_Out1,,green
+dus3_Sum1,,green
+dus3_UnitDelay1,,green
+dus3_Out1,,<not present>
