@@ -231,14 +231,15 @@ void sub_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blo
 		if(bi->name() == target_blk){	
 			SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
 			SimulinkModel::XSD::block_T::input_iterator ii;
-			if(ip_seq.begin() == ip_seq.end()){
+			if(ip_seq.begin() == ip_seq.end() && bi->blocktype() == "Inport"){
 				/*SubSystem内のinportに達したら次にSubSystemのinportからまた探索開始*/
 				std::string subsys = rtnSubSys(blks,bi->name(),bi->name());
 				cout << "subsys ==== " << subsys << endl;
 				if(rtnNameToType(blks,subsys) == "SubSystem"){
 					cout << "subsys = " << subsys << endl;
 					SimulinkModel::XSD::blocks_T up = blks;
-					rtnupSys(up,subsys);
+					SimulinkModel::XSD::blocks_T up2 = blks;
+					rtnupSys(up,up2,subsys);
 					sub_before_block(blks,up,subsys,state);
 				}
 			}else{
@@ -305,6 +306,13 @@ void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equ
 					if(rtnNameToType(blks,tmp) == target_blk){
 						cout << "okokokokokok" << endl;
 						goto NEXT;
+					}else if(rtnNameToType(blks,tmp) == "SubSystem"){
+							SimulinkModel::XSD::blocks_T sub = blks;
+							cout << "deteru" << endl;
+							rtnsubBlocks(sub,tmp);
+							std::string con_blk(ci->port());
+							out->add_blk(con_blk);
+							sub_out_before_block(blks,sub,con_blk,out);
 					}else if(out->get_flagval() == 0){
 						out->add_blk(tmp);
 						//follow_block_from_last(blks,out,tmp,target_blk);
@@ -335,15 +343,42 @@ void sub_out_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD:
 			}	
 			SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
 			SimulinkModel::XSD::block_T::input_iterator ii;
-			if(ip_seq.begin() == ip_seq.end()){
+			if(ip_seq.begin() == ip_seq.end() && bi->blocktype() == "Inport"){
 				/*SubSystem内のinportに達したら次にSubSystemのinportからまた探索開始*/
 				std::string subsys = rtnSubSys(blks,bi->name(),bi->name());
 				cout << "subsys ==== " << subsys << endl;
 				if(rtnNameToType(blks,subsys) == "SubSystem"){
 					cout << "subsys = " << subsys << endl;
 					SimulinkModel::XSD::blocks_T up = blks;
-					rtnupSys(up,subsys);
-					sub_out_before_block(blks,up,subsys,state);
+					SimulinkModel::XSD::blocks_T up2 = blks;
+					rtnupSys(up,up2,subsys);
+					//sub_out_before_block(blks,up,subsys,state);
+					SimulinkModel::XSD::blocks_T::block_sequence up_seq = up.block();
+					SimulinkModel::XSD::blocks_T::block_iterator upi;
+					for(upi = up_seq.begin();upi != up_seq.end();upi++){
+						cout << "sironekoproject " << upi->name() <<endl;
+						if(upi->name() == subsys){
+							cout << "sironekoproject " <<endl;
+							SimulinkModel::XSD::block_T::input_sequence ip2_seq = upi->input();
+							SimulinkModel::XSD::block_T::input_iterator ii2;
+							for(ii2 = ip2_seq.begin();ii2 != ip2_seq.end();ii2++){
+								if(bi->name() == ii2->port()){
+									SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii2->connect();
+									SimulinkModel::XSD::ioport_T::connect_iterator ci;
+									for(ci = con_seq.begin();ci != con_seq.end();ci++){
+										std::string con_name(ci->block());
+										cout << "sironekoproject " << con_name <<endl;
+										if(rtnNameToType(blks,con_name) == "SubSystem"){
+											sub_out_before_block(blks,up,ci->port(),state);
+										}else{
+											cout << "sironekoproject" << endl;
+											sub_out_before_block(blks,up,subsys,state);
+										}
+									}
+								}
+							}
+						}
+					}			
 				}
 			}else{
 				cout << "koko" << endl;
@@ -430,7 +465,6 @@ void rtnsubBlocks(SimulinkModel::XSD::blocks_T &blks,string name)
 	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
-		cout << bi->name() << endl;
 		if(bi->blocktype() == "SubSystem"){
 			if(bi->name() == name){
 				SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
@@ -452,20 +486,20 @@ void rtnsubBlocks(SimulinkModel::XSD::blocks_T &blks,string name)
 }
 
 /*ブロック名を受け取りそのブロックがいる階層を返す関数*/
-void rtnupSys(SimulinkModel::XSD::blocks_T &blks,string name)
+void rtnupSys(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &blks2,string name)
 {
-	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+	SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks2.block();
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
 		if(bi->blocktype() == "SubSystem"){
 			if(bi->name() == name){
+				cout << "haaaaaaaaaaaa" << endl;
 				blks.block(blk_seq);
-				break;
 			}else{
 				SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
 				SimulinkModel::XSD::block_T::blocks_iterator bsi;
 				for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
-					rtnupSys(*bsi,name);
+					rtnupSys(blks,*bsi,name);
 				}
 			}
 		}
@@ -478,7 +512,6 @@ string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name)
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	std::string tmp2;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
-		cout << "name " << bi->name() << endl;
 		if(bi->blocktype() == "SubSystem"){
 			std::string subsys(bi->name());
 			if(bi->name() == name){
@@ -512,13 +545,11 @@ string rtnSubSys(SimulinkModel::XSD::blocks_T &blks,string blockname,string sys)
 	SimulinkModel::XSD::blocks_T::block_iterator bi;
 	for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
 		std::string tmp(bi->name());
-		//cout << tmp << endl;
 		if(bi->blocktype() == "SubSystem"){
 			SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
 			SimulinkModel::XSD::block_T::blocks_iterator bsi;
 			for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
 				std::string tmp2 = rtnSubSys(*bsi,blockname,tmp);
-				cout << tmp2 << endl;
 				if(tmp2 != "0"){
 					return tmp2;
 				}

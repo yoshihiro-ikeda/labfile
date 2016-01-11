@@ -1,9 +1,9 @@
 function exist_files(sys)
 
 if exist('result_state.csv','file') ~= 2  
-    return;
+    delete('result_state.csv');
 elseif exist('result_out.csv','file') ~= 2
-    return;
+    delete('result_out.csv');
 end
 
 statesys = sprintf('state_%s',sys);

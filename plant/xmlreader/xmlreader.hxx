@@ -45,7 +45,7 @@ void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equ
 void sub_out_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state);
 void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,equation *out,string target_blk,string exblk);
 void rtnsubBlocks(SimulinkModel::XSD::blocks_T &blks,string name);
-void rtnupSys(SimulinkModel::XSD::blocks_T &blks,string name);
+void rtnupSys(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &blks2,string name);
 string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name);
 string rtnSubSys(SimulinkModel::XSD::blocks_T &blks,string blockname,string sys);
 void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set);

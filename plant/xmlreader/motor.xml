@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="motor" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="motor_In1" rate="-1">
+      <output line="motor_In1_1" port="motor_In1_1" usename="false">
+         <connect block="motor_PMSM" port="motor_PMSM_Vuvw"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="motor_PMSM">
+      <input line="motor_In1_1" port="motor_PMSM_Vuvw">
+         <connect block="motor_In1" port="motor_In1_1"/>
+      </input>
+      <output line="motor_PMSM_1" port="motor_PMSM_Motor_Sigburst" usename="false">
+         <connect block="motor_Out1" port="motor_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="motor_PMSM_Vuvw" rate="-1">
+            <output line="motor_PMSM_Vuvw_Vout_uvm" port="motor_PMSM_Vuvw_1" usename="true">
+               <connect block="motor_PMSM_PWM_Generator" port="motor_PMSM_PWM_Generator_Signals"/>
+            </output>
+         </block>
+         <block blocktype="BusCreator" name="motor_PMSM_BusCreator">
+            <input line="motor_PMSM_PWM_Generator_Vout_uvm" port="motor_PMSM_BusCreator_1">
+               <connect block="motor_PMSM_PWM_Generator" port="motor_PMSM_PWM_Generator_Vout_uvm"/>
+            </input>
+            <input line="motor_PMSM_PMSM_MotorTrq" port="motor_PMSM_BusCreator_2">
+               <connect block="motor_PMSM_PMSM" port="motor_PMSM_PMSM_Te"/>
+            </input>
+            <input line="motor_PMSM_PMSM_Iabc" port="motor_PMSM_BusCreator_3">
+               <connect block="motor_PMSM_PMSM" port="motor_PMSM_PMSM_Iabc"/>
+            </input>
+            <input line="motor_PMSM_MechanicalShaft_MotorAngle" port="motor_PMSM_BusCreator_4">
+               <connect block="motor_PMSM_MechanicalShaft" port="motor_PMSM_MechanicalShaft_MortorAngle"/>
+            </input>
+            <output line="motor_PMSM_BusCreator_Motor_Sig" port="motor_PMSM_BusCreator_1" usename="true">
+               <connect block="motor_PMSM_MechanicalShaft" port="motor_PMSM_MechanicalShaft_Motor_Sig"/>
+               <connect block="motor_PMSM_Motor_Sigburst" port="motor_PMSM_Motor_Sigburst_1"/>
+            </output>
+         </block>
+         <block blocktype="SubSystem" name="motor_PMSM_MechanicalShaft">
+            <input line="motor_PMSM_BusCreator_Motor_Sig" port="motor_PMSM_MechanicalShaft_Motor_Sig">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_1"/>
+            </input>
+            <output line="motor_PMSM_MechanicalShaft_1" port="motor_PMSM_MechanicalShaft_MortorSpeed" usename="false">
+               <connect block="motor_PMSM_PMSM" port="motor_PMSM_PMSM_w_m"/>
+            </output>
+            <output line="motor_PMSM_MechanicalShaft_MotorAngle" port="motor_PMSM_MechanicalShaft_MortorAngle" usename="false">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_4"/>
+               <connect block="motor_PMSM_PMSM" port="motor_PMSM_PMSM_theta_m"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="motor_PMSM_MechanicalShaft_Motor_Sig" rate="-1">
+                  <output line="motor_PMSM_MechanicalShaft_Motor_Sig_1" port="motor_PMSM_MechanicalShaft_Motor_Sig_1" usename="false">
+                     <connect block="motor_PMSM_MechanicalShaft_BusSelector10" port="motor_PMSM_MechanicalShaft_BusSelector10_1"/>
+                  </output>
+               </block>
+               <block blocktype="BusSelector" name="motor_PMSM_MechanicalShaft_BusSelector10">
+                  <input line="motor_PMSM_MechanicalShaft_Motor_Sig_1" port="motor_PMSM_MechanicalShaft_BusSelector10_1">
+                     <connect block="motor_PMSM_MechanicalShaft_Motor_Sig" port="motor_PMSM_MechanicalShaft_Motor_Sig_1"/>
+                  </input>
+                  <output line="motor_PMSM_MechanicalShaft_BusSelector10_MotorTrq" port="motor_PMSM_MechanicalShaft_BusSelector10_1" usename="false">
+                     <connect block="motor_PMSM_MechanicalShaft_inertia" port="motor_PMSM_MechanicalShaft_inertia_1"/>
+                  </output>
+               </block>
+               <block blocktype="SubSystem" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad">
+                  <input line="motor_PMSM_MechanicalShaft_MotorSpeed_MortorSpeed" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1">
+                     <connect block="motor_PMSM_MechanicalShaft_MotorSpeed" port="motor_PMSM_MechanicalShaft_MotorSpeed_1"/>
+                  </input>
+                  <output line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1" usename="false">
+                     <connect block="motor_PMSM_MechanicalShaft_MortorAngle" port="motor_PMSM_MechanicalShaft_MortorAngle_1"/>
+                  </output>
+                  <sm:blocks>
+                     <block blocktype="Inport" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1" rate="-1">
+                        <output line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1_1" usename="false">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Constant" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C" rate="inf">
+                        <output line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C_1" usename="true">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Integrator" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1">
+                        <input line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_1">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1_1"/>
+                        </input>
+                        <input line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_2">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1"/>
+                        </input>
+                        <output line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_CrankAngle" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_1" usename="true">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="RelationalOperator" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator" rate="-1">
+                        <input line="" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1" type="none"/>
+                        <input line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_2">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C_1"/>
+                        </input>
+                        <output line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1" usename="true">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1" rate="-1">
+                        <input line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_CrankAngle" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1_1">
+                           <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_1"/>
+                        </input>
+                     </block>
+                  </sm:blocks>
+               </block>
+               <block blocktype="Integrator" name="motor_PMSM_MechanicalShaft_MotorSpeed">
+                  <input line="motor_PMSM_MechanicalShaft_inertia_1" port="motor_PMSM_MechanicalShaft_MotorSpeed_1">
+                     <connect block="motor_PMSM_MechanicalShaft_inertia" port="motor_PMSM_MechanicalShaft_inertia_1"/>
+                  </input>
+                  <output line="motor_PMSM_MechanicalShaft_MotorSpeed_MortorSpeed" port="motor_PMSM_MechanicalShaft_MotorSpeed_1" usename="true">
+                     <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1"/>
+                     <connect block="motor_PMSM_MechanicalShaft_MortorSpeed" port="motor_PMSM_MechanicalShaft_MortorSpeed_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_MechanicalShaft_inertia" rate="-1">
+                  <input line="motor_PMSM_MechanicalShaft_BusSelector10_MotorTrq" port="motor_PMSM_MechanicalShaft_inertia_1">
+                     <connect block="motor_PMSM_MechanicalShaft_BusSelector10" port="motor_PMSM_MechanicalShaft_BusSelector10_1"/>
+                  </input>
+                  <output line="motor_PMSM_MechanicalShaft_inertia_1" port="motor_PMSM_MechanicalShaft_inertia_1" usename="true">
+                     <connect block="motor_PMSM_MechanicalShaft_MotorSpeed" port="motor_PMSM_MechanicalShaft_MotorSpeed_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="motor_PMSM_MechanicalShaft_MortorSpeed" rate="-1">
+                  <input line="motor_PMSM_MechanicalShaft_MotorSpeed_MortorSpeed" port="motor_PMSM_MechanicalShaft_MortorSpeed_1">
+                     <connect block="motor_PMSM_MechanicalShaft_MotorSpeed" port="motor_PMSM_MechanicalShaft_MotorSpeed_1"/>
+                  </input>
+               </block>
+               <block blocktype="Outport" name="motor_PMSM_MechanicalShaft_MortorAngle" rate="-1">
+                  <input line="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_1" port="motor_PMSM_MechanicalShaft_MortorAngle_1">
+                     <connect block="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad" port="motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="SubSystem" name="motor_PMSM_PMSM">
+            <input line="motor_PMSM_PWM_Generator_Vout_uvm" port="motor_PMSM_PMSM_Vabc">
+               <connect block="motor_PMSM_PWM_Generator" port="motor_PMSM_PWM_Generator_Vout_uvm"/>
+            </input>
+            <input line="motor_PMSM_MechanicalShaft_1" port="motor_PMSM_PMSM_w_m">
+               <connect block="motor_PMSM_MechanicalShaft" port="motor_PMSM_MechanicalShaft_MortorSpeed"/>
+            </input>
+            <input line="motor_PMSM_MechanicalShaft_MotorAngle" port="motor_PMSM_PMSM_theta_m">
+               <connect block="motor_PMSM_MechanicalShaft" port="motor_PMSM_MechanicalShaft_MortorAngle"/>
+            </input>
+            <output line="motor_PMSM_PMSM_MotorTrq" port="motor_PMSM_PMSM_Te" usename="true">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_2"/>
+            </output>
+            <output line="motor_PMSM_PMSM_Iabc" port="motor_PMSM_PMSM_Iabc" usename="true">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_3"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="motor_PMSM_PMSM_Vabc" rate="-1">
+                  <output line="motor_PMSM_PMSM_Vabc_1" port="motor_PMSM_PMSM_Vabc_1" usename="false">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ" port="motor_PMSM_PMSM_ABC_DQ_Vabc"/>
+                  </output>
+               </block>
+               <block blocktype="Inport" name="motor_PMSM_PMSM_w_m" rate="-1">
+                  <output line="motor_PMSM_PMSM_w_m_1" port="motor_PMSM_PMSM_w_m_1" usename="false">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_w_r"/>
+                  </output>
+               </block>
+               <block blocktype="Inport" name="motor_PMSM_PMSM_theta_m" rate="-1">
+                  <output line="motor_PMSM_PMSM_theta_m_1" port="motor_PMSM_PMSM_theta_m_1" usename="false">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs12" port="motor_PMSM_PMSM_poles2polepairs12_1"/>
+                  </output>
+               </block>
+               <block blocktype="SubSystem" name="motor_PMSM_PMSM_ABC_DQ">
+                  <input line="motor_PMSM_PMSM_Vabc_1" port="motor_PMSM_PMSM_ABC_DQ_Vabc">
+                     <connect block="motor_PMSM_PMSM_Vabc" port="motor_PMSM_PMSM_Vabc_1"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_poles2polepairs12_1" port="motor_PMSM_PMSM_ABC_DQ_Theta_e">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs12" port="motor_PMSM_PMSM_poles2polepairs12_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_ABC_DQ_1" port="motor_PMSM_PMSM_ABC_DQ_Vd" usename="false">
+                     <connect block="motor_PMSM_PMSM_Sum4" port="motor_PMSM_PMSM_Sum4_2"/>
+                  </output>
+                  <output line="motor_PMSM_PMSM_ABC_DQ_2" port="motor_PMSM_PMSM_ABC_DQ_Vq" usename="false">
+                     <connect block="motor_PMSM_PMSM_Sum1" port="motor_PMSM_PMSM_Sum1_2"/>
+                  </output>
+                  <sm:blocks>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_ABC_DQ_Vabc" rate="-1">
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Vabc_1" port="motor_PMSM_PMSM_ABC_DQ_Vabc_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux3" port="motor_PMSM_PMSM_ABC_DQ_Mux3_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_ABC_DQ_Theta_e" rate="-1">
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Theta_e_1" port="motor_PMSM_PMSM_ABC_DQ_Theta_e_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Display" port="motor_PMSM_PMSM_ABC_DQ_Display_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_2"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux3" port="motor_PMSM_PMSM_ABC_DQ_Mux3_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Display" name="motor_PMSM_PMSM_ABC_DQ_Display" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Theta_e_1" port="motor_PMSM_PMSM_ABC_DQ_Display_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Theta_e" port="motor_PMSM_PMSM_ABC_DQ_Theta_e_1"/>
+                        </input>
+                     </block>
+                     <block blocktype="Fcn" name="motor_PMSM_PMSM_ABC_DQ_Fcn" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Mux3_1" port="motor_PMSM_PMSM_ABC_DQ_Fcn_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux3" port="motor_PMSM_PMSM_ABC_DQ_Mux3_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Fcn_1" port="motor_PMSM_PMSM_ABC_DQ_Fcn_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_d" port="motor_PMSM_PMSM_ABC_DQ_d_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Fcn" name="motor_PMSM_PMSM_ABC_DQ_Fcn1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Mux1_1" port="motor_PMSM_PMSM_ABC_DQ_Fcn1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Mux1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Fcn1_1" port="motor_PMSM_PMSM_ABC_DQ_Fcn1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_d1" port="motor_PMSM_PMSM_ABC_DQ_d1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Mux" name="motor_PMSM_PMSM_ABC_DQ_Mux1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Vabc_1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Vabc" port="motor_PMSM_PMSM_ABC_DQ_Vabc_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Theta_e_1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Theta_e" port="motor_PMSM_PMSM_ABC_DQ_Theta_e_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Mux1_1" port="motor_PMSM_PMSM_ABC_DQ_Mux1_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Fcn1" port="motor_PMSM_PMSM_ABC_DQ_Fcn1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Mux" name="motor_PMSM_PMSM_ABC_DQ_Mux3">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Vabc_1" port="motor_PMSM_PMSM_ABC_DQ_Mux3_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Vabc" port="motor_PMSM_PMSM_ABC_DQ_Vabc_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Theta_e_1" port="motor_PMSM_PMSM_ABC_DQ_Mux3_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Theta_e" port="motor_PMSM_PMSM_ABC_DQ_Theta_e_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_Mux3_1" port="motor_PMSM_PMSM_ABC_DQ_Mux3_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Fcn" port="motor_PMSM_PMSM_ABC_DQ_Fcn_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ_d" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Fcn_1" port="motor_PMSM_PMSM_ABC_DQ_d_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Fcn" port="motor_PMSM_PMSM_ABC_DQ_Fcn_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_d_1" port="motor_PMSM_PMSM_ABC_DQ_d_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Vd" port="motor_PMSM_PMSM_ABC_DQ_Vd_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ_d1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_Fcn1_1" port="motor_PMSM_PMSM_ABC_DQ_d1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Fcn1" port="motor_PMSM_PMSM_ABC_DQ_Fcn1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ_d1_1" port="motor_PMSM_PMSM_ABC_DQ_d1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_Vq" port="motor_PMSM_PMSM_ABC_DQ_Vq_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_ABC_DQ_Vd" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_d_1" port="motor_PMSM_PMSM_ABC_DQ_Vd_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_d" port="motor_PMSM_PMSM_ABC_DQ_d_1"/>
+                        </input>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_ABC_DQ_Vq" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ_d1_1" port="motor_PMSM_PMSM_ABC_DQ_Vq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ_d1" port="motor_PMSM_PMSM_ABC_DQ_d1_1"/>
+                        </input>
+                     </block>
+                  </sm:blocks>
+               </block>
+               <block blocktype="SubSystem" name="motor_PMSM_PMSM_ABC_DQ1">
+                  <input line="motor_PMSM_PMSM_Sum4_1" port="motor_PMSM_PMSM_ABC_DQ1_Vd">
+                     <connect block="motor_PMSM_PMSM_Sum4" port="motor_PMSM_PMSM_Sum4_1"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Vq">
+                     <connect block="motor_PMSM_PMSM_Sum1" port="motor_PMSM_PMSM_Sum1_1"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_w_m_1" port="motor_PMSM_PMSM_ABC_DQ1_w_r">
+                     <connect block="motor_PMSM_PMSM_w_m" port="motor_PMSM_PMSM_w_m_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_ABC_DQ1_1" port="motor_PMSM_PMSM_ABC_DQ1_id" usename="false">
+                     <connect block="motor_PMSM_PMSM_DQ_ABC1" port="motor_PMSM_PMSM_DQ_ABC1_id"/>
+                  </output>
+                  <output line="motor_PMSM_PMSM_ABC_DQ1_2" port="motor_PMSM_PMSM_ABC_DQ1_iq" usename="false">
+                     <connect block="motor_PMSM_PMSM_DQ_ABC1" port="motor_PMSM_PMSM_DQ_ABC1_iq"/>
+                  </output>
+                  <output line="motor_PMSM_PMSM_ABC_DQ1_3" port="motor_PMSM_PMSM_ABC_DQ1_Te" usename="false">
+                     <connect block="motor_PMSM_PMSM_Te" port="motor_PMSM_PMSM_Te_1"/>
+                  </output>
+                  <sm:blocks>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_ABC_DQ1_Vd" rate="-1">
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Vd_1" port="motor_PMSM_PMSM_ABC_DQ1_Vd_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_ABC_DQ1_Vq" rate="-1">
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Vq_1" port="motor_PMSM_PMSM_ABC_DQ1_Vq_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_3"/>
+                        </output>
+                     </block>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_ABC_DQ1_w_r" rate="-1">
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_w_r_1" port="motor_PMSM_PMSM_ABC_DQ1_w_r_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product" port="motor_PMSM_PMSM_ABC_DQ1_Product_2"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Rnt" port="motor_PMSM_PMSM_ABC_DQ1_Rnt_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_15p" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum2_1" port="motor_PMSM_PMSM_ABC_DQ1_15p_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum2" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_15p_1" port="motor_PMSM_PMSM_ABC_DQ1_15p_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Te" port="motor_PMSM_PMSM_ABC_DQ1_Te_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Ld" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product2" port="motor_PMSM_PMSM_ABC_DQ1_Product2_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_R" port="motor_PMSM_PMSM_ABC_DQ1_R_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_pLq1" port="motor_PMSM_PMSM_ABC_DQ1_pLq1_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_id" port="motor_PMSM_PMSM_ABC_DQ1_id_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Product2_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product2" port="motor_PMSM_PMSM_ABC_DQ1_Product2_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum2" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Lq" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product2" port="motor_PMSM_PMSM_ABC_DQ1_Product2_2"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_R1" port="motor_PMSM_PMSM_ABC_DQ1_R1_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Rnt2" port="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_pLq" port="motor_PMSM_PMSM_ABC_DQ1_pLq_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_iq" port="motor_PMSM_PMSM_ABC_DQ1_iq_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Product" name="motor_PMSM_PMSM_ABC_DQ1_Product" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_pLq_1" port="motor_PMSM_PMSM_ABC_DQ1_Product_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_pLq" port="motor_PMSM_PMSM_ABC_DQ1_pLq_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_w_r_1" port="motor_PMSM_PMSM_ABC_DQ1_Product_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_w_r" port="motor_PMSM_PMSM_ABC_DQ1_w_r_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Product_1" port="motor_PMSM_PMSM_ABC_DQ1_Product_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Product" name="motor_PMSM_PMSM_ABC_DQ1_Product1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_w_r_1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_w_r" port="motor_PMSM_PMSM_ABC_DQ1_w_r_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_pLq1_1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_pLq1" port="motor_PMSM_PMSM_ABC_DQ1_pLq1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Product1_1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Product" name="motor_PMSM_PMSM_ABC_DQ1_Product2" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_Product2_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Product2_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Product2_1" port="motor_PMSM_PMSM_ABC_DQ1_Product2_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_R" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_R_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_R_1" port="motor_PMSM_PMSM_ABC_DQ1_R_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_3"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_R1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_R1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_R1_1" port="motor_PMSM_PMSM_ABC_DQ1_R1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_4"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Rnt" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_w_r_1" port="motor_PMSM_PMSM_ABC_DQ1_Rnt_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_w_r" port="motor_PMSM_PMSM_ABC_DQ1_w_r_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Rnt_1" port="motor_PMSM_PMSM_ABC_DQ1_Rnt_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Rnt2" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1" port="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum2" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Vd_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Vd" port="motor_PMSM_PMSM_ABC_DQ1_Vd_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Product_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product" port="motor_PMSM_PMSM_ABC_DQ1_Product_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_R_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum_3">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_R" port="motor_PMSM_PMSM_ABC_DQ1_R_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Product1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Rnt_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Rnt" port="motor_PMSM_PMSM_ABC_DQ1_Rnt_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Vq_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_3">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Vq" port="motor_PMSM_PMSM_ABC_DQ1_Vq_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_R1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_4">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_R1" port="motor_PMSM_PMSM_ABC_DQ1_R1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum2" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Rnt2" port="motor_PMSM_PMSM_ABC_DQ1_Rnt2_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum2_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_15p" port="motor_PMSM_PMSM_ABC_DQ1_15p_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum3" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum4" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_2">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="UnitDelay" name="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="UnitDelay" name="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_pLq" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_pLq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_pLq_1" port="motor_PMSM_PMSM_ABC_DQ1_pLq_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product" port="motor_PMSM_PMSM_ABC_DQ1_Product_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_pLq1" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_pLq1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_pLq1_1" port="motor_PMSM_PMSM_ABC_DQ1_pLq1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Product1" port="motor_PMSM_PMSM_ABC_DQ1_Product1_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_ABC_DQ1_id" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_id_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                        </input>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_ABC_DQ1_iq" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_iq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </input>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_ABC_DQ1_Te" rate="-1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_15p_1" port="motor_PMSM_PMSM_ABC_DQ1_Te_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_15p" port="motor_PMSM_PMSM_ABC_DQ1_15p_1"/>
+                        </input>
+                     </block>
+                  </sm:blocks>
+               </block>
+               <block blocktype="SubSystem" name="motor_PMSM_PMSM_DQ_ABC1">
+                  <input line="motor_PMSM_PMSM_ABC_DQ1_1" port="motor_PMSM_PMSM_DQ_ABC1_id">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_id"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_ABC_DQ1_2" port="motor_PMSM_PMSM_DQ_ABC1_iq">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_iq"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_poles2polepairs12_1" port="motor_PMSM_PMSM_DQ_ABC1_Theta_e">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs12" port="motor_PMSM_PMSM_poles2polepairs12_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_DQ_ABC1_1" port="motor_PMSM_PMSM_DQ_ABC1_iabc" usename="false">
+                     <connect block="motor_PMSM_PMSM_Iabc" port="motor_PMSM_PMSM_Iabc_1"/>
+                  </output>
+                  <sm:blocks>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_DQ_ABC1_id" rate="-1">
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_id_1" port="motor_PMSM_PMSM_DQ_ABC1_id_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_DQ_ABC1_iq" rate="-1">
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_iq_1" port="motor_PMSM_PMSM_DQ_ABC1_iq_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Inport" name="motor_PMSM_PMSM_DQ_ABC1_Theta_e" rate="-1">
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Theta_e_1" port="motor_PMSM_PMSM_DQ_ABC1_Theta_e_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_3"/>
+                        </output>
+                     </block>
+                     <block blocktype="Fcn" name="motor_PMSM_PMSM_DQ_ABC1_Fcn2" rate="-1">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Mux3_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux5" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Fcn" name="motor_PMSM_PMSM_DQ_ABC1_Fcn3" rate="-1">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Mux3_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux5" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Fcn" name="motor_PMSM_PMSM_DQ_ABC1_Fcn4" rate="-1">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Mux3_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux3" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1" port="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux5" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_3"/>
+                        </output>
+                     </block>
+                     <block blocktype="Mux" name="motor_PMSM_PMSM_DQ_ABC1_Mux3">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_id_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_id" port="motor_PMSM_PMSM_DQ_ABC1_id_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_iq_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_2">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_iq" port="motor_PMSM_PMSM_DQ_ABC1_iq_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Theta_e_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_3">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Theta_e" port="motor_PMSM_PMSM_DQ_ABC1_Theta_e_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Mux3_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux3_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn2" port="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1"/>
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn3" port="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1"/>
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn4" port="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Mux" name="motor_PMSM_PMSM_DQ_ABC1_Mux5">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn2" port="motor_PMSM_PMSM_DQ_ABC1_Fcn2_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_2">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn3" port="motor_PMSM_PMSM_DQ_ABC1_Fcn3_1"/>
+                        </input>
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_3">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Fcn4" port="motor_PMSM_PMSM_DQ_ABC1_Fcn4_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_DQ_ABC1_Mux5_1" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_1" usename="false">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_iabc" port="motor_PMSM_PMSM_DQ_ABC1_iabc_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PMSM_DQ_ABC1_iabc" rate="-1">
+                        <input line="motor_PMSM_PMSM_DQ_ABC1_Mux5_1" port="motor_PMSM_PMSM_DQ_ABC1_iabc_1">
+                           <connect block="motor_PMSM_PMSM_DQ_ABC1_Mux5" port="motor_PMSM_PMSM_DQ_ABC1_Mux5_1"/>
+                        </input>
+                     </block>
+                  </sm:blocks>
+               </block>
+               <block blocktype="Sin" name="motor_PMSM_PMSM_Disterbance_Vd" rate="0">
+                  <output line="motor_PMSM_PMSM_Disterbance_Vd_1" port="motor_PMSM_PMSM_Disterbance_Vd_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs13" port="motor_PMSM_PMSM_poles2polepairs13_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sin" name="motor_PMSM_PMSM_Disterbance_Vq" rate="0">
+                  <output line="motor_PMSM_PMSM_Disterbance_Vq_1" port="motor_PMSM_PMSM_Disterbance_Vq_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs11" port="motor_PMSM_PMSM_poles2polepairs11_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="motor_PMSM_PMSM_Sum1" rate="-1">
+                  <input line="motor_PMSM_PMSM_poles2polepairs11_1" port="motor_PMSM_PMSM_Sum1_1">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs11" port="motor_PMSM_PMSM_poles2polepairs11_1"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_ABC_DQ_2" port="motor_PMSM_PMSM_Sum1_2">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ" port="motor_PMSM_PMSM_ABC_DQ_Vq"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_Sum1_1" port="motor_PMSM_PMSM_Sum1_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_Vq"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="motor_PMSM_PMSM_Sum4" rate="-1">
+                  <input line="motor_PMSM_PMSM_poles2polepairs13_1" port="motor_PMSM_PMSM_Sum4_1">
+                     <connect block="motor_PMSM_PMSM_poles2polepairs13" port="motor_PMSM_PMSM_poles2polepairs13_1"/>
+                  </input>
+                  <input line="motor_PMSM_PMSM_ABC_DQ_1" port="motor_PMSM_PMSM_Sum4_2">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ" port="motor_PMSM_PMSM_ABC_DQ_Vd"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_Sum4_1" port="motor_PMSM_PMSM_Sum4_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_Vd"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PMSM_poles2polepairs11" rate="-1">
+                  <input line="motor_PMSM_PMSM_Disterbance_Vq_1" port="motor_PMSM_PMSM_poles2polepairs11_1">
+                     <connect block="motor_PMSM_PMSM_Disterbance_Vq" port="motor_PMSM_PMSM_Disterbance_Vq_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_poles2polepairs11_1" port="motor_PMSM_PMSM_poles2polepairs11_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_Sum1" port="motor_PMSM_PMSM_Sum1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PMSM_poles2polepairs12" rate="-1">
+                  <input line="motor_PMSM_PMSM_theta_m_1" port="motor_PMSM_PMSM_poles2polepairs12_1">
+                     <connect block="motor_PMSM_PMSM_theta_m" port="motor_PMSM_PMSM_theta_m_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_poles2polepairs12_1" port="motor_PMSM_PMSM_poles2polepairs12_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ" port="motor_PMSM_PMSM_ABC_DQ_Theta_e"/>
+                     <connect block="motor_PMSM_PMSM_DQ_ABC1" port="motor_PMSM_PMSM_DQ_ABC1_Theta_e"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PMSM_poles2polepairs13" rate="-1">
+                  <input line="motor_PMSM_PMSM_Disterbance_Vd_1" port="motor_PMSM_PMSM_poles2polepairs13_1">
+                     <connect block="motor_PMSM_PMSM_Disterbance_Vd" port="motor_PMSM_PMSM_Disterbance_Vd_1"/>
+                  </input>
+                  <output line="motor_PMSM_PMSM_poles2polepairs13_1" port="motor_PMSM_PMSM_poles2polepairs13_1" usename="true">
+                     <connect block="motor_PMSM_PMSM_Sum4" port="motor_PMSM_PMSM_Sum4_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="motor_PMSM_PMSM_Te" rate="-1">
+                  <input line="motor_PMSM_PMSM_ABC_DQ1_3" port="motor_PMSM_PMSM_Te_1">
+                     <connect block="motor_PMSM_PMSM_ABC_DQ1" port="motor_PMSM_PMSM_ABC_DQ1_Te"/>
+                  </input>
+               </block>
+               <block blocktype="Outport" name="motor_PMSM_PMSM_Iabc" rate="-1">
+                  <input line="motor_PMSM_PMSM_DQ_ABC1_1" port="motor_PMSM_PMSM_Iabc_1">
+                     <connect block="motor_PMSM_PMSM_DQ_ABC1" port="motor_PMSM_PMSM_DQ_ABC1_iabc"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="SubSystem" name="motor_PMSM_PWM_Generator">
+            <input line="motor_PMSM_Vuvw_Vout_uvm" port="motor_PMSM_PWM_Generator_Signals">
+               <connect block="motor_PMSM_Vuvw" port="motor_PMSM_Vuvw_1"/>
+            </input>
+            <output line="motor_PMSM_PWM_Generator_Vout_uvm" port="motor_PMSM_PWM_Generator_Vout_uvm" usename="true">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_1"/>
+               <connect block="motor_PMSM_PMSM" port="motor_PMSM_PMSM_Vabc"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="motor_PMSM_PWM_Generator_Signals" rate="-1">
+                  <output line="motor_PMSM_PWM_Generator_Signals_1" port="motor_PMSM_PWM_Generator_Signals_1" usename="false">
+                     <connect block="motor_PMSM_PWM_Generator_poles2polepairs11" port="motor_PMSM_PWM_Generator_poles2polepairs11_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="motor_PMSM_PWM_Generator_Add" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_step1_1" port="motor_PMSM_PWM_Generator_Add_1">
+                     <connect block="motor_PMSM_PWM_Generator_step1" port="motor_PMSM_PWM_Generator_step1_1"/>
+                  </input>
+                  <input line="motor_PMSM_PWM_Generator_Gain3_1" port="motor_PMSM_PWM_Generator_Add_2">
+                     <connect block="motor_PMSM_PWM_Generator_Gain3" port="motor_PMSM_PWM_Generator_Gain3_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_Add_1" port="motor_PMSM_PWM_Generator_Add_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_poles2polepairs12" port="motor_PMSM_PWM_Generator_poles2polepairs12_1"/>
+                  </output>
+               </block>
+               <block blocktype="SubSystem" name="motor_PMSM_PWM_Generator_Carrier">
+                  <output line="motor_PMSM_PWM_Generator_Carrier_1" port="motor_PMSM_PWM_Generator_Carrier_Carrier" usename="false">
+                     <connect block="motor_PMSM_PWM_Generator_Sum1" port="motor_PMSM_PWM_Generator_Sum1_2"/>
+                  </output>
+                  <sm:blocks>
+                     <block blocktype="Sum" name="motor_PMSM_PWM_Generator_Carrier_Add" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_Product_1" port="motor_PMSM_PWM_Generator_Carrier_Add_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Product" port="motor_PMSM_PWM_Generator_Carrier_Product_1"/>
+                        </input>
+                        <input line="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1" port="motor_PMSM_PWM_Generator_Carrier_Add_2">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_UnitDelay" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_Add_1" port="motor_PMSM_PWM_Generator_Carrier_Add_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_UnitDelay" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Constant" name="motor_PMSM_PWM_Generator_Carrier_C2" rate="inf">
+                        <output line="motor_PMSM_PWM_Generator_Carrier_C2_1" port="motor_PMSM_PWM_Generator_Carrier_C2_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_T_sampling" port="motor_PMSM_PWM_Generator_Carrier_T_sampling_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PWM_Generator_Carrier_Gain3" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1" port="motor_PMSM_PWM_Generator_Carrier_Gain3_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_UnitDelay" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_Gain3_1" port="motor_PMSM_PWM_Generator_Carrier_Gain3_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Carrier" port="motor_PMSM_PWM_Generator_Carrier_Carrier_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Product" name="motor_PMSM_PWM_Generator_Carrier_Product" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_T_sampling_1" port="motor_PMSM_PWM_Generator_Carrier_Product_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_T_sampling" port="motor_PMSM_PWM_Generator_Carrier_T_sampling_1"/>
+                        </input>
+                        <input line="motor_PMSM_PWM_Generator_Carrier_Relay_1" port="motor_PMSM_PWM_Generator_Carrier_Product_2">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Relay" port="motor_PMSM_PWM_Generator_Carrier_Relay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_Product_1" port="motor_PMSM_PWM_Generator_Carrier_Product_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Add" port="motor_PMSM_PWM_Generator_Carrier_Add_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Relay" name="motor_PMSM_PWM_Generator_Carrier_Relay" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1" port="motor_PMSM_PWM_Generator_Carrier_Relay_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_UnitDelay" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_Relay_1" port="motor_PMSM_PWM_Generator_Carrier_Relay_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Product" port="motor_PMSM_PWM_Generator_Carrier_Product_2"/>
+                        </output>
+                     </block>
+                     <block blocktype="Gain" name="motor_PMSM_PWM_Generator_Carrier_T_sampling" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_C2_1" port="motor_PMSM_PWM_Generator_Carrier_T_sampling_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_C2" port="motor_PMSM_PWM_Generator_Carrier_C2_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_T_sampling_1" port="motor_PMSM_PWM_Generator_Carrier_T_sampling_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Product" port="motor_PMSM_PWM_Generator_Carrier_Product_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="UnitDelay" name="motor_PMSM_PWM_Generator_Carrier_UnitDelay" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_Add_1" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Add" port="motor_PMSM_PWM_Generator_Carrier_Add_1"/>
+                        </input>
+                        <output line="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1" port="motor_PMSM_PWM_Generator_Carrier_UnitDelay_1" usename="true">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Add" port="motor_PMSM_PWM_Generator_Carrier_Add_2"/>
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Gain3" port="motor_PMSM_PWM_Generator_Carrier_Gain3_1"/>
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Relay" port="motor_PMSM_PWM_Generator_Carrier_Relay_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Outport" name="motor_PMSM_PWM_Generator_Carrier_Carrier" rate="-1">
+                        <input line="motor_PMSM_PWM_Generator_Carrier_Gain3_1" port="motor_PMSM_PWM_Generator_Carrier_Carrier_1">
+                           <connect block="motor_PMSM_PWM_Generator_Carrier_Gain3" port="motor_PMSM_PWM_Generator_Carrier_Gain3_1"/>
+                        </input>
+                     </block>
+                  </sm:blocks>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PWM_Generator_Gain2" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_Sum1_1" port="motor_PMSM_PWM_Generator_Gain2_1">
+                     <connect block="motor_PMSM_PWM_Generator_Sum1" port="motor_PMSM_PWM_Generator_Sum1_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_Gain2_1" port="motor_PMSM_PWM_Generator_Gain2_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_step2" port="motor_PMSM_PWM_Generator_step2_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PWM_Generator_Gain3" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_step2_1" port="motor_PMSM_PWM_Generator_Gain3_1">
+                     <connect block="motor_PMSM_PWM_Generator_step2" port="motor_PMSM_PWM_Generator_step2_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_Gain3_1" port="motor_PMSM_PWM_Generator_Gain3_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_Add" port="motor_PMSM_PWM_Generator_Add_2"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="motor_PMSM_PWM_Generator_Sum1" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_poles2polepairs11_1" port="motor_PMSM_PWM_Generator_Sum1_1">
+                     <connect block="motor_PMSM_PWM_Generator_poles2polepairs11" port="motor_PMSM_PWM_Generator_poles2polepairs11_1"/>
+                  </input>
+                  <input line="motor_PMSM_PWM_Generator_Carrier_1" port="motor_PMSM_PWM_Generator_Sum1_2">
+                     <connect block="motor_PMSM_PWM_Generator_Carrier" port="motor_PMSM_PWM_Generator_Carrier_Carrier"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_Sum1_1" port="motor_PMSM_PWM_Generator_Sum1_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_Gain2" port="motor_PMSM_PWM_Generator_Gain2_1"/>
+                     <connect block="motor_PMSM_PWM_Generator_step1" port="motor_PMSM_PWM_Generator_step1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PWM_Generator_poles2polepairs11" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_Signals_1" port="motor_PMSM_PWM_Generator_poles2polepairs11_1">
+                     <connect block="motor_PMSM_PWM_Generator_Signals" port="motor_PMSM_PWM_Generator_Signals_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_poles2polepairs11_1" port="motor_PMSM_PWM_Generator_poles2polepairs11_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_Sum1" port="motor_PMSM_PWM_Generator_Sum1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="motor_PMSM_PWM_Generator_poles2polepairs12" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_Add_1" port="motor_PMSM_PWM_Generator_poles2polepairs12_1">
+                     <connect block="motor_PMSM_PWM_Generator_Add" port="motor_PMSM_PWM_Generator_Add_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_poles2polepairs12_1" port="motor_PMSM_PWM_Generator_poles2polepairs12_1" usename="false">
+                     <connect block="motor_PMSM_PWM_Generator_Vout_uvm" port="motor_PMSM_PWM_Generator_Vout_uvm_1"/>
+                  </output>
+               </block>
+               <block blocktype="Relay" name="motor_PMSM_PWM_Generator_step1" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_Sum1_1" port="motor_PMSM_PWM_Generator_step1_1">
+                     <connect block="motor_PMSM_PWM_Generator_Sum1" port="motor_PMSM_PWM_Generator_Sum1_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_step1_1" port="motor_PMSM_PWM_Generator_step1_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_Add" port="motor_PMSM_PWM_Generator_Add_1"/>
+                  </output>
+               </block>
+               <block blocktype="Relay" name="motor_PMSM_PWM_Generator_step2" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_Gain2_1" port="motor_PMSM_PWM_Generator_step2_1">
+                     <connect block="motor_PMSM_PWM_Generator_Gain2" port="motor_PMSM_PWM_Generator_Gain2_1"/>
+                  </input>
+                  <output line="motor_PMSM_PWM_Generator_step2_1" port="motor_PMSM_PWM_Generator_step2_1" usename="true">
+                     <connect block="motor_PMSM_PWM_Generator_Gain3" port="motor_PMSM_PWM_Generator_Gain3_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="motor_PMSM_PWM_Generator_Vout_uvm" rate="-1">
+                  <input line="motor_PMSM_PWM_Generator_poles2polepairs12_1" port="motor_PMSM_PWM_Generator_Vout_uvm_1">
+                     <connect block="motor_PMSM_PWM_Generator_poles2polepairs12" port="motor_PMSM_PWM_Generator_poles2polepairs12_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="Outport" name="motor_PMSM_Motor_Sigburst" rate="-1">
+            <input line="motor_PMSM_BusCreator_Motor_Sig" port="motor_PMSM_Motor_Sigburst_1">
+               <connect block="motor_PMSM_BusCreator" port="motor_PMSM_BusCreator_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="motor_Out1" rate="-1">
+      <input line="motor_PMSM_1" port="motor_Out1_1">
+         <connect block="motor_PMSM" port="motor_PMSM_Motor_Sigburst"/>
+      </input>
+   </block>
+</sm:blocks>

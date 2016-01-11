@@ -1,412 +1,68 @@
 subok
 sub_search_blocks
-ok
-sub_search_blocks
-subdus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-dus3_Subsystem_Subsystem_Sum
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-subbeforeblockdus3_Subsystem_Subsystem_Sum
-dus3_Subsystem_Subsystem_In1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-subbeforeblockdus3_Subsystem_Subsystem_In1
-dus3_Subsystem_Subsystem
-dus3_Subsystem_Subsystem
-subsys ==== dus3_Subsystem_Subsystem
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
+subdus_Subsystem_UnitDelay
+subbeforeblockdus_Subsystem_UnitDelay
+dus_Subsystem_Sum
+subbeforeblockdus_Subsystem_Sum
+dus_Subsystem_MathFunction
+subbeforeblockdus_Subsystem_MathFunction
+dus_Subsystem_In1
+subbeforeblockdus_Subsystem_In1
+subsys ==== dus_Subsystem
 yes!!
-subsys = dus3_Subsystem_Subsystem
-subbeforeblockdus3_Subsystem_Subsystem
-subbeforeblockdus3_Subsystem_Subsystem
-dus3_Subsystem_MathFunction
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-subbeforeblockdus3_Subsystem_MathFunction
-dus3_Subsystem_In1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-subbeforeblockdus3_Subsystem_In1
-dus3_Subsystem
-subsys ==== dus3_Subsystem
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-yes!!
-subsys = dus3_Subsystem
-subbeforeblockdus3_Subsystem
-dus3_Subsystem1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-yes!!
-deteru
-dus3_In1
-dus3_Gain
-dus3_Gain3
-dus3_MathFunction1
-dus3_Product
-dus3_Saturation
-dus3_Subsystem
-dus3_Subsystem_In1
-dus3_Subsystem_MathFunction
-dus3_Subsystem_Subsystem
-dus3_Subsystem_Subsystem_In1
-dus3_Subsystem_Subsystem_Gain2
-dus3_Subsystem_Subsystem_Sum
-dus3_Subsystem_Subsystem_UnitDelay
-dus3_Subsystem_Subsystem_Out1
-dus3_Subsystem_Out1
-dus3_Subsystem1
-subbeforeblockdus3_Subsystem1_Out1
-dus3_Subsystem1_Bias
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-name dus3_Subsystem1_In1
-name dus3_Subsystem1_Bias
-subbeforeblockdus3_Subsystem1_Bias
-dus3_Subsystem1_Gain1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-name dus3_Subsystem1_In1
-name dus3_Subsystem1_Bias
-name dus3_Subsystem1_Gain1
-subbeforeblockdus3_Subsystem1_Gain1
-dus3_Subsystem1_In1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-name dus3_Subsystem1_In1
-subbeforeblockdus3_Subsystem1_In1
-0
-0
-dus3_Subsystem1
-subsys ==== dus3_Subsystem1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-yes!!
-subsys = dus3_Subsystem1
-subbeforeblockdus3_Subsystem1
-subbeforeblockdus3_Subsystem1
-subbeforeblockdus3_Subsystem1
-dus3_In1
-name dus3_In1
-subbeforeblockdus3_In1
-subsys ==== dus3_In1
-name dus3_In1
-subbeforeblockdus3_Subsystem_Subsystem
-dus3_Subsystem_Subsystem_Gain2
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-subbeforeblockdus3_Subsystem_Subsystem_Gain2
-dus3_Subsystem_Subsystem_UnitDelay
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-dus3_Subsystem_Subsystem_Sum
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-subok
-sub_search_blocks
-dus3_UnitDelay1
+subsys = dus_Subsystem
+haaaaaaaaaaaa
+subbeforeblockdus_Subsystem
+dus_Bias
+subbeforeblockdus_Bias
+dus_Gain1
+subbeforeblockdus_Gain1
+dus_In1
+subbeforeblockdus_In1
+subsys ==== dus_In1
+dus_Subsystem_Gain2
+subbeforeblockdus_Subsystem_Gain2
+dus_Subsystem_UnitDelay
+subbeforeblockdus_Subsystem_UnitDelay
+dus_Subsystem_Sum
+dus_UnitDelay1
 outoutout
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-subbeforeblockdus3_Saturation
+subbeforeblockdus_Saturation
 koko
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-subbeforeblockdus3_Product
+subbeforeblockdus_Product
 koko
-name dus3_In1
-name dus3_Gain
-subbeforeblockdus3_Gain
+subbeforeblockdus_Gain
 koko
-name dus3_In1
-subbeforeblockdus3_In1
-subsys ==== dus3_In1
-name dus3_In1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
+subbeforeblockdus_In1
+subsys ==== dus_In1
 yes!!
 deteru
-dus3_In1
-dus3_Gain
-dus3_Gain3
-dus3_MathFunction1
-dus3_Product
-dus3_Saturation
-dus3_Subsystem
-subbeforeblockdus3_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Out1
+subbeforeblockdus_Subsystem_Out1
 koko
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-yes!!
-deteru
-dus3_In1
-dus3_Gain
-dus3_Gain3
-dus3_MathFunction1
-dus3_Product
-dus3_Saturation
-dus3_Subsystem
-dus3_Subsystem_In1
-dus3_Subsystem_MathFunction
-dus3_Subsystem_Subsystem
-dus3_Subsystem1
-dus3_Subsystem1_In1
-dus3_Subsystem1_Bias
-dus3_Subsystem1_Gain1
-dus3_Subsystem1_Out1
-dus3_Sum1
-dus3_UnitDelay1
-dus3_Out1
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-koko
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-name dus3_In1
-name dus3_Gain
-name dus3_Gain3
-name dus3_MathFunction1
-name dus3_Product
-name dus3_Saturation
-name dus3_Subsystem
-name dus3_Subsystem_In1
-name dus3_Subsystem_MathFunction
-name dus3_Subsystem_Subsystem
-name dus3_Subsystem_Subsystem_In1
-name dus3_Subsystem_Subsystem_Gain2
-name dus3_Subsystem_Subsystem_Sum
-name dus3_Subsystem_Subsystem_UnitDelay
-name dus3_Subsystem_Subsystem_Out1
-name dus3_Subsystem_Out1
-name dus3_Subsystem1
-name dus3_Subsystem1_In1
-name dus3_Subsystem1_Bias
-name dus3_Subsystem1_Gain1
-name dus3_Subsystem1_Out1
-name dus3_Sum1
-name dus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
+subbeforeblockdus_Subsystem_UnitDelay
+subbeforeblockdus_UnitDelay1
+subbeforeblockdus_UnitDelay1
 state
-dus3_Subsystem_Subsystem_Sum
-dus3_Subsystem_Subsystem_In1
-dus3_Subsystem_MathFunction
-dus3_Subsystem_In1
-dus3_Subsystem1_Out1
-dus3_Subsystem1_Bias
-dus3_Subsystem1_Gain1
-dus3_Subsystem1_In1
-dus3_In1
-dus3_Subsystem_Subsystem_Gain2
-dus3_Subsystem_Subsystem_UnitDelay
-dus3_Sum1
-dus3_MathFunction1
-dus3_Gain3
-dus3_UnitDelay1
+dus_Subsystem_Sum
+dus_Subsystem_MathFunction
+dus_Subsystem_In1
+dus_Bias
+dus_Gain1
+dus_In1
+dus_Subsystem_Gain2
+dus_Subsystem_UnitDelay
+dus_Sum1
+dus_MathFunction1
+dus_Gain3
+dus_UnitDelay1
 test
 out
-dus3_Out1
-dus3_Saturation
-dus3_Product
-dus3_Gain
-dus3_In1
-dus3_Subsystem_Out1
-dus3_Subsystem_Subsystem_Out1
-dus3_Subsystem_Subsystem_UnitDelay
-dus3_UnitDelay1
+dus_Out1
+dus_Saturation
+dus_Product
+dus_Gain
+dus_In1
+dus_Subsystem_Out1
+dus_Subsystem_UnitDelay
+dus_UnitDelay1
 endend
