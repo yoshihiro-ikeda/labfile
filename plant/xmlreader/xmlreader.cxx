@@ -590,5 +590,4 @@ void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set)
 	}
 	/*変更点更新のため*/
 	blks.block(blk_seq);
-
 }
