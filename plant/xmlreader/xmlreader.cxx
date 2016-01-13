@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
   }
 
   /* ファイルに出力用 */
-  FILE* fp_out = freopen("linelist.dat", "w", stdout);
+  //FILE* fp_out = freopen("linelist.dat", "w", stdout);
   
   xrd.load_xml(argv[1]);
   if (!xrd){
@@ -42,28 +42,27 @@ int main(int argc, char *argv[])
   search_output(root_blks,"UnitDelay",&out);
   
   /*blk_listの中身を表示*/
-  std::vector<std::string>::iterator blk_list_si;
-  cout << "state" << endl;
-  for(blk_list_si = state.vec_begin();blk_list_si != state.vec_end();blk_list_si++){
-    cout << *blk_list_si << endl;
-  }
-  //std::vector<std::string>::iterator blk_list_oi;
-  cout << "test" << endl;
-  cout << "out" << endl;
-  for(blk_list_si = out.vec_begin();blk_list_si != out.vec_end();blk_list_si++){
-    cout << *blk_list_si << endl;
+  // std::vector<std::string>::iterator blk_list_si;
+  // cout << "state" << endl;
+  // for(blk_list_si = state.vec_begin();blk_list_si != state.vec_end();blk_list_si++){
+  //   cout << *blk_list_si << endl;
+  // }
+  std::vector<std::string>::iterator blk_list_oi;
+  cout << "outnigaitou" << endl;
+  for(blk_list_oi = out.vec_begin();blk_list_oi != out.vec_end();blk_list_oi++){
+    cout << *blk_list_oi << endl;
   }
   
   cout << "endend" <<endl;
   /*選ばれたブロックのpeinfo色情報を付加*/
-  color_set(state_blks,&state);
+  //color_set(state_blks,&state);
   color_set(out_blks,&out);
-  fclose(fp_out);
+  //fclose(fp_out);
   /*xmlを出力*/
   //print_xml(state_blks);
   
   /*色付けツール用にcsvファイルを出力*/
-  print_csv(state_blks,"result_state.csv");
+  //print_csv(state_blks,"result_state.csv");
   print_csv(out_blks,"result_out.csv");
 }
 
@@ -100,6 +99,25 @@ void print_csv(SimulinkModel::XSD::blocks_T &blks,const char *filename)
     }
   }
 }
+
+void print_each_csv(SimulinkModel::XSD::blocks_T &blks)
+{
+  SimulinkModel::XSD::blocks_T::block_sequence blk_seq = blks.block();
+  SimulinkModel::XSD::blocks_T::block_iterator bi;
+  for(bi = blk_seq.begin();bi != blk_seq.end();bi++){
+    if(bi->blocktype() == "SubSystem"){
+      SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
+      SimulinkModel::XSD::block_T::blocks_iterator bsi;
+      cout << bi->name() << "," << "," << bi->peinfo() << endl;
+      for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
+	print_csv(*bsi,filename);
+      }
+    }else{
+      cout << bi->name() << "," << "," << bi->peinfo() << endl;
+    }
+  }
+}
+
 /*sumとunitdelayの組み合わせを検索してそこから状態又は出力方程式を探す関数を呼び出す*/
 void search_blocks(SimulinkModel::XSD::blocks_T &blks)
 {
@@ -128,7 +146,17 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks)
 	      if(bi2->name() == ci->block() && bi2->blocktype() == "Sum"){
 		cout << bi->name() << endl;
 		/*状態方程式はunitdelayから探索*/
+		/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
+		/*それを元にここからprint_csvまで呼び出す*/
+		equation state(0,"green");
 		before_block(blks,bi->name(),state);
+		/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
+		sprintf(filename,"result_%s.csv",bi->name());
+		SimulinkModel::XSD::blocks_T Fcolor = blks;
+		FILE* fp = freopen(filename,"w",stdout);
+		color_set(Fcolor,&state);
+		print_each_csv(Fcolor);
+		fclose(fp);
 	      }
 	    }
 	  }
@@ -169,9 +197,17 @@ void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::bl
 	      if(bi2->name() == ci->block() && bi2->blocktype() == "Sum"){
 		cout << "sub" << bi->name() << endl;
 		/*状態方程式はunitdelayから探索*/
-		/*状態方程式ごとにstateを作成する*/
-		/*それを元にここからprint_csvまで呼び出す*/ 
+		/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
+		/*それを元にここからprint_csvまで呼び出す*/
+		equation state(0,"green");
 		sub_before_block(blks,sub_blks,bi->name(),state);
+		/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
+		sprintf(filename,"result_%s.csv",bi->name());
+		SimulinkModel::XSD::blocks_T Fcolor = blks;
+		FILE* fp = freopen(filename,"w",stdout);
+		color_set(Fcolor,&state);
+		print_each_csv(Fcolor);
+		fclose(fp);
 	      }
 	    }
 	  }
