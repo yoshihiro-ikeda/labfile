@@ -110,7 +110,7 @@ void print_each_csv(SimulinkModel::XSD::blocks_T &blks)
       SimulinkModel::XSD::block_T::blocks_iterator bsi;
       cout << bi->name() << "," << "," << bi->peinfo() << endl;
       for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++){
-	print_csv(*bsi,filename);
+	print_each_csv(*bsi);
       }
     }else{
       cout << bi->name() << "," << "," << bi->peinfo() << endl;
@@ -149,9 +149,11 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks)
 		/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
 		/*それを元にここからprint_csvまで呼び出す*/
 		equation state(0,"green");
-		before_block(blks,bi->name(),state);
+		before_block(blks,bi->name(),&state);
 		/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
-		sprintf(filename,"result_%s.csv",bi->name());
+		string filename;
+		filename << "result_" << bi-name();
+		//sprintf(filename,"result_%s.csv",bi->name());
 		SimulinkModel::XSD::blocks_T Fcolor = blks;
 		FILE* fp = freopen(filename,"w",stdout);
 		color_set(Fcolor,&state);
@@ -182,7 +184,7 @@ void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::bl
       SimulinkModel::XSD::block_T::blocks_sequence blks_seq = bi->blocks();
       SimulinkModel::XSD::block_T::blocks_iterator bsi;
       for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++)
-	sub_search_blocks(blks,*bsi,state,out);
+	sub_search_blocks(blks,*bsi);
     }else{
       if(bi->blocktype() == "UnitDelay"){
 	SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
@@ -200,9 +202,11 @@ void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::bl
 		/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
 		/*それを元にここからprint_csvまで呼び出す*/
 		equation state(0,"green");
-		sub_before_block(blks,sub_blks,bi->name(),state);
+		sub_before_block(blks,sub_blks,bi->name(),&state);
 		/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
-		sprintf(filename,"result_%s.csv",bi->name());
+		string filename;
+		filename << "result_" << bi-name();
+		//sprintf(filename,"result_%s.csv",bi->name());
 		SimulinkModel::XSD::blocks_T Fcolor = blks;
 		FILE* fp = freopen(filename,"w",stdout);
 		color_set(Fcolor,&state);
@@ -620,10 +624,11 @@ void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set)
 	bi->peinfo(set->get_colorval());
 	//bi->peinfo() = set->get_colorval();
       }else{
-
+			
       }
     }
   }
   /*変更点更新のため*/
   blks.block(blk_seq);
+
 }
