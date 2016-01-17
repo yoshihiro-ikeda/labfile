@@ -27,7 +27,7 @@ class equation {
 				return 1;
 			}
 		}
-		
+
 	private:
 		std::vector <std::string> blk_list;
 		int first_flag;
@@ -37,11 +37,11 @@ class equation {
 void print_usage(char*);
 void print_xml(SimulinkModel::XSD::blocks_T &blks);
 void print_csv(SimulinkModel::XSD::blocks_T &blks,const char *filename);
-void print_csv(SimulinkModel::XSD::blocks_T &blks);
+void print_each_csv(SimulinkModel::XSD::blocks_T &blks);
 void search_blocks(SimulinkModel::XSD::blocks_T &blks);
 void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks);
-void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *state);
-void sub_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state);
+void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *state,int flag);
+void sub_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state,int flag);
 void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equation *out);
 void sub_out_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state);
 void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,equation *out,string target_blk,string exblk);
@@ -49,4 +49,5 @@ void rtnsubBlocks(SimulinkModel::XSD::blocks_T &blks,string name);
 void rtnupSys(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &blks2,string name);
 string rtnNameToType(SimulinkModel::XSD::blocks_T &blks,string name);
 string rtnSubSys(SimulinkModel::XSD::blocks_T &blks,string blockname,string sys);
+int rtnIn(SimulinkModel::XSD::blocks_T &blks,string name);
 void color_set(SimulinkModel::XSD::blocks_T &blks,equation *set);
