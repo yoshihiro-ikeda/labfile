@@ -310,9 +310,25 @@
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_Te" port="motor_PMSM_PMSM_ABC_DQ1_Te_1"/>
                         </output>
                      </block>
+                     <block blocktype="Integrator" name="motor_PMSM_PMSM_ABC_DQ1_Integrator">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum_1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Integrator_1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
+                        </output>
+                     </block>
+                     <block blocktype="Integrator" name="motor_PMSM_PMSM_ABC_DQ1_Integrator1">
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1"/>
+                        </input>
+                        <output line="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1" usename="true">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
+                        </output>
+                     </block>
                      <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Ld" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Integrator_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Integrator" port="motor_PMSM_PMSM_ABC_DQ1_Integrator_1"/>
                         </input>
                         <output line="motor_PMSM_PMSM_ABC_DQ1_Ld_1" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1" usename="true">
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_Product2" port="motor_PMSM_PMSM_ABC_DQ1_Product2_1"/>
@@ -330,8 +346,8 @@
                         </output>
                      </block>
                      <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_Lq" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
+                        <input line="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1">
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Integrator1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1"/>
                         </input>
                         <output line="motor_PMSM_PMSM_ABC_DQ1_Lq_1" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1" usename="true">
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_Product2" port="motor_PMSM_PMSM_ABC_DQ1_Product2_2"/>
@@ -417,7 +433,7 @@
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_R" port="motor_PMSM_PMSM_ABC_DQ1_R_1"/>
                         </input>
                         <output line="motor_PMSM_PMSM_ABC_DQ1_Sum_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Integrator" port="motor_PMSM_PMSM_ABC_DQ1_Integrator_1"/>
                         </output>
                      </block>
                      <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum1" rate="-1">
@@ -434,7 +450,7 @@
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_R1" port="motor_PMSM_PMSM_ABC_DQ1_R1_1"/>
                         </input>
                         <output line="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1"/>
+                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Integrator1" port="motor_PMSM_PMSM_ABC_DQ1_Integrator1_1"/>
                         </output>
                      </block>
                      <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum2" rate="-1">
@@ -446,46 +462,6 @@
                         </input>
                         <output line="motor_PMSM_PMSM_ABC_DQ1_Sum2_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum2_1" usename="true">
                            <connect block="motor_PMSM_PMSM_ABC_DQ1_15p" port="motor_PMSM_PMSM_ABC_DQ1_15p_1"/>
-                        </output>
-                     </block>
-                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum3" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum1" port="motor_PMSM_PMSM_ABC_DQ1_Sum1_1"/>
-                        </input>
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_2">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
-                        </input>
-                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1"/>
-                        </output>
-                     </block>
-                     <block blocktype="Sum" name="motor_PMSM_PMSM_ABC_DQ1_Sum4" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum" port="motor_PMSM_PMSM_ABC_DQ1_Sum_1"/>
-                        </input>
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_2">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
-                        </input>
-                        <output line="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1"/>
-                        </output>
-                     </block>
-                     <block blocktype="UnitDelay" name="motor_PMSM_PMSM_ABC_DQ1_UnitDelay" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum3_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_1"/>
-                        </input>
-                        <output line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Lq" port="motor_PMSM_PMSM_ABC_DQ1_Lq_1"/>
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum3" port="motor_PMSM_PMSM_ABC_DQ1_Sum3_2"/>
-                        </output>
-                     </block>
-                     <block blocktype="UnitDelay" name="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1" rate="-1">
-                        <input line="motor_PMSM_PMSM_ABC_DQ1_Sum4_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_1"/>
-                        </input>
-                        <output line="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" port="motor_PMSM_PMSM_ABC_DQ1_UnitDelay1_1" usename="true">
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Ld" port="motor_PMSM_PMSM_ABC_DQ1_Ld_1"/>
-                           <connect block="motor_PMSM_PMSM_ABC_DQ1_Sum4" port="motor_PMSM_PMSM_ABC_DQ1_Sum4_2"/>
                         </output>
                      </block>
                      <block blocktype="Gain" name="motor_PMSM_PMSM_ABC_DQ1_pLq" rate="-1">

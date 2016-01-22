@@ -1,18 +1,54 @@
-oldname: None newname:dus4_In1_1
-oldname: None newname:dus4_Gain_1
-oldname: None newname:dus4_Gain1_1
-oldname: None newname:dus4_Gain3_1
-oldname: None newname:dus4_MathFunction1_1
-oldname: None newname:dus4_MathFunction2_1
-oldname: None newname:dus4_Product_1
-oldname: None newname:dus4_Saturation_1
-oldname: None newname:dus4_Sum1_1
-oldname: None newname:dus4_Sum2_1
-oldname: None newname:dus4_UnitDelay1_1
-oldname: None newname:dus4_UnitDelay2_1
-oldname: None newname:dus4_Subsystem_MathFunction_1
-oldname: None newname:dus4_Subsystem_Subsystem_Gain2_1
-oldname: None newname:dus4_Subsystem_Subsystem_Sum_1
-oldname: None newname:dus4_Subsystem_Subsystem_UnitDelay_1
-oldname: None newname:dus4_Subsystem1_Bias_1
-oldname: None newname:dus4_Subsystem1_Gain1_1
+oldname:Vout_uvm newname:motor_PMSM_Vuvw_Vout_uvm
+oldname:Motor_Sig newname:motor_PMSM_BusCreator_Motor_Sig
+oldname:MortorSpeed newname:motor_PMSM_MechanicalShaft_MotorSpeed_MortorSpeed
+oldname: None newname:motor_PMSM_MechanicalShaft_inertia_1
+oldname: None newname:motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C_1
+oldname:CrankAngle newname:motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1_CrankAngle
+oldname: None newname:motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator_1
+oldname: None newname:motor_PMSM_PMSM_Disterbance_Vd_1
+oldname: None newname:motor_PMSM_PMSM_Disterbance_Vq_1
+oldname: None newname:motor_PMSM_PMSM_Sum1_1
+oldname: None newname:motor_PMSM_PMSM_Sum4_1
+oldname: None newname:motor_PMSM_PMSM_poles2polepairs11_1
+oldname: None newname:motor_PMSM_PMSM_poles2polepairs12_1
+oldname: None newname:motor_PMSM_PMSM_poles2polepairs13_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ_Fcn_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ_Fcn1_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ_d_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ_d1_1
+oldname:MotorTrq newname:motor_PMSM_PMSM_MotorTrq
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Integrator_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Integrator1_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Ld_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Ld_Lq_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Lq_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Product_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Product1_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Product2_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_R_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_R1_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Rnt_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Rnt2_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Sum_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Sum1_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_Sum2_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_pLq_1
+oldname: None newname:motor_PMSM_PMSM_ABC_DQ1_pLq1_1
+oldname:Iabc newname:motor_PMSM_PMSM_Iabc
+oldname:motor_PMSM_PMSM_Iabc newname:motor_PMSM_PMSM_Iabc
+oldname:motor_PMSM_PMSM_Iabc newname:motor_PMSM_PMSM_Iabc
+oldname: None newname:motor_PMSM_PWM_Generator_Add_1
+oldname: None newname:motor_PMSM_PWM_Generator_Gain2_1
+oldname: None newname:motor_PMSM_PWM_Generator_Gain3_1
+oldname: None newname:motor_PMSM_PWM_Generator_Sum1_1
+oldname: None newname:motor_PMSM_PWM_Generator_poles2polepairs11_1
+oldname:Vout_uvm newname:motor_PMSM_PWM_Generator_Vout_uvm
+oldname: None newname:motor_PMSM_PWM_Generator_step1_1
+oldname: None newname:motor_PMSM_PWM_Generator_step2_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_Add_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_C2_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_Gain3_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_Product_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_Relay_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_T_sampling_1
+oldname: None newname:motor_PMSM_PWM_Generator_Carrier_UnitDelay_1

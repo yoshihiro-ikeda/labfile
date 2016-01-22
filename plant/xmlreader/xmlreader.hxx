@@ -42,6 +42,7 @@ void search_blocks(SimulinkModel::XSD::blocks_T &blks);
 void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks);
 void before_block(SimulinkModel::XSD::blocks_T &blks,string target_blks,equation *state,int flag);
 void sub_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state,int flag);
+void select_port_before(SimulinkModel::XSD::blocks_T &blks, SimulinkModel::XSD::blocks_T &sub_blks, string sys, string port, equation *state);
 void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equation *out);
 void sub_out_before_block(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::blocks_T &sub_blks,string target_blk,equation *state);
 void follow_block_from_last(SimulinkModel::XSD::blocks_T &blks,equation *out,string target_blk,string exblk);

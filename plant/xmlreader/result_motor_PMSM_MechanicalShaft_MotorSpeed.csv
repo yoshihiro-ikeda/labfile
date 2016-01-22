@@ -1,0 +1,99 @@
+motor_In1,,green
+motor_PMSM,,green
+motor_PMSM_Vuvw,,green
+motor_PMSM_BusCreator,,green
+motor_PMSM_MechanicalShaft,,green
+motor_PMSM_MechanicalShaft_Motor_Sig,,green
+motor_PMSM_MechanicalShaft_BusSelector10,,green
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad,,green
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1,,<not present>
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C,,<not present>
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1,,green
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator,,<not present>
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1,,green
+motor_PMSM_MechanicalShaft_MotorSpeed,,<not present>
+motor_PMSM_MechanicalShaft_inertia,,green
+motor_PMSM_MechanicalShaft_MortorSpeed,,<not present>
+motor_PMSM_MechanicalShaft_MortorAngle,,green
+motor_PMSM_PMSM,,green
+motor_PMSM_PMSM_Vabc,,<not present>
+motor_PMSM_PMSM_w_m,,<not present>
+motor_PMSM_PMSM_theta_m,,green
+motor_PMSM_PMSM_ABC_DQ,,green
+motor_PMSM_PMSM_ABC_DQ_Vabc,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Theta_e,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Display,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Fcn,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Fcn1,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Mux1,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Mux3,,<not present>
+motor_PMSM_PMSM_ABC_DQ_d,,<not present>
+motor_PMSM_PMSM_ABC_DQ_d1,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Vd,,<not present>
+motor_PMSM_PMSM_ABC_DQ_Vq,,<not present>
+motor_PMSM_PMSM_ABC_DQ1,,green
+motor_PMSM_PMSM_ABC_DQ1_Vd,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Vq,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_w_r,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_15p,,green
+motor_PMSM_PMSM_ABC_DQ1_Integrator,,green
+motor_PMSM_PMSM_ABC_DQ1_Integrator1,,green
+motor_PMSM_PMSM_ABC_DQ1_Ld,,green
+motor_PMSM_PMSM_ABC_DQ1_Ld_Lq,,green
+motor_PMSM_PMSM_ABC_DQ1_Lq,,green
+motor_PMSM_PMSM_ABC_DQ1_Product,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Product1,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Product2,,green
+motor_PMSM_PMSM_ABC_DQ1_R,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_R1,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Rnt,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Rnt2,,green
+motor_PMSM_PMSM_ABC_DQ1_Sum,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Sum1,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_Sum2,,green
+motor_PMSM_PMSM_ABC_DQ1_pLq,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_pLq1,,<not present>
+motor_PMSM_PMSM_ABC_DQ1_id,,green
+motor_PMSM_PMSM_ABC_DQ1_iq,,green
+motor_PMSM_PMSM_ABC_DQ1_Te,,green
+motor_PMSM_PMSM_DQ_ABC1,,green
+motor_PMSM_PMSM_DQ_ABC1_id,,green
+motor_PMSM_PMSM_DQ_ABC1_iq,,green
+motor_PMSM_PMSM_DQ_ABC1_Theta_e,,green
+motor_PMSM_PMSM_DQ_ABC1_Fcn2,,green
+motor_PMSM_PMSM_DQ_ABC1_Fcn3,,green
+motor_PMSM_PMSM_DQ_ABC1_Fcn4,,green
+motor_PMSM_PMSM_DQ_ABC1_Mux3,,green
+motor_PMSM_PMSM_DQ_ABC1_Mux5,,green
+motor_PMSM_PMSM_DQ_ABC1_iabc,,green
+motor_PMSM_PMSM_Disterbance_Vd,,<not present>
+motor_PMSM_PMSM_Disterbance_Vq,,<not present>
+motor_PMSM_PMSM_Sum1,,<not present>
+motor_PMSM_PMSM_Sum4,,<not present>
+motor_PMSM_PMSM_poles2polepairs11,,<not present>
+motor_PMSM_PMSM_poles2polepairs12,,green
+motor_PMSM_PMSM_poles2polepairs13,,<not present>
+motor_PMSM_PMSM_Te,,green
+motor_PMSM_PMSM_Iabc,,green
+motor_PMSM_PWM_Generator,,green
+motor_PMSM_PWM_Generator_Signals,,green
+motor_PMSM_PWM_Generator_Add,,green
+motor_PMSM_PWM_Generator_Carrier,,green
+motor_PMSM_PWM_Generator_Carrier_Add,,<not present>
+motor_PMSM_PWM_Generator_Carrier_C2,,<not present>
+motor_PMSM_PWM_Generator_Carrier_Gain3,,green
+motor_PMSM_PWM_Generator_Carrier_Product,,<not present>
+motor_PMSM_PWM_Generator_Carrier_Relay,,<not present>
+motor_PMSM_PWM_Generator_Carrier_T_sampling,,<not present>
+motor_PMSM_PWM_Generator_Carrier_UnitDelay,,green
+motor_PMSM_PWM_Generator_Carrier_Carrier,,green
+motor_PMSM_PWM_Generator_Gain2,,green
+motor_PMSM_PWM_Generator_Gain3,,green
+motor_PMSM_PWM_Generator_Sum1,,green
+motor_PMSM_PWM_Generator_poles2polepairs11,,green
+motor_PMSM_PWM_Generator_poles2polepairs12,,green
+motor_PMSM_PWM_Generator_step1,,green
+motor_PMSM_PWM_Generator_step2,,green
+motor_PMSM_PWM_Generator_Vout_uvm,,green
+motor_PMSM_Motor_Sigburst,,<not present>
+motor_Out1,,<not present>

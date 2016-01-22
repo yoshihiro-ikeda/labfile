@@ -1,106 +1,1413 @@
-subok
 sub_search_blocks
+------------------------------------------------------motor_In1
+------------------------------------------------------motor_PMSM
 ok
 sub_search_blocks
-subdus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-dus3_Subsystem_Subsystem_Sum
-subbeforeblockdus3_Subsystem_Subsystem_Sum
-dus3_Subsystem_Subsystem_In1
-subbeforeblockdus3_Subsystem_Subsystem_In1
-subsys ==== dus3_Subsystem_Subsystem
-yes!!
-subsys = dus3_Subsystem_Subsystem
-haaaaaaaaaaaa
-subbeforeblockdus3_Subsystem_Subsystem
-dus3_Subsystem_MathFunction
-subbeforeblockdus3_Subsystem_MathFunction
-dus3_Subsystem_In1
-subbeforeblockdus3_Subsystem_In1
-subsys ==== dus3_Subsystem
-yes!!
-subsys = dus3_Subsystem
-haaaaaaaaaaaa
-subbeforeblockdus3_Subsystem
-dus3_Subsystem1
-yes!!
-deteru
-subbeforeblockdus3_Subsystem1_Out1
-dus3_Subsystem1_Bias
-subbeforeblockdus3_Subsystem1_Bias
-dus3_Subsystem1_Gain1
-subbeforeblockdus3_Subsystem1_Gain1
-dus3_Subsystem1_In1
-subbeforeblockdus3_Subsystem1_In1
-subsys ==== dus3_Subsystem1
-yes!!
-subsys = dus3_Subsystem1
-haaaaaaaaaaaa
-subbeforeblockdus3_Subsystem1
-subbeforeblockdus3_Subsystem1
-subbeforeblockdus3_Subsystem1
-dus3_In1
-subbeforeblockdus3_In1
-subsys ==== dus3_In1
-dus3_Subsystem_Subsystem_Gain2
-subbeforeblockdus3_Subsystem_Subsystem_Gain2
-dus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-dus3_Subsystem_Subsystem_Sum
-subok
+------------------------------------------------------motor_PMSM_Vuvw
+------------------------------------------------------motor_PMSM_BusCreator
+------------------------------------------------------motor_PMSM_MechanicalShaft
+ok
 sub_search_blocks
-dus3_UnitDelay1
+------------------------------------------------------motor_PMSM_MechanicalShaft_Motor_Sig
+------------------------------------------------------motor_PMSM_MechanicalShaft_BusSelector10
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_In1
+kokomadekita
+subsys ==== motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+yes!!
+subsys = motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+kokomadekita
+damedameda--------
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_C
+kokomadekita
+search complete
+write complete
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_RelationalOperator
+------------------------------------------------------motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+------------------------------------------------------motor_PMSM_MechanicalShaft_MotorSpeed
+------------------------------------------------------motor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+kokomadekita
+motor_PMSM_MechanicalShaft_inertia
+subbeforeblockmotor_PMSM_MechanicalShaft_inertia
+subbeforeblockmotor_PMSM_MechanicalShaft_inertia
+kokomadekita
+motor_PMSM_MechanicalShaft_BusSelector10
+subbeforeblockmotor_PMSM_MechanicalShaft_BusSelector10
+kokomadekita
+motor_PMSM_MechanicalShaft_Motor_Sig
+subbeforeblockmotor_PMSM_MechanicalShaft_Motor_Sig
+kokomadekita
+subsys ==== motor_PMSM_MechanicalShaft
+yes!!
+subsys = motor_PMSM_MechanicalShaft
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_BusCreator
+kokomadekita
+motor_PMSM_PWM_Generator
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+kokomadekita
+motor_PMSM_PWM_Generator_Add
+subbeforeblockmotor_PMSM_PWM_Generator_Add
+kokomadekita
+motor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+kokomadekita
+motor_PMSM_PWM_Generator_Signals
+subbeforeblockmotor_PMSM_PWM_Generator_Signals
+kokomadekita
+subsys ==== motor_PMSM_PWM_Generator
+yes!!
+subsys = motor_PMSM_PWM_Generator
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_Vuvw
+kokomadekita
+subsys ==== motor_PMSM
+yes!!
+subsys = motor_PMSM
+haaaaaaaaaaaa
+subbeforeblockmotor_In1
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+kokomadekita
+dameda-----
+motor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+kokomadekita
+motor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+motor_PMSM_PMSM
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_15p
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_15p
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Sum2
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Sum2
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Ld_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld_Lq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Product2
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Product2
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Ld
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator
+kokomadekita
+damedameda--------
+motor_PMSM_PMSM_ABC_DQ1_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Lq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator1
+kokomadekita
+damedameda--------
+motor_PMSM_PMSM_ABC_DQ1_Rnt2
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Rnt2
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+motor_PMSM_PMSM
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_Mux5
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Mux5
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_Fcn2
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn2
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_Mux3
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Mux3
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_id
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_id
+kokomadekita
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Ld
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+motor_PMSM_PMSM_DQ_ABC1_iq
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iq
+kokomadekita
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+motor_PMSM_PMSM_DQ_ABC1_Theta_e
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Theta_e
+kokomadekita
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+kokomadekita
+motor_PMSM_PMSM_theta_m
+subbeforeblockmotor_PMSM_PMSM_theta_m
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+kokomadekita
+damedameda--------
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+motor_PMSM_PMSM_DQ_ABC1_Fcn3
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn3
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_Mux3
+motor_PMSM_PMSM_DQ_ABC1_Fcn4
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn4
+kokomadekita
+motor_PMSM_PMSM_DQ_ABC1_Mux3
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+motor_PMSM_MechanicalShaft
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+search complete
+write complete
+------------------------------------------------------motor_PMSM_MechanicalShaft_inertia
+------------------------------------------------------motor_PMSM_MechanicalShaft_MortorSpeed
+------------------------------------------------------motor_PMSM_MechanicalShaft_MortorAngle
+------------------------------------------------------motor_PMSM_PMSM
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PMSM_Vabc
+------------------------------------------------------motor_PMSM_PMSM_w_m
+------------------------------------------------------motor_PMSM_PMSM_theta_m
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Vabc
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Theta_e
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Display
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Fcn
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Fcn1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Mux1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Mux3
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_d
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_d1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Vd
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ_Vq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Vd
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Vq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_w_r
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_15p
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Integrator
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Integrator
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Sum
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Sum
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Vd
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ1
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_Sum4
+subbeforeblockmotor_PMSM_PMSM_Sum4
+subbeforeblockmotor_PMSM_PMSM_Sum4
+subbeforeblockmotor_PMSM_PMSM_Sum4
+kokomadekita
+motor_PMSM_PMSM_poles2polepairs13
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs13
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs13
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs13
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs13
+kokomadekita
+motor_PMSM_PMSM_Disterbance_Vd
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vd
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vd
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vd
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vd
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_d
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_d
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Fcn
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Fcn
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Mux3
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Mux3
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Vabc
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vabc
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_Vabc
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+kokomadekita
+motor_PMSM_PWM_Generator_Add
+subbeforeblockmotor_PMSM_PWM_Generator_Add
+kokomadekita
+motor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+kokomadekita
+motor_PMSM_PWM_Generator_Signals
+subbeforeblockmotor_PMSM_PWM_Generator_Signals
+kokomadekita
+subsys ==== motor_PMSM_PWM_Generator
+yes!!
+subsys = motor_PMSM_PWM_Generator
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_Vuvw
+kokomadekita
+subsys ==== motor_PMSM
+yes!!
+subsys = motor_PMSM
+haaaaaaaaaaaa
+subbeforeblockmotor_In1
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+kokomadekita
+dameda-----
+motor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+kokomadekita
+motor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+motor_PMSM_PMSM_ABC_DQ_Theta_e
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Theta_e
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+kokomadekita
+motor_PMSM_PMSM_theta_m
+subbeforeblockmotor_PMSM_PMSM_theta_m
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+kokomadekita
+damedameda--------
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vd
+motor_PMSM_PMSM_ABC_DQ1_Product
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Product
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_pLq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_pLq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Lq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator1
+kokomadekita
+damedameda--------
+motor_PMSM_PMSM_ABC_DQ1_w_r
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_w_r
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ1
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_w_m
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+kokomadekita
+motor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+kokomadekita
+damedameda--------
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+motor_PMSM_PMSM_ABC_DQ1_R
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_R
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Ld
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator
+kokomadekita
+damedameda--------
+search complete
+write complete
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Integrator1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Integrator1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Sum1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Sum1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Product1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Product1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_w_r
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_w_r
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ1
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_w_m
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+kokomadekita
+motor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MotorSpeed
+kokomadekita
+damedameda--------
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorSpeed
+motor_PMSM_PMSM_ABC_DQ1_pLq1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_pLq1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Ld
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator
+kokomadekita
+damedameda--------
+motor_PMSM_PMSM_ABC_DQ1_Rnt
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Rnt
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_w_r
+motor_PMSM_PMSM_ABC_DQ1_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Vq
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ1
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_Sum1
+subbeforeblockmotor_PMSM_PMSM_Sum1
+subbeforeblockmotor_PMSM_PMSM_Sum1
+subbeforeblockmotor_PMSM_PMSM_Sum1
+kokomadekita
+motor_PMSM_PMSM_poles2polepairs11
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs11
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs11
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs11
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs11
+kokomadekita
+motor_PMSM_PMSM_Disterbance_Vq
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vq
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vq
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vq
+subbeforeblockmotor_PMSM_PMSM_Disterbance_Vq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_d1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_d1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Fcn1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Fcn1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Mux1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Mux1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ_Vabc
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vabc
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_Vabc
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+kokomadekita
+motor_PMSM_PWM_Generator_Add
+subbeforeblockmotor_PMSM_PWM_Generator_Add
+kokomadekita
+motor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+kokomadekita
+motor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+kokomadekita
+motor_PMSM_PWM_Generator_Signals
+subbeforeblockmotor_PMSM_PWM_Generator_Signals
+kokomadekita
+subsys ==== motor_PMSM_PWM_Generator
+yes!!
+subsys = motor_PMSM_PWM_Generator
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_Vuvw
+kokomadekita
+subsys ==== motor_PMSM
+yes!!
+subsys = motor_PMSM
+haaaaaaaaaaaa
+subbeforeblockmotor_In1
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+kokomadekita
+dameda-----
+motor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+kokomadekita
+motor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+kokomadekita
+motor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+kokomadekita
+motor_PMSM_PWM_Generator_Sum1
+motor_PMSM_PMSM_ABC_DQ_Theta_e
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Theta_e
+kokomadekita
+subsys ==== motor_PMSM_PMSM_ABC_DQ
+yes!!
+subsys = motor_PMSM_PMSM_ABC_DQ
+haaaaaaaaaaaa
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+kokomadekita
+motor_PMSM_PMSM_theta_m
+subbeforeblockmotor_PMSM_PMSM_theta_m
+kokomadekita
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+kokomadekita
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+kokomadekita
+damedameda--------
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ_Vq
+motor_PMSM_PMSM_ABC_DQ1_R1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_R1
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Lq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Lq
+kokomadekita
+motor_PMSM_PMSM_ABC_DQ1_Integrator1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator1
+kokomadekita
+damedameda--------
+search complete
+write complete
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Ld
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Ld_Lq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Lq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Product
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Product1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Product2
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_R
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_R1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Rnt
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Rnt2
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Sum
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Sum1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Sum2
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_pLq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_pLq1
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_id
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_iq
+------------------------------------------------------motor_PMSM_PMSM_ABC_DQ1_Te
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_id
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_iq
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Theta_e
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Fcn2
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Fcn3
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Fcn4
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Mux3
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_Mux5
+------------------------------------------------------motor_PMSM_PMSM_DQ_ABC1_iabc
+------------------------------------------------------motor_PMSM_PMSM_Disterbance_Vd
+------------------------------------------------------motor_PMSM_PMSM_Disterbance_Vq
+------------------------------------------------------motor_PMSM_PMSM_Sum1
+------------------------------------------------------motor_PMSM_PMSM_Sum4
+------------------------------------------------------motor_PMSM_PMSM_poles2polepairs11
+------------------------------------------------------motor_PMSM_PMSM_poles2polepairs12
+------------------------------------------------------motor_PMSM_PMSM_poles2polepairs13
+------------------------------------------------------motor_PMSM_PMSM_Te
+------------------------------------------------------motor_PMSM_PMSM_Iabc
+------------------------------------------------------motor_PMSM_PWM_Generator
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PWM_Generator_Signals
+------------------------------------------------------motor_PMSM_PWM_Generator_Add
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier
+ok
+sub_search_blocks
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_Add
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_C2
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_Gain3
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_Product
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_Relay
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_T_sampling
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_UnitDelay
+sub------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Add
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Add
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Product
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Product
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_T_sampling
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_T_sampling
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_C2
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_C2
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_Relay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Relay
+kokomadekita
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+kokomadekita
+dameda-----
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+search complete
+write complete
+------------------------------------------------------motor_PMSM_PWM_Generator_Carrier_Carrier
+------------------------------------------------------motor_PMSM_PWM_Generator_Gain2
+------------------------------------------------------motor_PMSM_PWM_Generator_Gain3
+------------------------------------------------------motor_PMSM_PWM_Generator_Sum1
+------------------------------------------------------motor_PMSM_PWM_Generator_poles2polepairs11
+------------------------------------------------------motor_PMSM_PWM_Generator_poles2polepairs12
+------------------------------------------------------motor_PMSM_PWM_Generator_step1
+------------------------------------------------------motor_PMSM_PWM_Generator_step2
+------------------------------------------------------motor_PMSM_PWM_Generator_Vout_uvm
+------------------------------------------------------motor_PMSM_Motor_Sigburst
+------------------------------------------------------motor_Out1
 outoutout
-subbeforeblockdus3_Saturation
-koko
-subbeforeblockdus3_Product
-koko
-subbeforeblockdus3_Gain
-koko
-subbeforeblockdus3_In1
-subsys ==== dus3_In1
+yes!!
 yes!!
 deteru
-subbeforeblockdus3_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Out1
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+subbeforeblockmotor_PMSM_Motor_Sigburst
+koko
+subbeforeblockmotor_PMSM_BusCreator
 koko
 yes!!
 deteru
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-subbeforeblockdus3_Subsystem_Subsystem_Out1
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
+subbeforeblockmotor_PMSM_PWM_Generator_Vout_uvm
 koko
-subbeforeblockdus3_Subsystem_Subsystem_UnitDelay
-subbeforeblockdus3_Subsystem_Subsystem_Out1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-subbeforeblockdus3_UnitDelay1
-state
-dus3_Subsystem_Subsystem_Sum
-dus3_Subsystem_Subsystem_In1
-dus3_Subsystem_MathFunction
-dus3_Subsystem_In1
-dus3_Subsystem1_Out1
-dus3_Subsystem1_Bias
-dus3_Subsystem1_Gain1
-dus3_Subsystem1_In1
-dus3_In1
-dus3_Subsystem_Subsystem_Gain2
-dus3_Subsystem_Subsystem_UnitDelay
-dus3_Sum1
-dus3_MathFunction1
-dus3_Gain3
-dus3_UnitDelay1
-test
-out
-dus3_Out1
-dus3_Saturation
-dus3_Product
-dus3_Gain
-dus3_In1
-dus3_Subsystem_Out1
-dus3_Subsystem_Subsystem_Out1
-dus3_Subsystem_Subsystem_UnitDelay
-dus3_UnitDelay1
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs12
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Add
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+subbeforeblockmotor_PMSM_PWM_Generator_step1
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+subbeforeblockmotor_PMSM_PWM_Generator_Sum1
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+subbeforeblockmotor_PMSM_PWM_Generator_poles2polepairs11
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Signals
+subsys ==== motor_PMSM_PWM_Generator
+yes!!
+subsys = motor_PMSM_PWM_Generator
+haaaaaaaaaaaa
+sironekoproject motor_PMSM_Vuvw
+sironekoproject motor_PMSM_BusCreator
+sironekoproject motor_PMSM_MechanicalShaft
+sironekoproject motor_PMSM_PMSM
+sironekoproject motor_PMSM_PWM_Generator
+sironekoproject 
+sironekoproject motor_PMSM_Vuvw
+sironekoproject
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+subbeforeblockmotor_PMSM_PWM_Generator
+koko
+subbeforeblockmotor_PMSM_Vuvw
+subsys ==== motor_PMSM
+yes!!
+subsys = motor_PMSM
+haaaaaaaaaaaa
+sironekoproject motor_In1
+sironekoproject motor_PMSM
+sironekoproject 
+sironekoproject motor_In1
+sironekoproject
+subbeforeblockmotor_PMSM
+koko
+subbeforeblockmotor_In1
+subsys ==== motor_In1
+sironekoproject motor_Out1
+sironekoproject motor_PMSM_Motor_Sigburst
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Carrier
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_Gain3
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Carrier_UnitDelay
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+subbeforeblockmotor_PMSM_PWM_Generator_Gain3
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+subbeforeblockmotor_PMSM_PWM_Generator_step2
+koko
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+subbeforeblockmotor_PMSM_PWM_Generator_Gain2
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_15p
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Sum2
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld_Lq
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Product2
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Ld
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Lq
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Integrator1
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Rnt2
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+subbeforeblockmotor_PMSM_PMSM_Te
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Mux5
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn2
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Mux3
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_id
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+sironekoproject motor_PMSM_PMSM_Vabc
+sironekoproject motor_PMSM_PMSM_w_m
+sironekoproject motor_PMSM_PMSM_theta_m
+sironekoproject motor_PMSM_PMSM_ABC_DQ
+sironekoproject motor_PMSM_PMSM_ABC_DQ1
+sironekoproject motor_PMSM_PMSM_DQ_ABC1
+sironekoproject 
+sironekoproject motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+sironekoproject motor_PMSM_PMSM_Disterbance_Vd
+sironekoproject motor_PMSM_PMSM_Disterbance_Vq
+sironekoproject motor_PMSM_PMSM_Sum1
+sironekoproject motor_PMSM_PMSM_Sum4
+sironekoproject motor_PMSM_PMSM_poles2polepairs11
+sironekoproject motor_PMSM_PMSM_poles2polepairs12
+sironekoproject motor_PMSM_PMSM_poles2polepairs13
+sironekoproject motor_PMSM_PMSM_Te
+sironekoproject motor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iq
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+sironekoproject motor_PMSM_PMSM_Vabc
+sironekoproject motor_PMSM_PMSM_w_m
+sironekoproject motor_PMSM_PMSM_theta_m
+sironekoproject motor_PMSM_PMSM_ABC_DQ
+sironekoproject motor_PMSM_PMSM_ABC_DQ1
+sironekoproject motor_PMSM_PMSM_DQ_ABC1
+sironekoproject 
+sironekoproject motor_PMSM_PMSM_ABC_DQ1
+yes!!
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+sironekoproject motor_PMSM_PMSM_Disterbance_Vd
+sironekoproject motor_PMSM_PMSM_Disterbance_Vq
+sironekoproject motor_PMSM_PMSM_Sum1
+sironekoproject motor_PMSM_PMSM_Sum4
+sironekoproject motor_PMSM_PMSM_poles2polepairs11
+sironekoproject motor_PMSM_PMSM_poles2polepairs12
+sironekoproject motor_PMSM_PMSM_poles2polepairs13
+sironekoproject motor_PMSM_PMSM_Te
+sironekoproject motor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Theta_e
+subsys ==== motor_PMSM_PMSM_DQ_ABC1
+yes!!
+subsys = motor_PMSM_PMSM_DQ_ABC1
+haaaaaaaaaaaa
+sironekoproject motor_PMSM_PMSM_Vabc
+sironekoproject motor_PMSM_PMSM_w_m
+sironekoproject motor_PMSM_PMSM_theta_m
+sironekoproject motor_PMSM_PMSM_ABC_DQ
+sironekoproject motor_PMSM_PMSM_ABC_DQ1
+sironekoproject motor_PMSM_PMSM_DQ_ABC1
+sironekoproject 
+sironekoproject motor_PMSM_PMSM_poles2polepairs12
+sironekoproject
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_id
+yes!!
+deteru
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+koko
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_ABC_DQ1_iq
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+subbeforeblockmotor_PMSM_PMSM_poles2polepairs12
+koko
+subbeforeblockmotor_PMSM_PMSM_theta_m
+subsys ==== motor_PMSM_PMSM
+yes!!
+subsys = motor_PMSM_PMSM
+haaaaaaaaaaaa
+sironekoproject motor_PMSM_Vuvw
+sironekoproject motor_PMSM_BusCreator
+sironekoproject motor_PMSM_MechanicalShaft
+sironekoproject motor_PMSM_PMSM
+sironekoproject 
+sironekoproject motor_PMSM_MechanicalShaft
+yes!!
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+koko
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+sironekoproject motor_PMSM_PWM_Generator
+sironekoproject motor_PMSM_Motor_Sigburst
+sironekoproject motor_PMSM_PMSM_Disterbance_Vd
+sironekoproject motor_PMSM_PMSM_Disterbance_Vq
+sironekoproject motor_PMSM_PMSM_Sum1
+sironekoproject motor_PMSM_PMSM_Sum4
+sironekoproject motor_PMSM_PMSM_poles2polepairs11
+sironekoproject motor_PMSM_PMSM_poles2polepairs12
+sironekoproject motor_PMSM_PMSM_poles2polepairs13
+sironekoproject motor_PMSM_PMSM_Te
+sironekoproject motor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn3
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_Fcn4
+koko
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_DQ_ABC1_iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+subbeforeblockmotor_PMSM_PMSM_Iabc
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+koko
+yes!!
+deteru
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+koko
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+subbeforeblockmotor_PMSM_MechanicalShaft_MortorAngle
+outnigaitou
+motor_Out1
+motor_PMSM_Motor_Sigburst
+motor_PMSM_BusCreator
+motor_PMSM_PWM_Generator_Vout_uvm
+motor_PMSM_PWM_Generator_poles2polepairs12
+motor_PMSM_PWM_Generator_Add
+motor_PMSM_PWM_Generator_step1
+motor_PMSM_PWM_Generator_Sum1
+motor_PMSM_PWM_Generator_poles2polepairs11
+motor_PMSM_PWM_Generator_Signals
+motor_PMSM_Vuvw
+motor_In1
+motor_PMSM_PWM_Generator_Carrier_Carrier
+motor_PMSM_PWM_Generator_Carrier_Gain3
+motor_PMSM_PWM_Generator_Carrier_UnitDelay
+motor_PMSM_PWM_Generator_Gain3
+motor_PMSM_PWM_Generator_step2
+motor_PMSM_PWM_Generator_Gain2
+motor_PMSM_PMSM_Te
+motor_PMSM_PMSM_ABC_DQ1_Te
+motor_PMSM_PMSM_ABC_DQ1_15p
+motor_PMSM_PMSM_ABC_DQ1_Sum2
+motor_PMSM_PMSM_ABC_DQ1_Ld_Lq
+motor_PMSM_PMSM_ABC_DQ1_Product2
+motor_PMSM_PMSM_ABC_DQ1_Ld
+motor_PMSM_PMSM_ABC_DQ1_Integrator
+motor_PMSM_PMSM_ABC_DQ1_Lq
+motor_PMSM_PMSM_ABC_DQ1_Integrator1
+motor_PMSM_PMSM_ABC_DQ1_Rnt2
+motor_PMSM_PMSM_Iabc
+motor_PMSM_PMSM_DQ_ABC1_iabc
+motor_PMSM_PMSM_DQ_ABC1_Mux5
+motor_PMSM_PMSM_DQ_ABC1_Fcn2
+motor_PMSM_PMSM_DQ_ABC1_Mux3
+motor_PMSM_PMSM_DQ_ABC1_id
+motor_PMSM_PMSM_DQ_ABC1_iq
+motor_PMSM_PMSM_DQ_ABC1_Theta_e
+motor_PMSM_PMSM_ABC_DQ1_id
+motor_PMSM_PMSM_ABC_DQ1_iq
+motor_PMSM_PMSM_poles2polepairs12
+motor_PMSM_PMSM_theta_m
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Integrator1
+motor_PMSM_PMSM_DQ_ABC1_Fcn3
+motor_PMSM_PMSM_DQ_ABC1_Fcn4
+motor_PMSM_MechanicalShaft_MortorAngle
+motor_PMSM_MechanicalShaft_Calc_MotorAnglerad_Out1
 endend
