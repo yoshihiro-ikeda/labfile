@@ -193,50 +193,50 @@ void sub_search_blocks(SimulinkModel::XSD::blocks_T &blks,SimulinkModel::XSD::bl
       for(bsi = blks_seq.begin(); bsi != blks_seq.end(); bsi++)
 		sub_search_blocks(blks,*bsi);
     }else{
-      if(bi->blocktype() == "UnitDelay"){
-		SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
-		SimulinkModel::XSD::block_T::input_iterator ii;
-		for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
-		  SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
-		  SimulinkModel::XSD::ioport_T::connect_iterator ci;
-		  for(ci = con_seq.begin();ci != con_seq.end();ci++){
-		    SimulinkModel::XSD::blocks_T::block_sequence blk2_seq = sub_blks.block();
-		    SimulinkModel::XSD::blocks_T::block_iterator bi2;
-		    for(bi2 = blk2_seq.begin();bi2 != blk2_seq.end();bi2++){
-		      if(bi2->name() == ci->block() && bi2->blocktype() == "Sum"){
-				cout << "sub------------------------------------------------------" << bi->name() << endl;
-				/*状態方程式はunitdelayから探索*/
-				/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
-				/*それを元にここからprint_csvまで呼び出す*/
-				equation state(0,"green");
-				//state->add_blk(bi->name());
-				sub_before_block(blks,sub_blks,bi->name(),&state,1);
-				cout << "search complete" << endl;
-				/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
-				string tmp(bi->name());
-				const char *tmp2 = tmp.c_str();
-				sprintf(filename,"result_%s.csv",tmp2);
-				SimulinkModel::XSD::blocks_T Fcolor = blks;
-				streambuf* last = cout.rdbuf();
-				color_set(Fcolor,&state);
-				ofstream ofs(filename,ios_base::out);
-				cout.rdbuf(ofs.rdbuf());
-				print_each_csv(Fcolor);
-				ofs.close();
-				cout.rdbuf(last);
-				cout << "write complete" << endl;
-			  }
-			}
-		  }
-	    }
-      }
-      else if(bi->blocktype() == "Integrator"){
+      //if(bi->blocktype() == "UnitDelay"){
+		//SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
+		//SimulinkModel::XSD::block_T::input_iterator ii;
+		//for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
+		  //SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
+		  //SimulinkModel::XSD::ioport_T::connect_iterator ci;
+		  //for(ci = con_seq.begin();ci != con_seq.end();ci++){
+		    //SimulinkModel::XSD::blocks_T::block_sequence blk2_seq = sub_blks.block();
+		    //SimulinkModel::XSD::blocks_T::block_iterator bi2;
+		    //for(bi2 = blk2_seq.begin();bi2 != blk2_seq.end();bi2++){
+		      //if(bi2->name() == ci->block() && bi2->blocktype() == "Sum"){
+				//cout << "sub------------------------------------------------------" << bi->name() << endl;
+				///*状態方程式はunitdelayから探索*/
+				///*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
+				///*それを元にここからprint_csvまで呼び出す*/
+				//equation state(0,"green");
+				////state->add_blk(bi->name());
+				//sub_before_block(blks,sub_blks,bi->name(),&state,1);
+				//cout << "search complete" << endl;
+				///*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
+				//string tmp(bi->name());
+				//const char *tmp2 = tmp.c_str();
+				//sprintf(filename,"result_%s.csv",tmp2);
+				//SimulinkModel::XSD::blocks_T Fcolor = blks;
+				//streambuf* last = cout.rdbuf();
+				//color_set(Fcolor,&state);
+				//ofstream ofs(filename,ios_base::out);
+				//cout.rdbuf(ofs.rdbuf());
+				//print_each_csv(Fcolor);
+				//ofs.close();
+				//cout.rdbuf(last);
+				//cout << "write complete" << endl;
+			  //}
+			//}
+		  //}
+	    //}
+      //}
+      if(bi->blocktype() == "Integrator" || bi->blocktype() == "UnitDelay"){
 		cout << "------------------------------------------------------" << bi->name() << endl;
 		/*状態方程式はunitdelayから探索*/
 		/*状態方程式ごとにstateを作成する(上書きすればいいかな)*/
 		/*それを元にここからprint_csvまで呼び出す*/
 		equation state(0,"green");
-		//state->add_blk(bi->name());
+		state.add_blk(bi->name());
 		sub_before_block(blks,sub_blks,bi->name(),&state,1);
 		cout << "search complete" << endl;
 		/*標準出力に今までcsvの内容を出力しそれをcsvに突っ込む*/
