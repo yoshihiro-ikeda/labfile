@@ -425,41 +425,39 @@ void search_output(SimulinkModel::XSD::blocks_T &blks,std::string target_blk,equ
     if(bi->blocktype() == "Outport"){
       std::string addout(bi->name());
       if(out->get_flagval() == 0){
-	out->add_blk(addout);
-	out->set_flagval();
+		out->add_blk(addout);
+		out->set_flagval();
       }else if(out->find_l(addout) == 0){
-	out->add_blk(addout);
+		out->add_blk(addout);
       }
       SimulinkModel::XSD::block_T::input_sequence ip_seq = bi->input();
       SimulinkModel::XSD::block_T::input_iterator ii;
       for(ii = ip_seq.begin();ii != ip_seq.end();ii++){
-	SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
-	SimulinkModel::XSD::ioport_T::connect_iterator ci;
-	for(ci = con_seq.begin();ci != con_seq.end();ci++){
-	  std::string tmp(ci->block());
-	  if(rtnNameToType(blks,tmp) == target_blk){
-	    cout << "okokokokokok" << endl;
-	    goto NEXT;
-	  }else if(rtnNameToType(blks,tmp) == "SubSystem"){
-	    SimulinkModel::XSD::blocks_T sub = blks;
-	    cout << "deteru" << endl;
-	    rtnsubBlocks(sub,tmp);
-	    std::string con_blk(ci->port());
-	    out->add_blk(con_blk);
-	    sub_out_before_block(blks,sub,con_blk,out);
-	  }else if(out->get_flagval() == 0){
-	    out->add_blk(tmp);
-	    //follow_block_from_last(blks,out,tmp,target_blk);
-	    sub_out_before_block(blks,blks,tmp,out);
-	    out->set_flagval();
-	  }else{
-	    if(out->find_l(tmp) == 0){
-	      out->add_blk(tmp);
-	      //follow_block_from_last(blks,out,tmp,target_blk);
-	      sub_out_before_block(blks,blks,tmp,out);
-	    }
-	  }
-	}
+		SimulinkModel::XSD::ioport_T::connect_sequence con_seq = ii->connect();
+		SimulinkModel::XSD::ioport_T::connect_iterator ci;
+		for(ci = con_seq.begin();ci != con_seq.end();ci++){
+			std::string tmp(ci->block());
+			if(rtnNameToType(blks,tmp) == target_blk){
+				cout << "okokokokokok" << endl;
+				goto NEXT;
+			}else if(rtnNameToType(blks,tmp) == "SubSystem"){
+				SimulinkModel::XSD::blocks_T sub = blks;
+				cout << "deteru" << endl;
+				rtnsubBlocks(sub,tmp);
+				std::string con_blk(ci->port());
+				out->add_blk(con_blk);
+				sub_out_before_block(blks,sub,con_blk,out);
+			}else if(out->get_flagval() == 0){
+				out->add_blk(tmp);
+				sub_out_before_block(blks,blks,tmp,out);
+				out->set_flagval();
+			}else{
+				if(out->find_l(tmp) == 0){
+					out->add_blk(tmp);
+					sub_out_before_block(blks,blks,tmp,out);
+				}
+			}
+		}
       }
     }NEXT: ;
   }

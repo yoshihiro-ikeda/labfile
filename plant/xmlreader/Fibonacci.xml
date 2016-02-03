@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Fibonacci" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Abs" name="Fibonacci_Abs" rate="-1">
+      <input line="Fibonacci_Subtract_1" port="Fibonacci_Abs_1">
+         <connect block="Fibonacci_Subtract" port="Fibonacci_Subtract_1"/>
+      </input>
+      <output line="Fibonacci_Abs_1" port="Fibonacci_Abs_1" usename="true">
+         <connect block="Fibonacci_Gain" port="Fibonacci_Gain_1"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="Fibonacci_Add" rate="-1">
+      <input line="Fibonacci_Fn_1" port="Fibonacci_Add_1">
+         <connect block="Fibonacci_Fn" port="Fibonacci_Fn_1"/>
+      </input>
+      <input line="Fibonacci_Fn_1_1" port="Fibonacci_Add_2">
+         <connect block="Fibonacci_Fn_1" port="Fibonacci_Fn_1_1"/>
+      </input>
+      <output line="Fibonacci_Add_1" port="Fibonacci_Add_1" usename="true">
+         <connect block="Fibonacci_Fn" port="Fibonacci_Fn_1"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="Fibonacci_Divide" rate="-1">
+      <input line="Fibonacci_Fn_1" port="Fibonacci_Divide_1">
+         <connect block="Fibonacci_Fn" port="Fibonacci_Fn_1"/>
+      </input>
+      <input line="Fibonacci_Saturation_1" port="Fibonacci_Divide_2">
+         <connect block="Fibonacci_Saturation" port="Fibonacci_Saturation_1"/>
+      </input>
+      <output line="Fibonacci_Divide_1" port="Fibonacci_Divide_1" usename="true">
+         <connect block="Fibonacci_Subtract" port="Fibonacci_Subtract_1"/>
+         <connect block="Fibonacci_approximate_golden_ratio" port="Fibonacci_approximate_golden_ratio_1"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="Fibonacci_Fn" rate="-1">
+      <input line="Fibonacci_Add_1" port="Fibonacci_Fn_1">
+         <connect block="Fibonacci_Add" port="Fibonacci_Add_1"/>
+      </input>
+      <output line="Fibonacci_Fn_1" port="Fibonacci_Fn_1" usename="true">
+         <connect block="Fibonacci_Add" port="Fibonacci_Add_1"/>
+         <connect block="Fibonacci_Divide" port="Fibonacci_Divide_1"/>
+         <connect block="Fibonacci_Fn_1" port="Fibonacci_Fn_1_1"/>
+         <connect block="Fibonacci_Out1" port="Fibonacci_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="Fibonacci_Fn_1" rate="-1">
+      <input line="Fibonacci_Fn_1" port="Fibonacci_Fn_1_1">
+         <connect block="Fibonacci_Fn" port="Fibonacci_Fn_1"/>
+      </input>
+      <output line="Fibonacci_Fn_1_1" port="Fibonacci_Fn_1_1" usename="true">
+         <connect block="Fibonacci_Add" port="Fibonacci_Add_2"/>
+         <connect block="Fibonacci_Saturation" port="Fibonacci_Saturation_1"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="Fibonacci_Gain" rate="-1">
+      <input line="Fibonacci_Abs_1" port="Fibonacci_Gain_1">
+         <connect block="Fibonacci_Abs" port="Fibonacci_Abs_1"/>
+      </input>
+      <output line="Fibonacci_Gain_1" port="Fibonacci_Gain_1" usename="true">
+         <connect block="Fibonacci_error" port="Fibonacci_error_1"/>
+      </output>
+   </block>
+   <block blocktype="Constant" name="Fibonacci_Golden_ratio" rate="inf">
+      <output line="Fibonacci_Golden_ratio_1" port="Fibonacci_Golden_ratio_1" usename="true">
+         <connect block="Fibonacci_Subtract" port="Fibonacci_Subtract_2"/>
+      </output>
+   </block>
+   <block blocktype="Saturate" name="Fibonacci_Saturation" rate="-1">
+      <input line="Fibonacci_Fn_1_1" port="Fibonacci_Saturation_1">
+         <connect block="Fibonacci_Fn_1" port="Fibonacci_Fn_1_1"/>
+      </input>
+      <output line="Fibonacci_Saturation_1" port="Fibonacci_Saturation_1" usename="true">
+         <connect block="Fibonacci_Divide" port="Fibonacci_Divide_2"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="Fibonacci_Subtract" rate="-1">
+      <input line="Fibonacci_Divide_1" port="Fibonacci_Subtract_1">
+         <connect block="Fibonacci_Divide" port="Fibonacci_Divide_1"/>
+      </input>
+      <input line="Fibonacci_Golden_ratio_1" port="Fibonacci_Subtract_2">
+         <connect block="Fibonacci_Golden_ratio" port="Fibonacci_Golden_ratio_1"/>
+      </input>
+      <output line="Fibonacci_Subtract_1" port="Fibonacci_Subtract_1" usename="true">
+         <connect block="Fibonacci_Abs" port="Fibonacci_Abs_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Fibonacci_Out1" rate="-1">
+      <input line="Fibonacci_Fn_1" port="Fibonacci_Out1_1">
+         <connect block="Fibonacci_Fn" port="Fibonacci_Fn_1"/>
+      </input>
+   </block>
+   <block blocktype="Outport" name="Fibonacci_approximate_golden_ratio" rate="-1">
+      <input line="Fibonacci_Divide_1" port="Fibonacci_approximate_golden_ratio_1">
+         <connect block="Fibonacci_Divide" port="Fibonacci_Divide_1"/>
+      </input>
+   </block>
+   <block blocktype="Outport" name="Fibonacci_error" rate="-1">
+      <input line="Fibonacci_Gain_1" port="Fibonacci_error_1">
+         <connect block="Fibonacci_Gain" port="Fibonacci_Gain_1"/>
+      </input>
+   </block>
+</sm:blocks>

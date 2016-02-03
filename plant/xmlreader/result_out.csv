@@ -1,9 +1,24 @@
-manyUnitDelay_In1,,red
-manyUnitDelay_Add,,red
-manyUnitDelay_Gain,,red
-manyUnitDelay_Gain1,,<not present>
-manyUnitDelay_Gain2,,<not present>
-manyUnitDelay_Sum,,<not present>
-manyUnitDelay_UnitDelay,,red
-manyUnitDelay_UnitDelay2,,<not present>
-manyUnitDelay_Out1,,red
+Fibonacci_Abs,,red
+Fibonacci_Add,,<not present>
+Fibonacci_Divide,,red
+Fibonacci_Fn,,red
+Fibonacci_Fn_1,,red
+Fibonacci_Gain,,red
+Fibonacci_Golden_ratio,,red
+Fibonacci_Saturation,,red
+Fibonacci_Subtract,,red
+Fibonacci_Out1,,red
+Fibonacci_approximate_golden_ratio,,red
+Fibonacci_error,,red
+Fibonacci_Abs,,red
+Fibonacci_Add,,<not present>
+Fibonacci_Divide,,red
+Fibonacci_Fn,,red
+Fibonacci_Fn_1,,red
+Fibonacci_Gain,,red
+Fibonacci_Golden_ratio,,red
+Fibonacci_Saturation,,red
+Fibonacci_Subtract,,red
+Fibonacci_Out1,,red
+Fibonacci_approximate_golden_ratio,,red
+Fibonacci_error,,red
