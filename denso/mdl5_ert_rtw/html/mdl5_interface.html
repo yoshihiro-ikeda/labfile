@@ -1,0 +1,666 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript">function rtwTableShrink(o) {var t = o.nextSibling;if (t.nodeType != 1) {t = t.nextSibling;}if (t.style.display == "none") {t.style.display = "";o.innerHTML = "[-]"} else {t.style.display = "none";o.innerHTML = "[+] ... "}}</script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>
+Code Interface Report for mdl5
+</title>
+
+</head>
+<body ONLOAD="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeInterface'); else local_onload();}} catch(err) {};">
+<h1>
+Code Interface Report for mdl5
+</h1>
+<h3>
+Table of Contents
+</h3>
+<ul>
+<li>
+<a href="#sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_Inports">
+Inports
+</a>
+
+</li>
+<li>
+<a href="#sec_Outports">
+Outports
+</a>
+
+</li>
+<li>
+<a href="#sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</li>
+<li>
+<a href="#sec_Data_Stores">
+Data Stores
+</a>
+
+</li>
+
+</ul>
+<h3>
+<a name="sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</h3>
+<p>
+Function: <a href="mdl5_c.html#fcn_mdl5_initialize">mdl5_initialize</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void mdl5_initialize(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Initialization entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Called once
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="mdl5_h.html">mdl5.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="mdl5_c.html#fcn_mdl5_step">mdl5_step</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void mdl5_step(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Called periodically, every 0.0001024 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="mdl5_h.html">mdl5.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="mdl5_c.html#fcn_mdl5_terminate">mdl5_terminate</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void mdl5_terminate(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Termination entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Called once
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="mdl5_h.html">mdl5.h</a>
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Inports">
+Inports
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="40%" align="left" valign="top">
+<b>
+Block Name
+</b>
+
+</th>
+<th width="25%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="25%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:1')" name="code2model" class="code2model">&lt;Root&gt;/Block7746</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7746_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:2')" name="code2model" class="code2model">&lt;Root&gt;/Block7747</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7747_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:3')" name="code2model" class="code2model">&lt;Root&gt;/Block7748</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7748_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:4')" name="code2model" class="code2model">&lt;Root&gt;/Block7749</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7749_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:5')" name="code2model" class="code2model">&lt;Root&gt;/Block7750</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7750_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:6')" name="code2model" class="code2model">&lt;Root&gt;/Block7751</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7751_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:7')" name="code2model" class="code2model">&lt;Root&gt;/Block7752</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7752_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:8')" name="code2model" class="code2model">&lt;Root&gt;/Block7753</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7753_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:9')" name="code2model" class="code2model">&lt;Root&gt;/Block7754</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7754_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:10')" name="code2model" class="code2model">&lt;Root&gt;/Block7755</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7755_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:11')" name="code2model" class="code2model">&lt;Root&gt;/Block7756</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7756_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:12')" name="code2model" class="code2model">&lt;Root&gt;/Block7757</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7757_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:13')" name="code2model" class="code2model">&lt;Root&gt;/Block7758</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7758_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:14')" name="code2model" class="code2model">&lt;Root&gt;/Block7759</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7759_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:15')" name="code2model" class="code2model">&lt;Root&gt;/Block7760</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7760_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:16')" name="code2model" class="code2model">&lt;Root&gt;/Block7761</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7761_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:17')" name="code2model" class="code2model">&lt;Root&gt;/Block7762</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7762_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:18')" name="code2model" class="code2model">&lt;Root&gt;/Block7763</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7763_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:19')" name="code2model" class="code2model">&lt;Root&gt;/Block7764</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7764_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:20')" name="code2model" class="code2model">&lt;Root&gt;/Block7765</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7765_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:21')" name="code2model" class="code2model">&lt;Root&gt;/Block7766</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7766_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Outports">
+Outports
+</a>
+
+</h3>
+<table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="40%" align="left" valign="top">
+<b>
+Block Name
+</b>
+
+</th>
+<th width="25%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="25%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="40%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('mdl5:1122')" name="code2model" class="code2model">&lt;Root&gt;/Block8310</a>
+</td>
+<td width="25%" align="left" valign="top">
+mdl5_Block7770_1
+</td>
+<td width="25%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+[3]
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</h3>
+<p>
+No interface/tunable parameters in model.
+</p>
+<h3>
+<a name="sec_Data_Stores">
+Data Stores
+</a>
+
+</h3>
+<p>
+No data stores in the model; note that this report lists only data stores with non-auto storage class and global data stores
+</p>
+
+</body>
+
+</html>
