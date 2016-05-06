@@ -22,3 +22,31 @@ Fibonacci_Subtract,,red
 Fibonacci_Out1,,red
 Fibonacci_approximate_golden_ratio,,red
 Fibonacci_error,,red
+dus4_In1,,red
+dus4_Gain,,red
+dus4_Gain1,,<not present>
+dus4_Gain3,,<not present>
+dus4_MathFunction1,,<not present>
+dus4_MathFunction2,,<not present>
+dus4_Product,,red
+dus4_Saturation,,red
+dus4_Subsystem,,red
+dus4_Subsystem_In1,,<not present>
+dus4_Subsystem_MathFunction,,<not present>
+dus4_Subsystem_Subsystem,,red
+dus4_Subsystem_Subsystem_In1,,<not present>
+dus4_Subsystem_Subsystem_Gain2,,<not present>
+dus4_Subsystem_Subsystem_Sum,,<not present>
+dus4_Subsystem_Subsystem_UnitDelay,,red
+dus4_Subsystem_Subsystem_Out1,,red
+dus4_Subsystem_Out1,,red
+dus4_Subsystem1,,red
+dus4_Subsystem1_In1,,<not present>
+dus4_Subsystem1_Bias,,<not present>
+dus4_Subsystem1_Gain1,,<not present>
+dus4_Subsystem1_Out1,,<not present>
+dus4_Sum1,,<not present>
+dus4_Sum2,,<not present>
+dus4_UnitDelay1,,red
+dus4_UnitDelay2,,<not present>
+dus4_Out1,,red
