@@ -16,6 +16,8 @@
 
 #include <xercesc/dom/DOM.hpp>
 
+#include <unistd.h>
+
 
 using namespace std;
 using namespace SimulinkModel;
@@ -32,15 +34,22 @@ int stoi_me(string str);
 string itos_me(int num);
 int judge_core_info(blnode_T *node,int core);
 int add_core_info(blnode_T *node,int core);
+void print_usage();
 
 
 //全体のnode list
 vector<blnode_T*> node_list;
 int node_list_size;
 
+//flag類
+int output_flag = 0;		// output用フラッグ:0の時標準出力へ1の時ファイルへ
+int debug_flag = 0;			// debug用フラッグ:周期遅れになっていないブロックの一覧を出力
+
 int main(int argc, char *argv[])
 {
-  char filename[64];
+  char input_filename[64];
+  char output_filename[64];
+  char udlist_filename[4][64];
   int i;//ループ用変数
 	
 	//FILE* fp_out;
@@ -53,20 +62,63 @@ int main(int argc, char *argv[])
   vector<string>::iterator blki;
   vector<string> inport_list;
   vector<string> outport_list;
-  vector<string> ud_list;
+  vector<vector<string> > ud_list(3);
 
   string str;
   int p;
-	
-  if(argc < 3){
-    printf("usage: ./tmp_pipeline <input-BLXML(.xml)> <UnitDelay-list(.csv)> [outputfile(.csv)]");
-    exit(1);
-  }
+  
+  int opts;				// オプション箇所で使用
+  
+  int core_num;		// コアの総数
+  int fin_core;
+  
+  int file_id = 0;
+  
+  if(argc < 2){
+		//オプションの付け方の説明
+		print_usage();
+		exit(1);
+	}
 
+  //オプション実装
+  //dについては未実装
+  //d:周期遅れになっていない箇所を抽出
+  //c:複数分割対応用オプション
+  while((opts=getopt(argc,argv,"hc:i:o:u:d"))!=-1){
+    switch(opts){
+
+			// 値をとらないオプション
+			case 'h':
+				print_usage();
+				return 0;
+			case 'd':
+				debug_flag = 1;
+				break;
+			//以下は全て値を取るオプション
+			case 'c':
+				cout << "Total number of core is "<< optarg << endl;
+				core_num = stoi_me(optarg);
+				break;
+			case 'i':
+				cout << "input-BLXML is " << optarg << endl;
+				strcpy(input_filename,optarg);
+				break;
+			case 'o':
+				cout << "output-BLXML is " << optarg << endl;
+				strcpy(output_filename,optarg);
+				output_flag = 1;
+				break;
+			case 'u':
+				cout << "unitdelay list is " << optarg << endl;
+				strcpy(udlist_filename[file_id],optarg);
+				file_id++;
+				break;
+		}
+	}
+	
   cout << "start reading." << endl;
-  cout << "filename is " << argv[1] << endl;
-  strcpy(filename,argv[1]);
-  Reader xrd(filename); //XMLファイルを読み込み
+  cout << "filename is " << input_filename << endl;
+  Reader xrd(input_filename); //XMLファイルを読み込み
   cout << "finish reading XML." << endl;
 	
   BLGraph graph(xrd); //BLGragh作成完了
@@ -75,24 +127,22 @@ int main(int argc, char *argv[])
   node_list = graph.getNodeVector(); //nodeリストを取得
   node_list_size = node_list.size();
 
-  strcpy(filename,argv[2]);
-  ifstream file(filename);
-
-  //挿入したUnitDelayのリストを取得
-  while(getline(file, str)){
-    //コメント行は排除
-    if( (p = str.find("//")) != str.npos ) continue;
-    ud_list.push_back(str);
-  }
-  // UnitDelayのリストを取得完了
-
-	for(i = 0;i < (int)ud_list.size();i++){
-		cout << ud_list[i] << endl;
+	for(i = 0; i < file_id;i++){
+		cout << udlist_filename[i] << endl;
+		ifstream file(udlist_filename[i]);
+		//挿入したUnitDelayのリストを取得
+		while(getline(file, str)){
+			//コメント行は排除
+			if( (p = str.find("//")) != str.npos ) continue;
+			ud_list[i].push_back(str);
+		}
 	}
-
+	cout << "finish loading UnitDelay List" << endl;
+  // UnitDelayのリストを取得完了
+	
   // 各ノードのコア割り当て情報を初期化
   for(i = 0;i != node_list_size;i++){//各始点ブロックごとにコストを初期化
-	node_list[i]->p_block->peinfo("-1");
+		node_list[i]->p_block->peinfo("-1");
   }
 	
   // 再帰的にコア割り当てを決める
@@ -107,44 +157,53 @@ int main(int argc, char *argv[])
     node = node_list[i];
     if(node->p_in_edge == NULL){
       inport_list.push_back(node->p_block->name());
-      cout << node->p_block->name() << endl;
     }
   }
   // 1コア目の割り当て
   // allocate_coreの引数はグラフ、コア、終点リスト、始点リスト
-  allocate_core(graph,0,inport_list,ud_list);
+  allocate_core(graph,0,inport_list,ud_list[0]);
 
   cout << "core0 finish" << endl;
   
-  // 2コア目の終端ブロックのリストを作成
+  // 最終ステップのコア割り当てを実行
+  // 終端ブロックのリストを作成
   // 終端ブロックを先にcore1に割り当て
+  fin_core = core_num - 1;
   for(i = 0;i < node_list_size;i++){
     node = node_list[i];
     if(node->p_out_edge == NULL && judge_core_info(node,-1)){
       str = node->p_block->name();
       outport_list.push_back(str);
-      node_list[i]->p_block->peinfo("1");
+      add_core_info(node,fin_core);
+      //node_list[i]->p_block->peinfo("1");
     }
   }
   // 2コア目の割り当て
-  allocate_core(graph,1,ud_list,outport_list);
+  allocate_core(graph,fin_core,ud_list[0],outport_list);
   
-  cout << "core1 finish" << endl;
+  cout << "core" << core_num - 1 <<  " finish" << endl;
   
+  // 3コア以上に分割している場合
+  // ud_listが2つ以上あるのでそれに応じてコア割り当てを行っていく
+  for(i = 1;i < core_num - 1;i++){
+		allocate_core(graph,i,ud_list[i-1],ud_list[i]);
+	}
+	
+	//コア割り当て終了
+	
   //node_listのpeinfo情報をコマンドラインに出力orコア割り当て情報を追加したblxmlを出力
 	//
   //引数の3つ目が設定されていればその名前のファイルへ出力
   //なければ標準出力へ
-  if(argc < 4){
+  if(output_flag == 0){
     //標準出力へ
     //add_block_infoの入力できる形へ
     for(i = 0;i<node_list_size;i++){
 			cout << node_list[i]->p_block->name() << ",," << node_list[i]->p_block->peinfo() << endl;
 		}
-  }else if(argc == 4){
+  }else{
 		//blxmlにnode_listの情報を追加
-    strcpy(filename,argv[3]);
-    ofstream result(filename);
+    ofstream result(output_filename);
     if(result.fail()){
       cerr << "failed." << endl;
       exit(0);
@@ -152,7 +211,7 @@ int main(int argc, char *argv[])
     for(i = 0;i<node_list_size;i++){
 			result << node_list[i]->p_block->name() << ",," << node_list[i]->p_block->peinfo() << endl;
 		}
-  }else{}
+	}
 }
 
 
@@ -182,46 +241,8 @@ void allocate_core(BLGraph graph,int core,vector<string> sblk_list,vector<string
   }
 }
 
-
 // trace_graph：再帰関数
 // 順次node_listのpeinfo情報を正しいコア割り当てに変更
-/*
-void trace_graph(BLGraph graph,int core,vector<string> eblk_list,blnode_T *node)
-{
-  int i;
-  blnode_T *tmp_node;
-  bledge_T *edge;
-  string tmp_str;
-
-  cout << "startnode: " << node->p_block->name() << endl;		//デバッグ用
-
-  tmp_node = node;
-  edge = tmp_node->p_out_edge;
-  while(edge != NULL){  // ノードに対する全てのエッジを探索
-    tmp_node = edge->p_t_node;  
-    for(i = 0;i < (int)eblk_list.size();i++){
-      // エッジの先に終端ブロック(挿入したUnitDelay)じゃなければ割り当てに追加
-      // その後、trace_graphを再帰呼び出し
-      tmp_str = tmp_node->p_block->name();
-      if(tmp_str != eblk_list[i]){					//コア割り当てされていなければコア割り当てを実行しtrace_graphを呼び出し
-				if(judge_core_info(tmp_node,-1)){
-					add_core_info(tmp_node,core);
-					//trace_graph(graph,core,eblk_list,node);
-					//cout << tmp_str << endl;
-					trace_graph(graph,core,eblk_list,tmp_node);//trace_graphを呼び順次コア割り当て情報を追加
-				}else{
-					//cout << "warning: already allocate this node to other core!" << endl;
-				}
-      }else{
-				cout << "This node is finished searching!" << endl;
-				cout << tmp_str << endl;
-      }
-    }
-    edge = edge->p_out_edge;
-  }
-}
-*/
-
 void trace_graph(BLGraph graph,int core,vector<string> eblk_list,blnode_T *node)
 {
   int i;
@@ -323,4 +344,15 @@ int add_core_info(blnode_T *node,int core)
 		}
 	}
 	return 0;//最後まで見つけられなければ0を返す
+}
+
+//オプションの付け方の説明
+//-h:ヘルプ
+void print_usage()
+{
+	cout << "-i:input-BLXML" << endl;
+	cout << "-o:output-BLXML" << endl;		
+	cout << "-c:コア数(これをもとにUnitDelayリス卜の数を決定)" << endl;
+	cout << "-u:unitdelay-list" << endl;
+	cout << "-d:デバッグモード" << endl;
 }
