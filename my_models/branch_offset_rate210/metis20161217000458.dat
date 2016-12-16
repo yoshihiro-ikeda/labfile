@@ -1,0 +1,200 @@
+67 66 11
+1 1 60
+1 2 1
+1 3 39 43
+1 4 63
+1 5 4
+1 6 18
+1 7 35
+1 8 53
+1 9 2
+1 10 12
+1 11 3
+1 12 3
+1 13 40
+1 14 15
+1 15 38
+1 16 5
+1 17 19
+1 18 2
+1 19 13
+1 20 14
+1 21 44
+1 22 23
+1 23 42
+1 24 5
+1 25 26
+1 26 21
+1 27 22
+1 28 46
+1 29 61
+1 30 48
+1 31 62
+1 32 50
+1 33 4
+1 34 52
+1 35 1
+1 36 58
+1 37 20
+1 38 16
+1 39 17
+1 40 37
+1 41 27
+1 42 24
+1 43 25
+1 44 41
+1 45 54
+1 46 29
+1 47 55
+1 48 31
+1 49 56
+1 50 33
+1 51 57
+1 52 8
+1 53 64
+1 54 7
+1 55 28
+1 56 30
+1 57 32
+1 58 34
+1 59 6
+1 59 9
+1 59 45
+1 60 10
+1 60 11
+1 60 47
+1 61 49
+1 62 51
+1 63 36
+% Block 1(branch_offset_rate210_Subsystem_Add:Sum)
+1
+% Block 2(branch_offset_rate210_Subsystem_Add1:Sum)
+1
+% Block 3(branch_offset_rate210_Subsystem_Add2:Sum)
+1
+% Block 4(branch_offset_rate210_Subsystem_Add3:Sum)
+1
+% Block 5(branch_offset_rate210_Subsystem_Add4:Sum)
+1
+% Block 6(branch_offset_rate210_Subsystem_Gain:Gain)
+1
+% Block 7(branch_offset_rate210_Subsystem_Gain1:Gain)
+1
+% Block 8(branch_offset_rate210_Subsystem_Gain10:Gain)
+1
+% Block 9(branch_offset_rate210_Subsystem_Gain11:Gain)
+1
+% Block 10(branch_offset_rate210_Subsystem_Gain12:Gain)
+1
+% Block 11(branch_offset_rate210_Subsystem_Gain13:Gain)
+1
+% Block 12(branch_offset_rate210_Subsystem_Gain14:Gain)
+1
+% Block 13(branch_offset_rate210_Subsystem_Gain15:Gain)
+1
+% Block 14(branch_offset_rate210_Subsystem_Gain16:Gain)
+1
+% Block 15(branch_offset_rate210_Subsystem_Gain17:Gain)
+1
+% Block 16(branch_offset_rate210_Subsystem_Gain18:Gain)
+1
+% Block 17(branch_offset_rate210_Subsystem_Gain19:Gain)
+1
+% Block 18(branch_offset_rate210_Subsystem_Gain2:Gain)
+1
+% Block 19(branch_offset_rate210_Subsystem_Gain20:Gain)
+1
+% Block 20(branch_offset_rate210_Subsystem_Gain21:Gain)
+1
+% Block 21(branch_offset_rate210_Subsystem_Gain22:Gain)
+1
+% Block 22(branch_offset_rate210_Subsystem_Gain23:Gain)
+1
+% Block 23(branch_offset_rate210_Subsystem_Gain24:Gain)
+1
+% Block 24(branch_offset_rate210_Subsystem_Gain25:Gain)
+1
+% Block 25(branch_offset_rate210_Subsystem_Gain26:Gain)
+1
+% Block 26(branch_offset_rate210_Subsystem_Gain27:Gain)
+1
+% Block 27(branch_offset_rate210_Subsystem_Gain28:Gain)
+1
+% Block 28(branch_offset_rate210_Subsystem_Gain3:Gain)
+1
+% Block 29(branch_offset_rate210_Subsystem_Gain4:Gain)
+1
+% Block 30(branch_offset_rate210_Subsystem_Gain5:Gain)
+1
+% Block 31(branch_offset_rate210_Subsystem_Gain6:Gain)
+1
+% Block 32(branch_offset_rate210_Subsystem_Gain7:Gain)
+1
+% Block 33(branch_offset_rate210_Subsystem_Gain8:Gain)
+1
+% Block 34(branch_offset_rate210_Subsystem_Gain9:Gain)
+1
+% Block 35(branch_offset_rate210_Subsystem_MathFunction1:Math)
+1
+% Block 36(branch_offset_rate210_Subsystem_MathFunction10:Math)
+1
+% Block 37(branch_offset_rate210_Subsystem_MathFunction11:Math)
+1
+% Block 38(branch_offset_rate210_Subsystem_MathFunction12:Math)
+1
+% Block 39(branch_offset_rate210_Subsystem_MathFunction13:Math)
+1
+% Block 40(branch_offset_rate210_Subsystem_MathFunction14:Math)
+1
+% Block 41(branch_offset_rate210_Subsystem_MathFunction15:Math)
+1
+% Block 42(branch_offset_rate210_Subsystem_MathFunction16:Math)
+1
+% Block 43(branch_offset_rate210_Subsystem_MathFunction17:Math)
+1
+% Block 44(branch_offset_rate210_Subsystem_MathFunction18:Math)
+1
+% Block 45(branch_offset_rate210_Subsystem_MathFunction2:Math)
+1
+% Block 46(branch_offset_rate210_Subsystem_MathFunction3:Math)
+1
+% Block 47(branch_offset_rate210_Subsystem_MathFunction4:Math)
+1
+% Block 48(branch_offset_rate210_Subsystem_MathFunction5:Math)
+1
+% Block 49(branch_offset_rate210_Subsystem_MathFunction6:Math)
+1
+% Block 50(branch_offset_rate210_Subsystem_MathFunction7:Math)
+1
+% Block 51(branch_offset_rate210_Subsystem_MathFunction8:Math)
+1
+% Block 52(branch_offset_rate210_Subsystem_MathFunction9:Math)
+1
+% Block 53(branch_offset_rate210_Subsystem_Out1:Outport)
+1
+% Block 54(branch_offset_rate210_Subsystem_S_Function:S-Function)
+1
+% Block 55(branch_offset_rate210_Subsystem_S_Function1:S-Function)
+1
+% Block 56(branch_offset_rate210_Subsystem_S_Function2:S-Function)
+1
+% Block 57(branch_offset_rate210_Subsystem_S_Function3:S-Function)
+1
+% Block 58(branch_offset_rate210_Subsystem_S_Function4:S-Function)
+1
+% Block 59(branch_offset_rate210_Subsystem_Sqrt1:Sqrt)
+1
+% Block 60(branch_offset_rate210_Subsystem_Sqrt2:Sqrt)
+1
+% Block 61(branch_offset_rate210_Subsystem_Sqrt3:Sqrt)
+1
+% Block 62(branch_offset_rate210_Subsystem_Sqrt4:Sqrt)
+1
+% Block 63(branch_offset_rate210_Subsystem:SubSystem)
+2
+% Block 64(branch_offset_rate210_UnitDelay:UnitDelay)
+1
+% Load for core 0
+10
+% Load for core 1
+0

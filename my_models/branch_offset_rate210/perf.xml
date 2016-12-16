@@ -1,0 +1,2567 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="branch_offset_rate210" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="branch_offset_rate210.h" size="14284" timestamp="2016-12-17T00:04:40+0900" type="c-header"/>
+  <file name="out_branch_offset_rate210.xml" size="174530" timestamp="2016-12-17T00:04:41+0900" type="xml"/>
+  <file name="branch_offset_rate210.c" size="25888" timestamp="2016-12-17T00:04:40+0900" type="c-source"/>
+  <file name="branch_offset_rate210_data.c" size="6383" timestamp="2016-12-17T00:04:40+0900" type="c-data"/>
+  <file name="../../renesas.mcg4p_8core.1_0_0.gcc.4_6_2.xml" size="963553" timestamp="2015-09-18T17:55:25+0900" type="shim"/>
+  <shim-params element="componentset" name="PE_P01"/>
+  <shim-params element="mastercomponent" name="CPU_P01"/>
+  <shim-params element="commoninstructionset" name="LLVM Instructions"/>
+  <block blocktype="Gain" id="1" name="branch_offset_rate210_Gain" rate="0.002">
+    <input line="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_Gain_1">
+      <connect block="branch_offset_rate210_UnitDelay1" port="branch_offset_rate210_UnitDelay1_1"/>
+    </input>
+    <output line="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Gain_1" usename="true">
+      <connect block="branch_offset_rate210_Sum" port="branch_offset_rate210_Sum_2"/>
+      <connect block="branch_offset_rate210_UnitDelay2" port="branch_offset_rate210_UnitDelay2_1"/>
+    </output>
+    <var line="branch_offset_rate210_Gain_1" mode="output" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Gain_1" type="real_T"/>
+    <var line="branch_offset_rate210_UnitDelay1_1" mode="input" name="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_Gain_1" type="real_T"/>
+    <param name="Gain_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+      <initcode file="branch_offset_rate210_data.c" line="26" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;Root&gt;/Gain'
+                                        */
+</initcode>
+    </param>
+    <code file="branch_offset_rate210.c" line="192" type="task">  /* Gain: '&lt;Root&gt;/Gain' */
+  branch_offset_rate210_Gain_1 = branch_offset_rate210_P.Gain_Gain *
+    branch_offset_rate210_UnitDelay1_1;
+
+</code>
+    <code file="branch_offset_rate210.c" line="559" type="init">  branch_offset_rate210_Gain_1 = 0.0;
+</code>
+    <performance best="168" type="task" typical="168" worst="168"/>
+    <performance best="92" type="init" typical="92" worst="92"/>
+    <forward block="branch_offset_rate210_Sum" type="data">
+      <var line="branch_offset_rate210_Gain_1" mode="input" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Sum_2" type="real_T"/>
+    </forward>
+    <forward block="branch_offset_rate210_UnitDelay2" type="data">
+      <var line="branch_offset_rate210_Gain_1" mode="input" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_UnitDelay2_1" type="real_T"/>
+    </forward>
+    <backward block="branch_offset_rate210_UnitDelay1" type="data">
+      <var line="branch_offset_rate210_UnitDelay1_1" mode="output" name="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_UnitDelay1_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="SubSystem" id="2" name="branch_offset_rate210_Subsystem" rate="-1">
+    <input line="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_Subsystem_In1">
+      <connect block="branch_offset_rate210_UnitDelay2" port="branch_offset_rate210_UnitDelay2_1"/>
+    </input>
+    <output line="branch_offset_rate210_Subsystem_1" port="branch_offset_rate210_Subsystem_Out1" usename="false">
+      <connect block="branch_offset_rate210_UnitDelay" port="branch_offset_rate210_UnitDelay_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="branch_offset_rate210_Subsystem_In1" rate="0.002">
+        <output line="branch_offset_rate210_Subsystem_In1_1" port="branch_offset_rate210_Subsystem_In1_1" usename="false">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt1" port="branch_offset_rate210_Subsystem_Sqrt1_1"/>
+        </output>
+      </block>
+      <block blocktype="Sum" id="4" name="branch_offset_rate210_Subsystem_Add" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add_1">
+          <connect block="branch_offset_rate210_Subsystem_Add1" port="branch_offset_rate210_Subsystem_Add1_1"/>
+        </input>
+        <input line="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_Add_2">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction1" port="branch_offset_rate210_Subsystem_MathFunction1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Add_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt2" port="branch_offset_rate210_Subsystem_Sqrt2_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Add_1" mode="output" name="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Add_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add1_1" mode="input" name="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction1_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_Add_2" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="242" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Sum: '&lt;S1&gt;/Add' */
+    branch_offset_rate210_Subsystem_Add_1 =
+      branch_offset_rate210_Subsystem_Add1_1 +
+      branch_offset_rate210_Subsystem_MathFunction1_1;
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="570" type="init">  branch_offset_rate210_Subsystem_Add_1 = 0.0;
+</code>
+        <performance best="188" type="task" typical="252" worst="316"/>
+        <performance best="103" type="init" typical="103" worst="103"/>
+        <forward block="branch_offset_rate210_Subsystem_Sqrt2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add_1" mode="input" name="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add1_1" mode="output" name="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add1_1" type="real_T"/>
+        </backward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction1" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction1_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sum" id="5" name="branch_offset_rate210_Subsystem_Add1" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Add1_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain11" port="branch_offset_rate210_Subsystem_Gain11_1"/>
+        </input>
+        <input line="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Add1_2">
+          <connect block="branch_offset_rate210_Subsystem_Gain2" port="branch_offset_rate210_Subsystem_Gain2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add1_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add" port="branch_offset_rate210_Subsystem_Add_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Add1_1" mode="output" name="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain11_1" mode="input" name="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Add1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain2_1" mode="input" name="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Add1_2" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="217" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Sum: '&lt;S1&gt;/Add1' */
+    branch_offset_rate210_Subsystem_Add1_1 =
+      branch_offset_rate210_Subsystem_Gain11_1 +
+      branch_offset_rate210_Subsystem_Gain2_1;
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="565" type="init">  branch_offset_rate210_Subsystem_Add1_1 = 0.0;
+</code>
+        <performance best="188" type="task" typical="252" worst="316"/>
+        <performance best="103" type="init" typical="103" worst="103"/>
+        <forward block="branch_offset_rate210_Subsystem_Add" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add1_1" mode="input" name="branch_offset_rate210_Subsystem_Add1_1" port="branch_offset_rate210_Subsystem_Add_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain11" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain11_1" mode="output" name="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Gain11_1" type="real_T"/>
+        </backward>
+        <backward block="branch_offset_rate210_Subsystem_Gain2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain2_1" mode="output" name="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Gain2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sum" id="6" name="branch_offset_rate210_Subsystem_Add2" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Add2_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain13" port="branch_offset_rate210_Subsystem_Gain13_1"/>
+        </input>
+        <input line="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Add2_2">
+          <connect block="branch_offset_rate210_Subsystem_Gain14" port="branch_offset_rate210_Subsystem_Gain14_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_Add2_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction13" port="branch_offset_rate210_Subsystem_MathFunction13_1"/>
+          <connect block="branch_offset_rate210_Subsystem_MathFunction17" port="branch_offset_rate210_Subsystem_MathFunction17_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Add2_1" mode="output" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_Add2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain13_1" mode="input" name="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Add2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain14_1" mode="input" name="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Add2_2" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="270" type="task">/*&lt;&lt;&lt; S 5 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 5 none &gt;&gt;&gt;*/
+    /* Sum: '&lt;S1&gt;/Add2' */
+    branch_offset_rate210_Subsystem_Add2_1 =
+      branch_offset_rate210_Subsystem_Gain13_1 +
+      branch_offset_rate210_Subsystem_Gain14_1;
+/*&lt;&lt;&lt; E 5 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 5 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="575" type="init">  branch_offset_rate210_Subsystem_Add2_1 = 0.0;
+</code>
+        <performance best="188" type="task" typical="252" worst="316"/>
+        <performance best="103" type="init" typical="103" worst="103"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction13" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add2_1" mode="input" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction13_1" type="real_T"/>
+        </forward>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction17" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add2_1" mode="input" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction17_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain13" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain13_1" mode="output" name="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Gain13_1" type="real_T"/>
+        </backward>
+        <backward block="branch_offset_rate210_Subsystem_Gain14" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain14_1" mode="output" name="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Gain14_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sum" id="7" name="branch_offset_rate210_Subsystem_Add3" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add3_1">
+          <connect block="branch_offset_rate210_Subsystem_Add4" port="branch_offset_rate210_Subsystem_Add4_1"/>
+        </input>
+        <input line="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Add3_2">
+          <connect block="branch_offset_rate210_Subsystem_Gain8" port="branch_offset_rate210_Subsystem_Gain8_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Add3_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt5" port="branch_offset_rate210_Subsystem_Sqrt5_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Add3_1" mode="output" name="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Add3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add4_1" mode="input" name="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain8_1" mode="input" name="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Add3_2" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="472" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Sum: '&lt;S1&gt;/Add3' */
+    branch_offset_rate210_Subsystem_Add3_1 =
+      branch_offset_rate210_Subsystem_Add4_1 +
+      branch_offset_rate210_Subsystem_Gain8_1;
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="616" type="init">  branch_offset_rate210_Subsystem_Add3_1 = 0.0;
+</code>
+        <performance best="188" type="task" typical="252" worst="316"/>
+        <performance best="103" type="init" typical="103" worst="103"/>
+        <forward block="branch_offset_rate210_Subsystem_Sqrt5" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add3_1" mode="input" name="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Sqrt5_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add4_1" mode="output" name="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add4_1" type="real_T"/>
+        </backward>
+        <backward block="branch_offset_rate210_Subsystem_Gain8" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain8_1" mode="output" name="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Gain8_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sum" id="8" name="branch_offset_rate210_Subsystem_Add4" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Add4_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain25" port="branch_offset_rate210_Subsystem_Gain25_1"/>
+        </input>
+        <input line="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Add4_2">
+          <connect block="branch_offset_rate210_Subsystem_Gain18" port="branch_offset_rate210_Subsystem_Gain18_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add4_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add3" port="branch_offset_rate210_Subsystem_Add3_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Add4_1" mode="output" name="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain25_1" mode="input" name="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Add4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain18_1" mode="input" name="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Add4_2" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="381" type="task">/*&lt;&lt;&lt; S 9 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 9 none &gt;&gt;&gt;*/
+    /* Sum: '&lt;S1&gt;/Add4' */
+    branch_offset_rate210_Subsystem_Add4_1 =
+      branch_offset_rate210_Subsystem_Gain25_1 +
+      branch_offset_rate210_Subsystem_Gain18_1;
+/*&lt;&lt;&lt; E 9 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 9 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="598" type="init">  branch_offset_rate210_Subsystem_Add4_1 = 0.0;
+</code>
+        <performance best="188" type="task" typical="252" worst="316"/>
+        <performance best="103" type="init" typical="103" worst="103"/>
+        <forward block="branch_offset_rate210_Subsystem_Add3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add4_1" mode="input" name="branch_offset_rate210_Subsystem_Add4_1" port="branch_offset_rate210_Subsystem_Add3_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain25" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain25_1" mode="output" name="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Gain25_1" type="real_T"/>
+        </backward>
+        <backward block="branch_offset_rate210_Subsystem_Gain18" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain18_1" mode="output" name="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Gain18_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="9" name="branch_offset_rate210_Subsystem_Gain" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt1" port="branch_offset_rate210_Subsystem_Sqrt1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain2" port="branch_offset_rate210_Subsystem_Gain2_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain_1" mode="output" name="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain_1" type="real_T"/>
+        <param name="Gain_Gain_j" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="35" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="209" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain' */
+    branch_offset_rate210_Subsystem_Gain_1 = branch_offset_rate210_P.Gain_Gain_j
+      * branch_offset_rate210_Subsystem_Sqrt1_1;
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="563" type="init">  branch_offset_rate210_Subsystem_Gain_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain_1" mode="input" name="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain2_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="10" name="branch_offset_rate210_Subsystem_Gain1" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_Gain1_1">
+          <connect block="branch_offset_rate210_Subsystem_S_Function" port="branch_offset_rate210_Subsystem_S_Function_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_Gain1_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction1" port="branch_offset_rate210_Subsystem_MathFunction1_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain1_1" mode="output" name="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_Gain1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_S_Function_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_Gain1_1" type="real_T"/>
+        <param name="Gain1_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="41" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain1'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="234" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain1' */
+    branch_offset_rate210_Subsystem_Gain1_1 = branch_offset_rate210_P.Gain1_Gain
+      * branch_offset_rate210_Subsystem_S_Function_1;
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="568" type="init">  branch_offset_rate210_Subsystem_Gain1_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain1_1" mode="input" name="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_S_Function" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_S_Function_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="11" name="branch_offset_rate210_Subsystem_Gain10" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_Gain10_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction9" port="branch_offset_rate210_Subsystem_MathFunction9_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_Subsystem_Gain10_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Out1" port="branch_offset_rate210_Subsystem_Out1_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain10_1" mode="output" name="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_Subsystem_Gain10_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction9_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_Gain10_1" type="real_T"/>
+        <param name="Gain10_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="116" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain10'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="503" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain10' */
+    branch_offset_rate210_Subsystem_Gain10_1 =
+      branch_offset_rate210_P.Gain10_Gain *
+      branch_offset_rate210_Subsystem_MathFunction9_1;
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="622" type="init">  branch_offset_rate210_Subsystem_Gain10_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_UnitDelay" type="data">
+          <var line="branch_offset_rate210_Subsystem_1" mode="input" name="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_UnitDelay_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction9" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction9_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="12" name="branch_offset_rate210_Subsystem_Gain11" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain11_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt1" port="branch_offset_rate210_Subsystem_Sqrt1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Gain11_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add1" port="branch_offset_rate210_Subsystem_Add1_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain11_1" mode="output" name="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Gain11_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain11_1" type="real_T"/>
+        <param name="Gain11_Gain" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="32" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain11'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="204" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain11' */
+    branch_offset_rate210_Subsystem_Gain11_1 =
+      branch_offset_rate210_P.Gain11_Gain *
+      branch_offset_rate210_Subsystem_Sqrt1_1;
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="562" type="init">  branch_offset_rate210_Subsystem_Gain11_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain11_1" mode="input" name="branch_offset_rate210_Subsystem_Gain11_1" port="branch_offset_rate210_Subsystem_Add1_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="13" name="branch_offset_rate210_Subsystem_Gain12" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain12_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt2" port="branch_offset_rate210_Subsystem_Sqrt2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain12_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain14" port="branch_offset_rate210_Subsystem_Gain14_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain12_1" mode="output" name="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain12_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain12_1" type="real_T"/>
+        <param name="Gain12_Gain" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="47" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain12'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="260" type="task">/*&lt;&lt;&lt; S 5 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 5 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain12' */
+    branch_offset_rate210_Subsystem_Gain12_1 =
+      branch_offset_rate210_P.Gain12_Gain *
+      branch_offset_rate210_Subsystem_Sqrt2_1;
+
+/*&lt;&lt;&lt; E 5 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 5 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="573" type="init">  branch_offset_rate210_Subsystem_Gain12_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain14" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain12_1" mode="input" name="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain14_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="14" name="branch_offset_rate210_Subsystem_Gain13" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain13_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt2" port="branch_offset_rate210_Subsystem_Sqrt2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Gain13_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add2" port="branch_offset_rate210_Subsystem_Add2_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain13_1" mode="output" name="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Gain13_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain13_1" type="real_T"/>
+        <param name="Gain13_Gain" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="44" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain13'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="255" type="task">/*&lt;&lt;&lt; S 5 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 5 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain13' */
+    branch_offset_rate210_Subsystem_Gain13_1 =
+      branch_offset_rate210_P.Gain13_Gain *
+      branch_offset_rate210_Subsystem_Sqrt2_1;
+
+/*&lt;&lt;&lt; E 5 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 5 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="572" type="init">  branch_offset_rate210_Subsystem_Gain13_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain13_1" mode="input" name="branch_offset_rate210_Subsystem_Gain13_1" port="branch_offset_rate210_Subsystem_Add2_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="15" name="branch_offset_rate210_Subsystem_Gain14" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain14_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain12" port="branch_offset_rate210_Subsystem_Gain12_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Gain14_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add2" port="branch_offset_rate210_Subsystem_Add2_2"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain14_1" mode="output" name="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Gain14_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain12_1" mode="input" name="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain14_1" type="real_T"/>
+        <param name="Gain14_Gain" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="50" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain14'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="265" type="task">/*&lt;&lt;&lt; S 5 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 5 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain14' */
+    branch_offset_rate210_Subsystem_Gain14_1 =
+      branch_offset_rate210_P.Gain14_Gain *
+      branch_offset_rate210_Subsystem_Gain12_1;
+
+/*&lt;&lt;&lt; E 5 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 5 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="574" type="init">  branch_offset_rate210_Subsystem_Gain14_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain14_1" mode="input" name="branch_offset_rate210_Subsystem_Gain14_1" port="branch_offset_rate210_Subsystem_Add2_2" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain12" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain12_1" mode="output" name="branch_offset_rate210_Subsystem_Gain12_1" port="branch_offset_rate210_Subsystem_Gain12_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="16" name="branch_offset_rate210_Subsystem_Gain15" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain15_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain20" port="branch_offset_rate210_Subsystem_Gain20_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_Gain15_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction14" port="branch_offset_rate210_Subsystem_MathFunction14_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain15_1" mode="output" name="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_Gain15_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain20_1" mode="input" name="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain15_1" type="real_T"/>
+        <param name="Gain15_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="80" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain15'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="342" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain15' */
+    branch_offset_rate210_Subsystem_Gain15_1 =
+      branch_offset_rate210_P.Gain15_Gain *
+      branch_offset_rate210_Subsystem_Gain20_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="590" type="init">  branch_offset_rate210_Subsystem_Gain15_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction14" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain15_1" mode="input" name="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_MathFunction14_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain20" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain20_1" mode="output" name="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain20_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="17" name="branch_offset_rate210_Subsystem_Gain16" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain16_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain21" port="branch_offset_rate210_Subsystem_Gain21_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain16_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain17" port="branch_offset_rate210_Subsystem_Gain17_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain16_1" mode="output" name="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain16_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain21_1" mode="input" name="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain16_1" type="real_T"/>
+        <param name="Gain16_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="86" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain16'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="360" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain16' */
+    branch_offset_rate210_Subsystem_Gain16_1 =
+      branch_offset_rate210_P.Gain16_Gain *
+      branch_offset_rate210_Subsystem_Gain21_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="594" type="init">  branch_offset_rate210_Subsystem_Gain16_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain17" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain16_1" mode="input" name="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain17_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain21" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain21_1" mode="output" name="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain21_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="18" name="branch_offset_rate210_Subsystem_Gain17" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain17_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain16" port="branch_offset_rate210_Subsystem_Gain16_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_Gain17_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction12" port="branch_offset_rate210_Subsystem_MathFunction12_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain17_1" mode="output" name="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_Gain17_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain16_1" mode="input" name="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain17_1" type="real_T"/>
+        <param name="Gain17_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="89" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain17'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="365" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain17' */
+    branch_offset_rate210_Subsystem_Gain17_1 =
+      branch_offset_rate210_P.Gain17_Gain *
+      branch_offset_rate210_Subsystem_Gain16_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="595" type="init">  branch_offset_rate210_Subsystem_Gain17_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction12" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain17_1" mode="input" name="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_MathFunction12_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain16" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain16_1" mode="output" name="branch_offset_rate210_Subsystem_Gain16_1" port="branch_offset_rate210_Subsystem_Gain16_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="19" name="branch_offset_rate210_Subsystem_Gain18" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_Gain18_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction12" port="branch_offset_rate210_Subsystem_MathFunction12_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Gain18_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add4" port="branch_offset_rate210_Subsystem_Add4_2"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain18_1" mode="output" name="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Gain18_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction12_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_Gain18_1" type="real_T"/>
+        <param name="Gain18_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="92" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain18'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="374" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain18' */
+    branch_offset_rate210_Subsystem_Gain18_1 =
+      branch_offset_rate210_P.Gain18_Gain *
+      branch_offset_rate210_Subsystem_MathFunction12_1;
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="597" type="init">  branch_offset_rate210_Subsystem_Gain18_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain18_1" mode="input" name="branch_offset_rate210_Subsystem_Gain18_1" port="branch_offset_rate210_Subsystem_Add4_2" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction12" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction12_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_MathFunction12_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="20" name="branch_offset_rate210_Subsystem_Gain19" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_Gain19_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction13" port="branch_offset_rate210_Subsystem_MathFunction13_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain19_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain20" port="branch_offset_rate210_Subsystem_Gain20_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain19_1" mode="output" name="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain19_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction13_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_Gain19_1" type="real_T"/>
+        <param name="Gain19_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="74" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain19'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="332" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain19' */
+    branch_offset_rate210_Subsystem_Gain19_1 =
+      branch_offset_rate210_P.Gain19_Gain *
+      branch_offset_rate210_Subsystem_MathFunction13_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="588" type="init">  branch_offset_rate210_Subsystem_Gain19_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain20" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain19_1" mode="input" name="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain20_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction13" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction13_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_MathFunction13_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="21" name="branch_offset_rate210_Subsystem_Gain2" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain2_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain" port="branch_offset_rate210_Subsystem_Gain_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Gain2_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add1" port="branch_offset_rate210_Subsystem_Add1_2"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain2_1" mode="output" name="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Gain2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain_1" mode="input" name="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain2_1" type="real_T"/>
+        <param name="Gain2_Gain" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+          <initcode file="branch_offset_rate210_data.c" line="38" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Gain2'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="213" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain2' */
+    branch_offset_rate210_Subsystem_Gain2_1 = branch_offset_rate210_P.Gain2_Gain
+      * branch_offset_rate210_Subsystem_Gain_1;
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="564" type="init">  branch_offset_rate210_Subsystem_Gain2_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain2_1" mode="input" name="branch_offset_rate210_Subsystem_Gain2_1" port="branch_offset_rate210_Subsystem_Add1_2" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain_1" mode="output" name="branch_offset_rate210_Subsystem_Gain_1" port="branch_offset_rate210_Subsystem_Gain_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="22" name="branch_offset_rate210_Subsystem_Gain20" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain20_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain19" port="branch_offset_rate210_Subsystem_Gain19_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain20_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain15" port="branch_offset_rate210_Subsystem_Gain15_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain20_1" mode="output" name="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain20_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain19_1" mode="input" name="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain20_1" type="real_T"/>
+        <param name="Gain20_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="77" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain20'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="337" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain20' */
+    branch_offset_rate210_Subsystem_Gain20_1 =
+      branch_offset_rate210_P.Gain20_Gain *
+      branch_offset_rate210_Subsystem_Gain19_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="589" type="init">  branch_offset_rate210_Subsystem_Gain20_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain15" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain20_1" mode="input" name="branch_offset_rate210_Subsystem_Gain20_1" port="branch_offset_rate210_Subsystem_Gain15_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain19" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain19_1" mode="output" name="branch_offset_rate210_Subsystem_Gain19_1" port="branch_offset_rate210_Subsystem_Gain19_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="23" name="branch_offset_rate210_Subsystem_Gain21" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_Gain21_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction11" port="branch_offset_rate210_Subsystem_MathFunction11_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain21_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain16" port="branch_offset_rate210_Subsystem_Gain16_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain21_1" mode="output" name="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain21_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction11_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_Gain21_1" type="real_T"/>
+        <param name="Gain21_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="83" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain21'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="355" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain21' */
+    branch_offset_rate210_Subsystem_Gain21_1 =
+      branch_offset_rate210_P.Gain21_Gain *
+      branch_offset_rate210_Subsystem_MathFunction11_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="593" type="init">  branch_offset_rate210_Subsystem_Gain21_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain16" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain21_1" mode="input" name="branch_offset_rate210_Subsystem_Gain21_1" port="branch_offset_rate210_Subsystem_Gain16_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction11" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction11_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_MathFunction11_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="24" name="branch_offset_rate210_Subsystem_Gain22" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain22_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain27" port="branch_offset_rate210_Subsystem_Gain27_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_Gain22_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction18" port="branch_offset_rate210_Subsystem_MathFunction18_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain22_1" mode="output" name="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_Gain22_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain27_1" mode="input" name="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain22_1" type="real_T"/>
+        <param name="Gain22_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="59" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain22'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="291" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain22' */
+    branch_offset_rate210_Subsystem_Gain22_1 =
+      branch_offset_rate210_P.Gain22_Gain *
+      branch_offset_rate210_Subsystem_Gain27_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="579" type="init">  branch_offset_rate210_Subsystem_Gain22_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction18" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain22_1" mode="input" name="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_MathFunction18_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain27" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain27_1" mode="output" name="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain27_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="25" name="branch_offset_rate210_Subsystem_Gain23" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain23_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain28" port="branch_offset_rate210_Subsystem_Gain28_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain23_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain24" port="branch_offset_rate210_Subsystem_Gain24_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain23_1" mode="output" name="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain23_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain28_1" mode="input" name="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain23_1" type="real_T"/>
+        <param name="Gain23_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="65" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain23'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="309" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain23' */
+    branch_offset_rate210_Subsystem_Gain23_1 =
+      branch_offset_rate210_P.Gain23_Gain *
+      branch_offset_rate210_Subsystem_Gain28_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="583" type="init">  branch_offset_rate210_Subsystem_Gain23_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain24" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain23_1" mode="input" name="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain24_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain28" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain28_1" mode="output" name="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain28_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="26" name="branch_offset_rate210_Subsystem_Gain24" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain24_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain23" port="branch_offset_rate210_Subsystem_Gain23_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_Gain24_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction16" port="branch_offset_rate210_Subsystem_MathFunction16_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain24_1" mode="output" name="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_Gain24_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain23_1" mode="input" name="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain24_1" type="real_T"/>
+        <param name="Gain24_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="68" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain24'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="314" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain24' */
+    branch_offset_rate210_Subsystem_Gain24_1 =
+      branch_offset_rate210_P.Gain24_Gain *
+      branch_offset_rate210_Subsystem_Gain23_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="584" type="init">  branch_offset_rate210_Subsystem_Gain24_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction16" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain24_1" mode="input" name="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_MathFunction16_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain23" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain23_1" mode="output" name="branch_offset_rate210_Subsystem_Gain23_1" port="branch_offset_rate210_Subsystem_Gain23_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="27" name="branch_offset_rate210_Subsystem_Gain25" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_Gain25_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction16" port="branch_offset_rate210_Subsystem_MathFunction16_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Gain25_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add4" port="branch_offset_rate210_Subsystem_Add4_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain25_1" mode="output" name="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Gain25_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction16_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_Gain25_1" type="real_T"/>
+        <param name="Gain25_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="71" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain25'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="323" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain25' */
+    branch_offset_rate210_Subsystem_Gain25_1 =
+      branch_offset_rate210_P.Gain25_Gain *
+      branch_offset_rate210_Subsystem_MathFunction16_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="586" type="init">  branch_offset_rate210_Subsystem_Gain25_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain25_1" mode="input" name="branch_offset_rate210_Subsystem_Gain25_1" port="branch_offset_rate210_Subsystem_Add4_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction16" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction16_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_MathFunction16_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="28" name="branch_offset_rate210_Subsystem_Gain26" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_Gain26_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction17" port="branch_offset_rate210_Subsystem_MathFunction17_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain26_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain27" port="branch_offset_rate210_Subsystem_Gain27_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain26_1" mode="output" name="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain26_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction17_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_Gain26_1" type="real_T"/>
+        <param name="Gain26_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="53" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain26'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="281" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain26' */
+    branch_offset_rate210_Subsystem_Gain26_1 =
+      branch_offset_rate210_P.Gain26_Gain *
+      branch_offset_rate210_Subsystem_MathFunction17_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="577" type="init">  branch_offset_rate210_Subsystem_Gain26_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain27" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain26_1" mode="input" name="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain27_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction17" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction17_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_MathFunction17_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="29" name="branch_offset_rate210_Subsystem_Gain27" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain27_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain26" port="branch_offset_rate210_Subsystem_Gain26_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain27_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain22" port="branch_offset_rate210_Subsystem_Gain22_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain27_1" mode="output" name="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain27_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain26_1" mode="input" name="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain27_1" type="real_T"/>
+        <param name="Gain27_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="56" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain27'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="286" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain27' */
+    branch_offset_rate210_Subsystem_Gain27_1 =
+      branch_offset_rate210_P.Gain27_Gain *
+      branch_offset_rate210_Subsystem_Gain26_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="578" type="init">  branch_offset_rate210_Subsystem_Gain27_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain22" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain27_1" mode="input" name="branch_offset_rate210_Subsystem_Gain27_1" port="branch_offset_rate210_Subsystem_Gain22_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain26" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain26_1" mode="output" name="branch_offset_rate210_Subsystem_Gain26_1" port="branch_offset_rate210_Subsystem_Gain26_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="30" name="branch_offset_rate210_Subsystem_Gain28" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_Gain28_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction15" port="branch_offset_rate210_Subsystem_MathFunction15_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain28_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain23" port="branch_offset_rate210_Subsystem_Gain23_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain28_1" mode="output" name="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain28_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction15_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_Gain28_1" type="real_T"/>
+        <param name="Gain28_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="62" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain28'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="304" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain28' */
+    branch_offset_rate210_Subsystem_Gain28_1 =
+      branch_offset_rate210_P.Gain28_Gain *
+      branch_offset_rate210_Subsystem_MathFunction15_1;
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="582" type="init">  branch_offset_rate210_Subsystem_Gain28_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain23" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain28_1" mode="input" name="branch_offset_rate210_Subsystem_Gain28_1" port="branch_offset_rate210_Subsystem_Gain23_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction15" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction15_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_MathFunction15_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="31" name="branch_offset_rate210_Subsystem_Gain3" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_Gain3_1">
+          <connect block="branch_offset_rate210_Subsystem_S_Function1" port="branch_offset_rate210_Subsystem_S_Function1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_Gain3_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction3" port="branch_offset_rate210_Subsystem_MathFunction3_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain3_1" mode="output" name="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_Gain3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_S_Function1_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_Gain3_1" type="real_T"/>
+        <param name="Gain3_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="95" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain3'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="400" type="task">/*&lt;&lt;&lt; S 11 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 11 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain3' */
+    branch_offset_rate210_Subsystem_Gain3_1 = branch_offset_rate210_P.Gain3_Gain
+      * branch_offset_rate210_Subsystem_S_Function1_1;
+
+/*&lt;&lt;&lt; E 11 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 11 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="601" type="init">  branch_offset_rate210_Subsystem_Gain3_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain3_1" mode="input" name="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_S_Function1" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function1_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_S_Function1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="32" name="branch_offset_rate210_Subsystem_Gain4" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_Gain4_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction3" port="branch_offset_rate210_Subsystem_MathFunction3_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Gain4_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt3" port="branch_offset_rate210_Subsystem_Sqrt3_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain4_1" mode="output" name="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Gain4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction3_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_Gain4_1" type="real_T"/>
+        <param name="Gain4_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="98" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain4'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="408" type="task">/*&lt;&lt;&lt; S 11 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 11 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain4' */
+    branch_offset_rate210_Subsystem_Gain4_1 = branch_offset_rate210_P.Gain4_Gain
+      * branch_offset_rate210_Subsystem_MathFunction3_1;
+/*&lt;&lt;&lt; E 11 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 11 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="603" type="init">  branch_offset_rate210_Subsystem_Gain4_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Sqrt3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain4_1" mode="input" name="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Sqrt3_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction3" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction3_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="33" name="branch_offset_rate210_Subsystem_Gain5" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_Gain5_1">
+          <connect block="branch_offset_rate210_Subsystem_S_Function2" port="branch_offset_rate210_Subsystem_S_Function2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_Gain5_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction5" port="branch_offset_rate210_Subsystem_MathFunction5_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain5_1" mode="output" name="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_Gain5_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_S_Function2_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_Gain5_1" type="real_T"/>
+        <param name="Gain5_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="101" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain5'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="430" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain5' */
+    branch_offset_rate210_Subsystem_Gain5_1 = branch_offset_rate210_P.Gain5_Gain
+      * branch_offset_rate210_Subsystem_S_Function2_1;
+
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="607" type="init">  branch_offset_rate210_Subsystem_Gain5_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction5" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain5_1" mode="input" name="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_S_Function2" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function2_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_S_Function2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="34" name="branch_offset_rate210_Subsystem_Gain6" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_Gain6_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction5" port="branch_offset_rate210_Subsystem_MathFunction5_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Gain6_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt4" port="branch_offset_rate210_Subsystem_Sqrt4_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain6_1" mode="output" name="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Gain6_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction5_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_Gain6_1" type="real_T"/>
+        <param name="Gain6_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="104" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain6'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="438" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain6' */
+    branch_offset_rate210_Subsystem_Gain6_1 = branch_offset_rate210_P.Gain6_Gain
+      * branch_offset_rate210_Subsystem_MathFunction5_1;
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="609" type="init">  branch_offset_rate210_Subsystem_Gain6_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Sqrt4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain6_1" mode="input" name="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Sqrt4_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction5" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction5_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="35" name="branch_offset_rate210_Subsystem_Gain7" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_Gain7_1">
+          <connect block="branch_offset_rate210_Subsystem_S_Function3" port="branch_offset_rate210_Subsystem_S_Function3_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_Gain7_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction7" port="branch_offset_rate210_Subsystem_MathFunction7_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain7_1" mode="output" name="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_Gain7_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_S_Function3_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_Gain7_1" type="real_T"/>
+        <param name="Gain7_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="107" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain7'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="460" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain7' */
+    branch_offset_rate210_Subsystem_Gain7_1 = branch_offset_rate210_P.Gain7_Gain
+      * branch_offset_rate210_Subsystem_S_Function3_1;
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="613" type="init">  branch_offset_rate210_Subsystem_Gain7_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction7" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain7_1" mode="input" name="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_S_Function3" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function3_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_S_Function3_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="36" name="branch_offset_rate210_Subsystem_Gain8" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_Gain8_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction7" port="branch_offset_rate210_Subsystem_MathFunction7_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Gain8_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add3" port="branch_offset_rate210_Subsystem_Add3_2"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain8_1" mode="output" name="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Gain8_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction7_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_Gain8_1" type="real_T"/>
+        <param name="Gain8_Gain" storage="branch_offset_rate210_P" type="real_T" value="0.5">
+          <initcode file="branch_offset_rate210_data.c" line="110" type="param">  0.5,                                 /* Expression: 0.5
+                                        * Referenced by: '&lt;S1&gt;/Gain8'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="468" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain8' */
+    branch_offset_rate210_Subsystem_Gain8_1 = branch_offset_rate210_P.Gain8_Gain
+      * branch_offset_rate210_Subsystem_MathFunction7_1;
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="615" type="init">  branch_offset_rate210_Subsystem_Gain8_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain8_1" mode="input" name="branch_offset_rate210_Subsystem_Gain8_1" port="branch_offset_rate210_Subsystem_Add3_2" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction7" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction7_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Gain" id="37" name="branch_offset_rate210_Subsystem_Gain9" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_Gain9_1">
+          <connect block="branch_offset_rate210_Subsystem_S_Function4" port="branch_offset_rate210_Subsystem_S_Function4_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_Gain9_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction9" port="branch_offset_rate210_Subsystem_MathFunction9_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Gain9_1" mode="output" name="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_Gain9_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_S_Function4_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_Gain9_1" type="real_T"/>
+        <param name="Gain9_Gain" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+          <initcode file="branch_offset_rate210_data.c" line="113" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;S1&gt;/Gain9'
+                                        */
+</initcode>
+        </param>
+        <code file="branch_offset_rate210.c" line="495" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* Gain: '&lt;S1&gt;/Gain9' */
+    branch_offset_rate210_Subsystem_Gain9_1 = branch_offset_rate210_P.Gain9_Gain
+      * branch_offset_rate210_Subsystem_S_Function4_1;
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="620" type="init">  branch_offset_rate210_Subsystem_Gain9_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="241.5" worst="306"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction9" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain9_1" mode="input" name="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_S_Function4" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function4_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_S_Function4_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="38" name="branch_offset_rate210_Subsystem_MathFunction1" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain1" port="branch_offset_rate210_Subsystem_Gain1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Add" port="branch_offset_rate210_Subsystem_Add_2"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction1_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain1_1" mode="input" name="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_MathFunction1_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="238" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction1' */
+    branch_offset_rate210_Subsystem_MathFunction1_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain1_1);
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="569" type="init">  branch_offset_rate210_Subsystem_MathFunction1_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Add" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction1_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction1_1" port="branch_offset_rate210_Subsystem_Add_2" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain1_1" mode="output" name="branch_offset_rate210_Subsystem_Gain1_1" port="branch_offset_rate210_Subsystem_Gain1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="39" name="branch_offset_rate210_Subsystem_MathFunction10" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_MathFunction10_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt5" port="branch_offset_rate210_Subsystem_Sqrt5_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_MathFunction10_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_S_Function4" port="branch_offset_rate210_Subsystem_S_Function4_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction10_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_MathFunction10_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt5_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_MathFunction10_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="483" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction10'
+     *
+     * About '&lt;S1&gt;/MathFunction10':
+     *  Operator: log10
+     */
+    branch_offset_rate210_Subsystem_MathFunction10_1 = log10
+      (branch_offset_rate210_Subsystem_Sqrt5_1);
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="618" type="init">  branch_offset_rate210_Subsystem_MathFunction10_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_S_Function4" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction10_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_S_Function4_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt5" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt5_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_Sqrt5_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="40" name="branch_offset_rate210_Subsystem_MathFunction11" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction11_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction14" port="branch_offset_rate210_Subsystem_MathFunction14_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_MathFunction11_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain21" port="branch_offset_rate210_Subsystem_Gain21_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction11_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_MathFunction11_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction14_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction11_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="351" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction11' */
+    branch_offset_rate210_Subsystem_MathFunction11_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_MathFunction14_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="592" type="init">  branch_offset_rate210_Subsystem_MathFunction11_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain21" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction11_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction11_1" port="branch_offset_rate210_Subsystem_Gain21_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction14" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction14_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction14_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="41" name="branch_offset_rate210_Subsystem_MathFunction12" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_MathFunction12_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain17" port="branch_offset_rate210_Subsystem_Gain17_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_MathFunction12_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain18" port="branch_offset_rate210_Subsystem_Gain18_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction12_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_MathFunction12_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain17_1" mode="input" name="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_MathFunction12_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="370" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction12' */
+    branch_offset_rate210_Subsystem_MathFunction12_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain17_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="596" type="init">  branch_offset_rate210_Subsystem_MathFunction12_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain18" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction12_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction12_1" port="branch_offset_rate210_Subsystem_Gain18_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain17" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain17_1" mode="output" name="branch_offset_rate210_Subsystem_Gain17_1" port="branch_offset_rate210_Subsystem_Gain17_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="42" name="branch_offset_rate210_Subsystem_MathFunction13" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction13_1">
+          <connect block="branch_offset_rate210_Subsystem_Add2" port="branch_offset_rate210_Subsystem_Add2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_MathFunction13_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain19" port="branch_offset_rate210_Subsystem_Gain19_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction13_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_MathFunction13_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add2_1" mode="input" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction13_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="328" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction13' */
+    branch_offset_rate210_Subsystem_MathFunction13_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Add2_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="587" type="init">  branch_offset_rate210_Subsystem_MathFunction13_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain19" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction13_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction13_1" port="branch_offset_rate210_Subsystem_Gain19_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add2_1" mode="output" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_Add2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="43" name="branch_offset_rate210_Subsystem_MathFunction14" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_MathFunction14_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain15" port="branch_offset_rate210_Subsystem_Gain15_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction14_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction11" port="branch_offset_rate210_Subsystem_MathFunction11_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction14_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction14_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain15_1" mode="input" name="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_MathFunction14_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="347" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction14' */
+    branch_offset_rate210_Subsystem_MathFunction14_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain15_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="591" type="init">  branch_offset_rate210_Subsystem_MathFunction14_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction11" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction14_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction14_1" port="branch_offset_rate210_Subsystem_MathFunction11_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain15" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain15_1" mode="output" name="branch_offset_rate210_Subsystem_Gain15_1" port="branch_offset_rate210_Subsystem_Gain15_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="44" name="branch_offset_rate210_Subsystem_MathFunction15" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction15_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction18" port="branch_offset_rate210_Subsystem_MathFunction18_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_MathFunction15_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain28" port="branch_offset_rate210_Subsystem_Gain28_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction15_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_MathFunction15_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction18_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction15_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="300" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction15' */
+    branch_offset_rate210_Subsystem_MathFunction15_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_MathFunction18_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="581" type="init">  branch_offset_rate210_Subsystem_MathFunction15_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain28" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction15_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction15_1" port="branch_offset_rate210_Subsystem_Gain28_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction18" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction18_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction18_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="45" name="branch_offset_rate210_Subsystem_MathFunction16" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_MathFunction16_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain24" port="branch_offset_rate210_Subsystem_Gain24_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_MathFunction16_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain25" port="branch_offset_rate210_Subsystem_Gain25_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction16_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_MathFunction16_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain24_1" mode="input" name="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_MathFunction16_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="319" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction16' */
+    branch_offset_rate210_Subsystem_MathFunction16_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain24_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="585" type="init">  branch_offset_rate210_Subsystem_MathFunction16_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain25" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction16_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction16_1" port="branch_offset_rate210_Subsystem_Gain25_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain24" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain24_1" mode="output" name="branch_offset_rate210_Subsystem_Gain24_1" port="branch_offset_rate210_Subsystem_Gain24_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="46" name="branch_offset_rate210_Subsystem_MathFunction17" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction17_1">
+          <connect block="branch_offset_rate210_Subsystem_Add2" port="branch_offset_rate210_Subsystem_Add2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_MathFunction17_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain26" port="branch_offset_rate210_Subsystem_Gain26_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction17_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_MathFunction17_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add2_1" mode="input" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_MathFunction17_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="277" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction17' */
+    branch_offset_rate210_Subsystem_MathFunction17_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Add2_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="576" type="init">  branch_offset_rate210_Subsystem_MathFunction17_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain26" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction17_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction17_1" port="branch_offset_rate210_Subsystem_Gain26_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add2_1" mode="output" name="branch_offset_rate210_Subsystem_Add2_1" port="branch_offset_rate210_Subsystem_Add2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="47" name="branch_offset_rate210_Subsystem_MathFunction18" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_MathFunction18_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain22" port="branch_offset_rate210_Subsystem_Gain22_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction18_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction15" port="branch_offset_rate210_Subsystem_MathFunction15_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction18_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction18_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain22_1" mode="input" name="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_MathFunction18_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="296" type="task">/*&lt;&lt;&lt; S 7 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 7 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction18' */
+    branch_offset_rate210_Subsystem_MathFunction18_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain22_1);
+
+/*&lt;&lt;&lt; E 7 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 7 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="580" type="init">  branch_offset_rate210_Subsystem_MathFunction18_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction15" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction18_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction18_1" port="branch_offset_rate210_Subsystem_MathFunction15_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain22" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain22_1" mode="output" name="branch_offset_rate210_Subsystem_Gain22_1" port="branch_offset_rate210_Subsystem_Gain22_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="48" name="branch_offset_rate210_Subsystem_MathFunction2" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_MathFunction2_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt1" port="branch_offset_rate210_Subsystem_Sqrt1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_MathFunction2_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_S_Function" port="branch_offset_rate210_Subsystem_S_Function_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction2_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_MathFunction2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_MathFunction2_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="222" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction2'
+     *
+     * About '&lt;S1&gt;/MathFunction2':
+     *  Operator: log10
+     */
+    branch_offset_rate210_Subsystem_MathFunction2_1 = log10
+      (branch_offset_rate210_Subsystem_Sqrt1_1);
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="566" type="init">  branch_offset_rate210_Subsystem_MathFunction2_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_S_Function" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction2_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_S_Function_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt1" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="49" name="branch_offset_rate210_Subsystem_MathFunction3" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain3" port="branch_offset_rate210_Subsystem_Gain3_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain4" port="branch_offset_rate210_Subsystem_Gain4_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction3_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain3_1" mode="input" name="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_MathFunction3_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="404" type="task">/*&lt;&lt;&lt; S 11 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 11 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction3' */
+    branch_offset_rate210_Subsystem_MathFunction3_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain3_1);
+
+/*&lt;&lt;&lt; E 11 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 11 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="602" type="init">  branch_offset_rate210_Subsystem_MathFunction3_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain4" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction3_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction3_1" port="branch_offset_rate210_Subsystem_Gain4_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain3_1" mode="output" name="branch_offset_rate210_Subsystem_Gain3_1" port="branch_offset_rate210_Subsystem_Gain3_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="50" name="branch_offset_rate210_Subsystem_MathFunction4" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_MathFunction4_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt2" port="branch_offset_rate210_Subsystem_Sqrt2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_MathFunction4_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_S_Function1" port="branch_offset_rate210_Subsystem_S_Function1_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction4_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_MathFunction4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_MathFunction4_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="388" type="task">/*&lt;&lt;&lt; S 11 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 11 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction4'
+     *
+     * About '&lt;S1&gt;/MathFunction4':
+     *  Operator: log10
+     */
+    branch_offset_rate210_Subsystem_MathFunction4_1 = log10
+      (branch_offset_rate210_Subsystem_Sqrt2_1);
+
+/*&lt;&lt;&lt; E 11 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 11 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="599" type="init">  branch_offset_rate210_Subsystem_MathFunction4_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_S_Function1" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction4_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_S_Function1_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="51" name="branch_offset_rate210_Subsystem_MathFunction5" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain5" port="branch_offset_rate210_Subsystem_Gain5_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain6" port="branch_offset_rate210_Subsystem_Gain6_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction5_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain5_1" mode="input" name="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_MathFunction5_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="434" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction5' */
+    branch_offset_rate210_Subsystem_MathFunction5_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain5_1);
+
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="608" type="init">  branch_offset_rate210_Subsystem_MathFunction5_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain6" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction5_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction5_1" port="branch_offset_rate210_Subsystem_Gain6_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain5" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain5_1" mode="output" name="branch_offset_rate210_Subsystem_Gain5_1" port="branch_offset_rate210_Subsystem_Gain5_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="52" name="branch_offset_rate210_Subsystem_MathFunction6" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_MathFunction6_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt3" port="branch_offset_rate210_Subsystem_Sqrt3_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_MathFunction6_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_S_Function2" port="branch_offset_rate210_Subsystem_S_Function2_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction6_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_MathFunction6_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt3_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_MathFunction6_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="418" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction6'
+     *
+     * About '&lt;S1&gt;/MathFunction6':
+     *  Operator: log10
+     */
+    branch_offset_rate210_Subsystem_MathFunction6_1 = log10
+      (branch_offset_rate210_Subsystem_Sqrt3_1);
+
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="605" type="init">  branch_offset_rate210_Subsystem_MathFunction6_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_S_Function2" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction6_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_S_Function2_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt3_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_Sqrt3_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="53" name="branch_offset_rate210_Subsystem_MathFunction7" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain7" port="branch_offset_rate210_Subsystem_Gain7_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain8" port="branch_offset_rate210_Subsystem_Gain8_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction7_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain7_1" mode="input" name="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_MathFunction7_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="464" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction7' */
+    branch_offset_rate210_Subsystem_MathFunction7_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain7_1);
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="614" type="init">  branch_offset_rate210_Subsystem_MathFunction7_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain8" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction7_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction7_1" port="branch_offset_rate210_Subsystem_Gain8_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain7" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain7_1" mode="output" name="branch_offset_rate210_Subsystem_Gain7_1" port="branch_offset_rate210_Subsystem_Gain7_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="54" name="branch_offset_rate210_Subsystem_MathFunction8" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_MathFunction8_1">
+          <connect block="branch_offset_rate210_Subsystem_Sqrt4" port="branch_offset_rate210_Subsystem_Sqrt4_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_MathFunction8_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_S_Function3" port="branch_offset_rate210_Subsystem_S_Function3_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction8_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_MathFunction8_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Sqrt4_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_MathFunction8_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="448" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction8'
+     *
+     * About '&lt;S1&gt;/MathFunction8':
+     *  Operator: log10
+     */
+    branch_offset_rate210_Subsystem_MathFunction8_1 = log10
+      (branch_offset_rate210_Subsystem_Sqrt4_1);
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="611" type="init">  branch_offset_rate210_Subsystem_MathFunction8_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_S_Function3" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction8_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_S_Function3_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Sqrt4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt4_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_Sqrt4_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Math" id="55" name="branch_offset_rate210_Subsystem_MathFunction9" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain9" port="branch_offset_rate210_Subsystem_Gain9_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain10" port="branch_offset_rate210_Subsystem_Gain10_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_MathFunction9_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain9_1" mode="input" name="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_MathFunction9_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="499" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* Math: '&lt;S1&gt;/MathFunction9' */
+    branch_offset_rate210_Subsystem_MathFunction9_1 = rt_powd_snf(10.0,
+      branch_offset_rate210_Subsystem_Gain9_1);
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="621" type="init">  branch_offset_rate210_Subsystem_MathFunction9_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain10" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction9_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction9_1" port="branch_offset_rate210_Subsystem_Gain10_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain9" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain9_1" mode="output" name="branch_offset_rate210_Subsystem_Gain9_1" port="branch_offset_rate210_Subsystem_Gain9_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="S-Function" id="56" name="branch_offset_rate210_Subsystem_S_Function">
+        <input line="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_S_Function_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction2" port="branch_offset_rate210_Subsystem_MathFunction2_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_S_Function_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain1" port="branch_offset_rate210_Subsystem_Gain1_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_S_Function_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_S_Function_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction2_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_S_Function_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="230" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* S-Function (loop): '&lt;S1&gt;/S_Function' */
+    loop_Outputs_wrapper(&amp;branch_offset_rate210_Subsystem_MathFunction2_1,
+                         &amp;branch_offset_rate210_Subsystem_S_Function_1 );
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="567" type="init">  branch_offset_rate210_Subsystem_S_Function_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="217.5" worst="258"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain1" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function_1" port="branch_offset_rate210_Subsystem_Gain1_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction2" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction2_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction2_1" port="branch_offset_rate210_Subsystem_MathFunction2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="S-Function" id="57" name="branch_offset_rate210_Subsystem_S_Function1">
+        <input line="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_S_Function1_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction4" port="branch_offset_rate210_Subsystem_MathFunction4_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_S_Function1_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain3" port="branch_offset_rate210_Subsystem_Gain3_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_S_Function1_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_S_Function1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction4_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_S_Function1_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="396" type="task">/*&lt;&lt;&lt; S 11 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 11 none &gt;&gt;&gt;*/
+    /* S-Function (loop): '&lt;S1&gt;/S_Function1' */
+    loop_Outputs_wrapper(&amp;branch_offset_rate210_Subsystem_MathFunction4_1,
+                         &amp;branch_offset_rate210_Subsystem_S_Function1_1 );
+
+/*&lt;&lt;&lt; E 11 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 11 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="600" type="init">  branch_offset_rate210_Subsystem_S_Function1_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="217.5" worst="258"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain3" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function1_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function1_1" port="branch_offset_rate210_Subsystem_Gain3_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction4" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction4_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction4_1" port="branch_offset_rate210_Subsystem_MathFunction4_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="S-Function" id="58" name="branch_offset_rate210_Subsystem_S_Function2">
+        <input line="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_S_Function2_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction6" port="branch_offset_rate210_Subsystem_MathFunction6_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_S_Function2_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain5" port="branch_offset_rate210_Subsystem_Gain5_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_S_Function2_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_S_Function2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction6_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_S_Function2_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="426" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* S-Function (loop): '&lt;S1&gt;/S_Function2' */
+    loop_Outputs_wrapper(&amp;branch_offset_rate210_Subsystem_MathFunction6_1,
+                         &amp;branch_offset_rate210_Subsystem_S_Function2_1 );
+
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="606" type="init">  branch_offset_rate210_Subsystem_S_Function2_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="217.5" worst="258"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain5" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function2_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function2_1" port="branch_offset_rate210_Subsystem_Gain5_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction6" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction6_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction6_1" port="branch_offset_rate210_Subsystem_MathFunction6_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="S-Function" id="59" name="branch_offset_rate210_Subsystem_S_Function3">
+        <input line="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_S_Function3_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction8" port="branch_offset_rate210_Subsystem_MathFunction8_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_S_Function3_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain7" port="branch_offset_rate210_Subsystem_Gain7_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_S_Function3_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_S_Function3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction8_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_S_Function3_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="456" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* S-Function (loop): '&lt;S1&gt;/S_Function3' */
+    loop_Outputs_wrapper(&amp;branch_offset_rate210_Subsystem_MathFunction8_1,
+                         &amp;branch_offset_rate210_Subsystem_S_Function3_1 );
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="612" type="init">  branch_offset_rate210_Subsystem_S_Function3_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="217.5" worst="258"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain7" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function3_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function3_1" port="branch_offset_rate210_Subsystem_Gain7_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction8" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction8_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction8_1" port="branch_offset_rate210_Subsystem_MathFunction8_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="S-Function" id="60" name="branch_offset_rate210_Subsystem_S_Function4">
+        <input line="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_S_Function4_1">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction10" port="branch_offset_rate210_Subsystem_MathFunction10_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_S_Function4_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain9" port="branch_offset_rate210_Subsystem_Gain9_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_S_Function4_1" mode="output" name="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_S_Function4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_MathFunction10_1" mode="input" name="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_S_Function4_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="491" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* S-Function (loop): '&lt;S1&gt;/S_Function4' */
+    loop_Outputs_wrapper(&amp;branch_offset_rate210_Subsystem_MathFunction10_1,
+                         &amp;branch_offset_rate210_Subsystem_S_Function4_1 );
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="619" type="init">  branch_offset_rate210_Subsystem_S_Function4_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="217.5" worst="258"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain9" type="data">
+          <var line="branch_offset_rate210_Subsystem_S_Function4_1" mode="input" name="branch_offset_rate210_Subsystem_S_Function4_1" port="branch_offset_rate210_Subsystem_Gain9_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_MathFunction10" type="data">
+          <var line="branch_offset_rate210_Subsystem_MathFunction10_1" mode="output" name="branch_offset_rate210_Subsystem_MathFunction10_1" port="branch_offset_rate210_Subsystem_MathFunction10_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sqrt" id="61" name="branch_offset_rate210_Subsystem_Sqrt1" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_In1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1">
+          <connect block="branch_offset_rate210_Subsystem_In1" port="branch_offset_rate210_Subsystem_In1_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain" port="branch_offset_rate210_Subsystem_Gain_1"/>
+          <connect block="branch_offset_rate210_Subsystem_Gain11" port="branch_offset_rate210_Subsystem_Gain11_1"/>
+          <connect block="branch_offset_rate210_Subsystem_MathFunction2" port="branch_offset_rate210_Subsystem_MathFunction2_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_In1_1" mode="input" name="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="200" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Sqrt: '&lt;S1&gt;/Sqrt1' */
+    branch_offset_rate210_Subsystem_Sqrt1_1 = sqrt
+      (branch_offset_rate210_UnitDelay2_1);
+
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="561" type="init">  branch_offset_rate210_Subsystem_Sqrt1_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain_1" type="real_T"/>
+        </forward>
+        <forward block="branch_offset_rate210_Subsystem_Gain11" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_Gain11_1" type="real_T"/>
+        </forward>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction2" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt1_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt1_1" port="branch_offset_rate210_Subsystem_MathFunction2_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_UnitDelay2" type="data">
+          <var line="branch_offset_rate210_UnitDelay2_1" mode="output" name="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_UnitDelay2_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sqrt" id="62" name="branch_offset_rate210_Subsystem_Sqrt2" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Sqrt2_1">
+          <connect block="branch_offset_rate210_Subsystem_Add" port="branch_offset_rate210_Subsystem_Add_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_Gain12" port="branch_offset_rate210_Subsystem_Gain12_1"/>
+          <connect block="branch_offset_rate210_Subsystem_Gain13" port="branch_offset_rate210_Subsystem_Gain13_1"/>
+          <connect block="branch_offset_rate210_Subsystem_MathFunction4" port="branch_offset_rate210_Subsystem_MathFunction4_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add_1" mode="input" name="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Sqrt2_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="249" type="task">/*&lt;&lt;&lt; S 3 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] == 0) {
+/*&gt;&gt;&gt; S 3 none &gt;&gt;&gt;*/
+    /* Sqrt: '&lt;S1&gt;/Sqrt2' */
+    branch_offset_rate210_Subsystem_Sqrt2_1 = sqrt
+      (branch_offset_rate210_Subsystem_Add_1);
+/*&lt;&lt;&lt; E 3 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 3 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="571" type="init">  branch_offset_rate210_Subsystem_Sqrt2_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_Gain12" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain12_1" type="real_T"/>
+        </forward>
+        <forward block="branch_offset_rate210_Subsystem_Gain13" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_Gain13_1" type="real_T"/>
+        </forward>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt2_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt2_1" port="branch_offset_rate210_Subsystem_MathFunction4_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add_1" mode="output" name="branch_offset_rate210_Subsystem_Add_1" port="branch_offset_rate210_Subsystem_Add_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sqrt" id="63" name="branch_offset_rate210_Subsystem_Sqrt3" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Sqrt3_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain4" port="branch_offset_rate210_Subsystem_Gain4_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_Sqrt3_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction6" port="branch_offset_rate210_Subsystem_MathFunction6_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Sqrt3_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_Sqrt3_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain4_1" mode="input" name="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Sqrt3_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="414" type="task">/*&lt;&lt;&lt; S 13 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] == 0) {
+/*&gt;&gt;&gt; S 13 none &gt;&gt;&gt;*/
+    /* Sqrt: '&lt;S1&gt;/Sqrt3' */
+    branch_offset_rate210_Subsystem_Sqrt3_1 = sqrt
+      (branch_offset_rate210_Subsystem_Gain4_1);
+
+/*&lt;&lt;&lt; E 13 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 13 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="604" type="init">  branch_offset_rate210_Subsystem_Sqrt3_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction6" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt3_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt3_1" port="branch_offset_rate210_Subsystem_MathFunction6_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain4" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain4_1" mode="output" name="branch_offset_rate210_Subsystem_Gain4_1" port="branch_offset_rate210_Subsystem_Gain4_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sqrt" id="64" name="branch_offset_rate210_Subsystem_Sqrt4" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Sqrt4_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain6" port="branch_offset_rate210_Subsystem_Gain6_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_Sqrt4_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction8" port="branch_offset_rate210_Subsystem_MathFunction8_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Sqrt4_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_Sqrt4_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Gain6_1" mode="input" name="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Sqrt4_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="444" type="task">/*&lt;&lt;&lt; S 15 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] == 0) {
+/*&gt;&gt;&gt; S 15 none &gt;&gt;&gt;*/
+    /* Sqrt: '&lt;S1&gt;/Sqrt4' */
+    branch_offset_rate210_Subsystem_Sqrt4_1 = sqrt
+      (branch_offset_rate210_Subsystem_Gain6_1);
+
+/*&lt;&lt;&lt; E 15 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 15 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="610" type="init">  branch_offset_rate210_Subsystem_Sqrt4_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction8" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt4_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt4_1" port="branch_offset_rate210_Subsystem_MathFunction8_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Gain6" type="data">
+          <var line="branch_offset_rate210_Subsystem_Gain6_1" mode="output" name="branch_offset_rate210_Subsystem_Gain6_1" port="branch_offset_rate210_Subsystem_Gain6_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Sqrt" id="65" name="branch_offset_rate210_Subsystem_Sqrt5" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Sqrt5_1">
+          <connect block="branch_offset_rate210_Subsystem_Add3" port="branch_offset_rate210_Subsystem_Add3_1"/>
+        </input>
+        <output line="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_Sqrt5_1" usename="true">
+          <connect block="branch_offset_rate210_Subsystem_MathFunction10" port="branch_offset_rate210_Subsystem_MathFunction10_1"/>
+        </output>
+        <var line="branch_offset_rate210_Subsystem_Sqrt5_1" mode="output" name="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_Sqrt5_1" type="real_T"/>
+        <var line="branch_offset_rate210_Subsystem_Add3_1" mode="input" name="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Sqrt5_1" type="real_T"/>
+        <code file="branch_offset_rate210.c" line="479" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* Sqrt: '&lt;S1&gt;/Sqrt5' */
+    branch_offset_rate210_Subsystem_Sqrt5_1 = sqrt
+      (branch_offset_rate210_Subsystem_Add3_1);
+
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+        <code file="branch_offset_rate210.c" line="617" type="init">  branch_offset_rate210_Subsystem_Sqrt5_1 = 0.0;
+</code>
+        <performance best="177" type="task" typical="239" worst="301"/>
+        <performance best="92" type="init" typical="92" worst="92"/>
+        <forward block="branch_offset_rate210_Subsystem_MathFunction10" type="data">
+          <var line="branch_offset_rate210_Subsystem_Sqrt5_1" mode="input" name="branch_offset_rate210_Subsystem_Sqrt5_1" port="branch_offset_rate210_Subsystem_MathFunction10_1" type="real_T"/>
+        </forward>
+        <backward block="branch_offset_rate210_Subsystem_Add3" type="data">
+          <var line="branch_offset_rate210_Subsystem_Add3_1" mode="output" name="branch_offset_rate210_Subsystem_Add3_1" port="branch_offset_rate210_Subsystem_Add3_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Outport" id="66" name="branch_offset_rate210_Subsystem_Out1" rate="0.01">
+        <input line="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_Subsystem_Out1_1">
+          <connect block="branch_offset_rate210_Subsystem_Gain10" port="branch_offset_rate210_Subsystem_Gain10_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Sum" id="67" name="branch_offset_rate210_Sum" rate="0.002">
+    <input line="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_Sum_1">
+      <connect block="branch_offset_rate210_UnitDelay" port="branch_offset_rate210_UnitDelay_1"/>
+    </input>
+    <input line="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Sum_2">
+      <connect block="branch_offset_rate210_Gain" port="branch_offset_rate210_Gain_1"/>
+    </input>
+    <output line="branch_offset_rate210_Sum_1" port="branch_offset_rate210_Sum_1" usename="true">
+      <connect block="branch_offset_rate210_UnitDelay1" port="branch_offset_rate210_UnitDelay1_1"/>
+    </output>
+    <var line="branch_offset_rate210_Sum_1" mode="output" name="branch_offset_rate210_Sum_1" port="branch_offset_rate210_Sum_1" type="real_T"/>
+    <var line="branch_offset_rate210_UnitDelay_1" mode="input" name="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_Sum_1" type="real_T"/>
+    <var line="branch_offset_rate210_Gain_1" mode="input" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Sum_2" type="real_T"/>
+    <code file="branch_offset_rate210.c" line="513" type="task">  /* Sum: '&lt;Root&gt;/Sum' */
+  branch_offset_rate210_Sum_1 = branch_offset_rate210_UnitDelay_1 +
+    branch_offset_rate210_Gain_1;
+
+</code>
+    <code file="branch_offset_rate210.c" line="624" type="init">  branch_offset_rate210_Sum_1 = 0.0;
+
+</code>
+    <performance best="178" type="task" typical="178" worst="178"/>
+    <performance best="103" type="init" typical="103" worst="103"/>
+    <forward block="branch_offset_rate210_UnitDelay1" type="data">
+      <var line="branch_offset_rate210_Sum_1" mode="input" name="branch_offset_rate210_Sum_1" port="branch_offset_rate210_UnitDelay1_1" type="real_T"/>
+    </forward>
+    <backward block="branch_offset_rate210_Gain" type="data">
+      <var line="branch_offset_rate210_Gain_1" mode="output" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Gain_1" type="real_T"/>
+    </backward>
+    <backward block="branch_offset_rate210_UnitDelay" type="data">
+      <var line="branch_offset_rate210_UnitDelay_1" mode="output" name="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_UnitDelay_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="UnitDelay" id="68" name="branch_offset_rate210_UnitDelay" rate="0.01">
+    <input line="branch_offset_rate210_Subsystem_1" port="branch_offset_rate210_UnitDelay_1">
+      <connect block="branch_offset_rate210_Subsystem" port="branch_offset_rate210_Subsystem_Out1"/>
+    </input>
+    <output line="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_UnitDelay_1" usename="true">
+      <connect block="branch_offset_rate210_Sum" port="branch_offset_rate210_Sum_1"/>
+    </output>
+    <var line="branch_offset_rate210_UnitDelay_1" mode="output" name="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_UnitDelay_1" type="real_T"/>
+    <var line="branch_offset_rate210_Subsystem_1" mode="input" name="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_UnitDelay_1" type="real_T"/>
+    <state name="UnitDelay_DSTATE" storage="branch_offset_rate210_DW" type="real_T"/>
+    <param name="UnitDelay_InitialCondition" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+      <initcode file="branch_offset_rate210_data.c" line="119" type="param">  1.0                                  /* Expression: 1
+                                        * Referenced by: '&lt;Root&gt;/UnitDelay'
+                                        */,
+</initcode>
+    </param>
+    <code file="branch_offset_rate210.c" line="508" type="task">/*&lt;&lt;&lt; S 17 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 17 none &gt;&gt;&gt;*/
+    /* UnitDelay: '&lt;Root&gt;/UnitDelay' */
+    branch_offset_rate210_UnitDelay_1 =
+      branch_offset_rate210_DW.UnitDelay_DSTATE;
+/*&lt;&lt;&lt; E 17 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 17 none &gt;&gt;&gt;*/
+</code>
+    <code file="branch_offset_rate210.c" line="523" type="update">/*&lt;&lt;&lt; S 19 none &lt;&lt;&lt;*/
+  if (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] == 0) {
+/*&gt;&gt;&gt; S 19 none &gt;&gt;&gt;*/
+    /* Update for UnitDelay: '&lt;Root&gt;/UnitDelay' */
+    branch_offset_rate210_DW.UnitDelay_DSTATE =
+      branch_offset_rate210_Subsystem_Gain10_1;
+/*&lt;&lt;&lt; E 19 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 19 none &gt;&gt;&gt;*/
+</code>
+    <code file="branch_offset_rate210.c" line="623" type="init">  branch_offset_rate210_UnitDelay_1 = 0.0;
+</code>
+    <code file="branch_offset_rate210.c" line="638" type="state">  /* InitializeConditions for UnitDelay: '&lt;Root&gt;/UnitDelay' */
+  branch_offset_rate210_DW.UnitDelay_DSTATE =
+    branch_offset_rate210_P.UnitDelay_InitialCondition;
+</code>
+    <performance best="177" type="task" typical="219.5" worst="262"/>
+    <performance best="177" type="update" typical="203.5" worst="230"/>
+    <performance best="92" type="init" typical="92" worst="92"/>
+    <forward block="branch_offset_rate210_Sum" type="data">
+      <var line="branch_offset_rate210_UnitDelay_1" mode="input" name="branch_offset_rate210_UnitDelay_1" port="branch_offset_rate210_Sum_1" type="real_T"/>
+    </forward>
+    <backward block="branch_offset_rate210_Subsystem_Gain10" type="data">
+      <var line="branch_offset_rate210_Subsystem_Gain10_1" mode="output" name="branch_offset_rate210_Subsystem_Gain10_1" port="branch_offset_rate210_Subsystem_Gain10_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="UnitDelay" id="69" name="branch_offset_rate210_UnitDelay1" rate="0.002">
+    <input line="branch_offset_rate210_Sum_1" port="branch_offset_rate210_UnitDelay1_1">
+      <connect block="branch_offset_rate210_Sum" port="branch_offset_rate210_Sum_1"/>
+    </input>
+    <output line="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_UnitDelay1_1" usename="true">
+      <connect block="branch_offset_rate210_Gain" port="branch_offset_rate210_Gain_1"/>
+    </output>
+    <var line="branch_offset_rate210_UnitDelay1_1" mode="output" name="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_UnitDelay1_1" type="real_T"/>
+    <var line="branch_offset_rate210_Sum_1" mode="input" name="branch_offset_rate210_Sum_1" port="branch_offset_rate210_UnitDelay1_1" type="real_T"/>
+    <state name="UnitDelay1_DSTATE" storage="branch_offset_rate210_DW" type="real_T"/>
+    <param name="UnitDelay1_InitialCondition" storage="branch_offset_rate210_P" type="real_T" value="2.0">
+      <initcode file="branch_offset_rate210_data.c" line="23" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;Root&gt;/UnitDelay1'
+                                        */
+</initcode>
+    </param>
+    <code file="branch_offset_rate210.c" line="188" type="task">  /* UnitDelay: '&lt;Root&gt;/UnitDelay1' */
+  branch_offset_rate210_UnitDelay1_1 =
+    branch_offset_rate210_DW.UnitDelay1_DSTATE;
+
+</code>
+    <code file="branch_offset_rate210.c" line="517" type="update">  /* Update for UnitDelay: '&lt;Root&gt;/UnitDelay1' */
+  branch_offset_rate210_DW.UnitDelay1_DSTATE = branch_offset_rate210_Sum_1;
+
+</code>
+    <code file="branch_offset_rate210.c" line="558" type="init">  branch_offset_rate210_UnitDelay1_1 = 0.0;
+</code>
+    <code file="branch_offset_rate210.c" line="630" type="state">  /* InitializeConditions for UnitDelay: '&lt;Root&gt;/UnitDelay1' */
+  branch_offset_rate210_DW.UnitDelay1_DSTATE =
+    branch_offset_rate210_P.UnitDelay1_InitialCondition;
+
+</code>
+    <performance best="124" type="task" typical="124" worst="124"/>
+    <performance best="92" type="update" typical="92" worst="92"/>
+    <performance best="92" type="init" typical="92" worst="92"/>
+    <forward block="branch_offset_rate210_Gain" type="data">
+      <var line="branch_offset_rate210_UnitDelay1_1" mode="input" name="branch_offset_rate210_UnitDelay1_1" port="branch_offset_rate210_Gain_1" type="real_T"/>
+    </forward>
+    <backward block="branch_offset_rate210_Sum" type="data">
+      <var line="branch_offset_rate210_Sum_1" mode="output" name="branch_offset_rate210_Sum_1" port="branch_offset_rate210_Sum_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="UnitDelay" id="70" name="branch_offset_rate210_UnitDelay2" rate="0.002">
+    <input line="branch_offset_rate210_Gain_1" port="branch_offset_rate210_UnitDelay2_1">
+      <connect block="branch_offset_rate210_Gain" port="branch_offset_rate210_Gain_1"/>
+    </input>
+    <output line="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_UnitDelay2_1" usename="true">
+      <connect block="branch_offset_rate210_Subsystem" port="branch_offset_rate210_Subsystem_In1"/>
+    </output>
+    <var line="branch_offset_rate210_UnitDelay2_1" mode="output" name="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_UnitDelay2_1" type="real_T"/>
+    <var line="branch_offset_rate210_Gain_1" mode="input" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_UnitDelay2_1" type="real_T"/>
+    <state name="UnitDelay2_DSTATE" storage="branch_offset_rate210_DW" type="real_T"/>
+    <param name="UnitDelay2_InitialCondition" storage="branch_offset_rate210_P" type="real_T" value="1.0">
+      <initcode file="branch_offset_rate210_data.c" line="29" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;Root&gt;/UnitDelay2'
+                                        */
+</initcode>
+    </param>
+    <code file="branch_offset_rate210.c" line="196" type="task">  /* UnitDelay: '&lt;Root&gt;/UnitDelay2' */
+  branch_offset_rate210_UnitDelay2_1 =
+    branch_offset_rate210_DW.UnitDelay2_DSTATE;
+</code>
+    <code file="branch_offset_rate210.c" line="520" type="update">  /* Update for UnitDelay: '&lt;Root&gt;/UnitDelay2' */
+  branch_offset_rate210_DW.UnitDelay2_DSTATE = branch_offset_rate210_Gain_1;
+</code>
+    <code file="branch_offset_rate210.c" line="560" type="init">  branch_offset_rate210_UnitDelay2_1 = 0.0;
+</code>
+    <code file="branch_offset_rate210.c" line="634" type="state">  /* InitializeConditions for UnitDelay: '&lt;Root&gt;/UnitDelay2' */
+  branch_offset_rate210_DW.UnitDelay2_DSTATE =
+    branch_offset_rate210_P.UnitDelay2_InitialCondition;
+
+</code>
+    <performance best="124" type="task" typical="124" worst="124"/>
+    <performance best="92" type="update" typical="92" worst="92"/>
+    <performance best="92" type="init" typical="92" worst="92"/>
+    <forward block="branch_offset_rate210_Subsystem_Sqrt1" type="data">
+      <var line="branch_offset_rate210_Subsystem_In1_1" mode="input" name="branch_offset_rate210_UnitDelay2_1" port="branch_offset_rate210_Subsystem_Sqrt1_1" type="real_T"/>
+    </forward>
+    <backward block="branch_offset_rate210_Gain" type="data">
+      <var line="branch_offset_rate210_Gain_1" mode="output" name="branch_offset_rate210_Gain_1" port="branch_offset_rate210_Gain_1" type="real_T"/>
+    </backward>
+  </block>
+  <code type="common-init">  rt_InitInfAndNaN(sizeof(real_T));
+</code>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_branch_offset_rate210_T {
+  const char_T * volatile errorStatus;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    struct {
+      uint8_T TID[6];
+    } TaskCounters;
+  } Timing;
+};
+</code>
+  <code type="rt-code">  rate_scheduler();
+</code>
+  <code type="rt-init">  /* initialize real-time model */
+  (void) memset((void *)branch_offset_rate210_M, 0,
+                sizeof(RT_MODEL_branch_offset_rate21_T));
+  /* initialize sample time offsets */
+  branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] = 4;/* Sample time: [0.01s, 0.002s] */
+  /* initialize sample time offsets */
+  branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] = 3;/* Sample time: [0.01s, 0.004s] */
+  /* initialize sample time offsets */
+  branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] = 2;/* Sample time: [0.01s, 0.006s] */
+  /* initialize sample time offsets */
+  branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] = 1;/* Sample time: [0.01s, 0.008s] */
+</code>
+  <object kind="rtm-extern" name="branch_offset_rate210_M" type="extern RT_MODEL_branch_offset_rate21_T * const"/>
+  <object kind="rtm-object" name="branch_offset_rate210_M_" type="RT_MODEL_branch_offset_rate21_T"/>
+  <object kind="rtm-pointer" name="branch_offset_rate210_M" type="RT_MODEL_branch_offset_rate21_T * const" value="&amp;branch_offset_rate210_M_"/>
+  <includes file="&lt;math.h>" from="branch_offset_rate210.h" index="0"/>
+  <includes file="&lt;string.h>" from="branch_offset_rate210.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="branch_offset_rate210.h" index="2"/>
+  <includes file="&quot;branch_offset_rate210_types.h&quot;" from="branch_offset_rate210.h" index="3"/>
+  <includes file="&quot;rt_nonfinite.h&quot;" from="branch_offset_rate210.h" index="4"/>
+  <includes file="&quot;rtGetInf.h&quot;" from="branch_offset_rate210.h" index="5"/>
+  <includes file="&quot;branch_offset_rate210.h&quot;" from="branch_offset_rate210.c" index="6" mark="true"/>
+  <includes file="&quot;branch_offset_rate210_private.h&quot;" from="branch_offset_rate210.c" index="7"/>
+  <function name="rate_scheduler" type="decl">
+    <code line="97" type="func">static void rate_scheduler(void);
+</code>
+  </function>
+  <function name="rate_scheduler" type="defn">
+    <code line="99" type="func">/*
+ *   This function updates active task flag for each subrate.
+ * The function is called at model base rate, hence the
+ * generated code self-manages all its subrates.
+ */
+static void rate_scheduler(void)
+{
+  /* Compute which subrates run during the next base time step.  Subrates
+   * are an integer multiple of the base rate counter.  Therefore, the subtask
+   * counter is reset when it reaches its limit (zero means run).
+   *
+   * Sample time offsets are handled by priming the counter with the
+   * appropriate non-zero value in the model's initialization function.
+   */
+  (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1])++;
+  if ((branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1]) &gt; 4) {/* Sample time: [0.01s, 0.0s] */
+    branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[1] = 0;
+  }
+
+  (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2])++;
+  if ((branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2]) &gt; 4) {/* Sample time: [0.01s, 0.002s] */
+    branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[2] = 0;
+  }
+
+  (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3])++;
+  if ((branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3]) &gt; 4) {/* Sample time: [0.01s, 0.004s] */
+    branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[3] = 0;
+  }
+
+  (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4])++;
+  if ((branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4]) &gt; 4) {/* Sample time: [0.01s, 0.006s] */
+    branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[4] = 0;
+  }
+
+  (branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5])++;
+  if ((branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5]) &gt; 4) {/* Sample time: [0.01s, 0.008s] */
+    branch_offset_rate210_M-&gt;Timing.TaskCounters.TID[5] = 0;
+  }
+}
+</code>
+  </function>
+  <function name="rt_powd_snf" type="defn">
+    <code line="139" type="func">real_T rt_powd_snf(real_T u0, real_T u1)
+{
+  real_T y;
+  real_T tmp;
+  real_T tmp_0;
+  if (rtIsNaN(u0) || rtIsNaN(u1)) {
+    y = (rtNaN);
+  } else {
+    tmp = fabs(u0);
+    tmp_0 = fabs(u1);
+    if (rtIsInf(u1)) {
+      if (tmp == 1.0) {
+        y = (rtNaN);
+      } else if (tmp &gt; 1.0) {
+        if (u1 &gt; 0.0) {
+          y = (rtInf);
+        } else {
+          y = 0.0;
+        }
+      } else if (u1 &gt; 0.0) {
+        y = 0.0;
+      } else {
+        y = (rtInf);
+      }
+    } else if (tmp_0 == 0.0) {
+      y = 1.0;
+    } else if (tmp_0 == 1.0) {
+      if (u1 &gt; 0.0) {
+        y = u0;
+      } else {
+        y = 1.0 / u0;
+      }
+    } else if (u1 == 2.0) {
+      y = u0 * u0;
+    } else if ((u1 == 0.5) &amp;&amp; (u0 &gt;= 0.0)) {
+      y = sqrt(u0);
+    } else if ((u0 &lt; 0.0) &amp;&amp; (u1 &gt; floor(u1))) {
+      y = (rtNaN);
+    } else {
+      y = pow(u0, u1);
+    }
+  }
+
+  return y;
+}
+</code>
+  </function>
+</sm:blocks>
