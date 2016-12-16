@@ -467,18 +467,24 @@ int periodic_deviation_for_multi_input(BLGraph graph,vector<vector<string> > ud_
   
   // 周期遅れ確認関数を呼び出し
   for(i = 0;i < (int)check_nodes.size();i++){
-  i = 8;
     cout << "check: " << check_nodes[i]->p_block->name() << endl; 
     tmp = counts_number_through_UnitDelay(graph,tmp_ud_list,check_nodes[i],0);
     delay_list[i] = tmp;
     main_ud_num_list.push_back(tmp);
-    if(tmp >= 0){
-      cout << "ok" << endl;
+    cout << "ok" << endl;
+  }
+  cout << check_nodes.size() << "------" << delay_list.size() << endl;
+  for(i = 0;i < (int)check_nodes.size();i++){
+    if(delay_list[i] != -1){
+      cout << i << ": " << check_nodes[i]->p_block->name() << "-----" << delay_list[i] << endl;
+    }else{
+      cout << "error: " << check_nodes[i]->p_block->name() << "-----10" << endl;
+      main_error_flag = 1;
     }
   }
   
   // main_ud_num_listの扱いがおかしいかな
-  main_error_flag = check_vector(main_ud_num_list);
+  //main_error_flag = check_vector(main_ud_num_list);
   if(main_error_flag == 1){
     return 1;
   }else{
@@ -492,20 +498,24 @@ int counts_number_through_UnitDelay(BLGraph graph,vector<string> ud_list,blnode_
 {
   int i;
   
-  blnode_T *current_node;
+  blnode_T *current_node; //確認されるノード
   bledge_T *edge;
   vector<int> ud_num_list;
   vector<int> arr;
 
   int tmp_num;
+  int next_ud_num; // 次の再帰呼出しに渡す遅延数
+  string tmp_str;
   
   int prev_flag = 0;
+  int exist_ud_flag = 0;
 
   // デバッグ用
-  cout << node->p_block->name() << endl;
+  //cout << node->p_block->name() << endl;
   edge = node->p_in_edge;
   //cout << node->p_block->name() << node->p_block->name() << endl;
   
+  next_ud_num = current_ud_num;
   
   while(edge != NULL){
     current_node = edge->p_s_node;
@@ -513,41 +523,48 @@ int counts_number_through_UnitDelay(BLGraph graph,vector<string> ud_list,blnode_
     if(current_node->p_block->blocktype() == "UnitDelay"){
       for(i = 0;i < (int)ud_list.size();i++){
 	if(current_node->p_block->name() == ud_list[i]){
-	  current_ud_num++;
+	  next_ud_num = current_ud_num + 1;
+	  exist_ud_flag = 1;
 	  break;
 	}
       }
     }
     
+    // 他の2入力のブロックに当たったら遅延数を再利用
     for(i = 0;i < (int)check_nodes.size();i++){
       if(current_node->p_block->name() == check_nodes[i]->p_block->name() && delay_list[i] != -1){
 	prev_flag = 1;
 	break;
       }
     }
-    if(prev_flag){
+    
+    if(prev_flag){ //既出ブロックに当たったら
       tmp_num = delay_list[i];
       ud_num_list.push_back(tmp_num);
-    }else{
-      //cout << node->p_block->name() <<endl;
-      tmp_num = counts_number_through_UnitDelay(graph,ud_list,current_node,current_ud_num);
+      prev_flag = 0;
+    }else if(current_node->p_block->blocktype() == "UnitDelay" && exist_ud_flag == 0){ //ud_listに無いUnitDelayを発見した場合
+      ud_num_list.push_back(next_ud_num);
+    }else{ //何回も繰り返される処理
+      tmp_num = counts_number_through_UnitDelay(graph,ud_list,current_node,next_ud_num);
       ud_num_list.push_back(tmp_num);
     }
+    //次ループに向けたエッジ更新
     edge = edge->p_in_edge;
   }
 
   // それぞれのエッジから辿れるUnitDelayの数が等しければその数を返す
-  //cout << node->p_block->name() << ud_num_list.size() << endl;
-
-  if(check_vector(ud_num_list)){
-    //cout << "counts... finish" << endl;
+  // デバッグ用の各ポートの遅延数を出力
+  if(check_vector(ud_num_list)){// 各入力の遅延数が同じの場合 
+    //以下デバッグ用コード
+    //cout << "counts... finish" << node->p_block->name() << endl;
     //for(i = 0;i < (int)ud_num_list.size();i++){
-      //cout << ud_num_list[i] << endl;
+    //  cout << ud_num_list[i] << endl;
     //}
     ud_num_list.swap(arr);
-    return current_ud_num;
-  }else{
-    //cout << "oh..." << endl;
+    return next_ud_num;
+  }else{  //遅延数が異なる場合の処理
+    //以下デバッグ用コード
+    //cout << "oh..." << node->p_block->name() << endl;
     //for(i = 0;i < (int)ud_num_list.size();i++){
       //cout << ud_num_list[i] << endl;
     //}
@@ -558,6 +575,7 @@ int counts_number_through_UnitDelay(BLGraph graph,vector<string> ud_list,blnode_
 
 // vector内の値が全て同じかそうでないかを返す関数
 // 全て同じなら1,一つでも異なれば0
+// vectorの中身が空なら1
 int check_vector(vector<int> list)
 {
   int i;
@@ -565,13 +583,11 @@ int check_vector(vector<int> list)
   
   int error_flag = 0;
   
-  //cout << "check vector yondayo" << endl;
-  
-  // listの中身がからの時0を返す
+  // listの中身がからの時1を返す
   if((int)list.size() > 0){
     tmp_num = list[0];
   }else{
-    return 0;
+    return 1;
   }
   
   for(i = 1;i < (int)list.size();i++){
