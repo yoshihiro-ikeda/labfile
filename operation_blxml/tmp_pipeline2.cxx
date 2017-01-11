@@ -235,12 +235,30 @@ int main(int argc, char *argv[])
     cout << "finish core0 reverse trace" << endl;
     //print_core_info(0,output_filename);
 
+    if(file_id > 1){//unitdelayリストの数が2つ以上のとき
+      for(i = 1;i < core_num - 1;i++){
+	//問題発生
+	confirm_cycle_lag(r_graph,i,ud_list[i],ud_list[i-1]);
+      }
+    }
     // コア1の逆卜レース
-    confirm_cycle_lag(r_graph,fin_core,outport_list,ud_list[0]);
+    confirm_cycle_lag(r_graph,fin_core,outport_list,ud_list[fin_core - 1]);
     for(i = 0; i < node_list_size;i++){
       for(j = 0;j < (int)ud_list[0].size();j++){
 	if(ud_list[0][j] == node_list[i]->p_block->name()){
 	  add_core_info(0,node_list[i],fin_core);
+	}
+      }
+    }
+    
+    //最後のコアのみ終端ブロックにコア情報を追加する必要あり
+    for(i = 0;i < node_list_size;i++){
+      node = node_list[i];
+      for(j = 0;j < (int)outport_list.size();j++){
+	if(node->p_block->name() == outport_list[j]){
+	  add_core_info(0,node,fin_core);
+	  //add_core_info(0,node,fin_core);
+	  //node_list[i]->p_block->peinfo("1");
 	}
       }
     }
@@ -335,7 +353,7 @@ void confirm_cycle_lag(BLGraph graph,int core,vector<string> sblk_list,vector<st
       node = r_node_list[j];
       if(node->p_block->name() == sblk_list[i]){
 	if(judge_core_info(node,-1)){	//コア割り当てされていなければコア割り当てを実行しtrace_graphを呼び出し
-	  add_core_info(0,node,core);
+	  //add_core_info(0,node,core);
 	  r_trace_graph(graph,core,eblk_list,node);//trace_graphを呼び順次コア割り当て情報を追加
 	}else{		//コア割り当てが行われていた場合それが始点であることはないはずなのでwarning
 	  if(node->p_in_edge == NULL){
@@ -385,7 +403,7 @@ void r_trace_graph(BLGraph graph,int core,vector<string> eblk_list,blnode_T *nod
 	if(judge_core_info(tmp_node,core) == 1){
 	  cout << "Core assignment has already terminated normally." << endl;
 	}else{
-	  //add_core_info(0,tmp_node,core);
+	  add_core_info(0,tmp_node,core);
 	  cout << "trace_graph: " << tmp_str << endl;
 	  cout << "peinfo " << tmp_node->p_block->peinfo() << endl;
 	  cout << "warning: already allocate this node to other core!" << endl;
