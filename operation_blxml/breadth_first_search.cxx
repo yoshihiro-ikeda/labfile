@@ -13,7 +13,7 @@
 
 #include <unistd.h>
 
-#define DIVIDE 5
+#define DIVIDE 2
 
 using namespace std;
 using namespace SimulinkModel;
@@ -45,9 +45,11 @@ class BLNPlus : public blnode_T{
 
 int getNodePerformance(blnode_T *node,int flag);
 int set_id_blgp(blnode_T *node,int num);
+int get_id_blgp(blnode_T* node);
 int setOffset(blnode_T *node,int num);
 int getEdgeNum(blnode_T *node);
 int getpeinfo(blnode_T *node);
+int setpeinfo(blnode_T *node,int num);
 int stoi_me(string str);
 string itos_me(int num);
 void print_node_info(vector<BLNPlus> nl);
@@ -118,39 +120,16 @@ int main(int argc, char *argv[])
   
   for(i = 0;i < node_list_size;i++){
     node = blgp[i].getblnode();
-    //test
     if(node->p_in_edge == NULL){
       cout << node->p_block->name() << endl;
-      //cout << node->p_out_edge->p_t_node->p_block->name() << endl;
     }
-    ////探索対象開始ノードをキューに追加
-    //if(node->p_block->blocktype() == "UnitDelay"){
-      //blqueue.push_back(blgp[i]);
-    //}
   }
-  
-  //この辺一体は後日実装
-  
-  ////rateを比較
-  //l_rate = blqueue[0].getnode()->p_block->rate();
-  //for(i = 1;i < (int)blqueue.size();i++){
-    //tmp_rate = blqueue[i].getblnode()->p_block->rate();
-    //if(l_rate < tmp_rate){
-      //l_rate = tmp_rate;
-    //}
-  //}
-  
-  ////長周期タスク内のノード以外キューから排除
-  //for(i = 0;i < (int)blqueue.size();i++){
-    //if(blqueue[i].getblnode()->p_block->rate() != l_rate){
-      //blqueue.erase(i);
-    //}
-  //}
   //探索開始ブロックを決定
   for(i = 0;i < node_list_size;i++){
-    cout << node_list[i]->p_block->name() << endl;
-    if(node_list[i]->p_block->name() == argv[2]){
-      cout << "yes" << endl;
+    //if(node_list[i]->p_block->name() == argv[2]){
+		if((node_list[i]->p_in_edge == NULL && node_list[i]->p_out_edge != NULL) || node_list[i]->p_block->blocktype() == "UnitDelay"){	
+      cout << "starnode:" << node_list[i]->p_block->name() << endl;
+      node_list[i]->p_block->peinfo("1");
       blqueue.push_back(node_list[i]);
     }
   }
@@ -174,38 +153,62 @@ int main(int argc, char *argv[])
   //うまく行ったら全てblgp上で行いたい(速そう)2017/02/05
   for(i = 0;i < (int)blqueue.size();i++){
     current_node = blqueue[i].getblnode();
+    //setpeinfo(current_node,1);
     wait_queue.push_back(current_node);
-    while(!wait_queue.empty()){
-      current_node = wait_queue[0];
-      wait_queue.erase(wait_queue.begin());
-      //デバッグ用
-      cout << current_node->p_block->name() << endl;
-      current_cost += getNodePerformance(current_node,1);
-      if(current_cost > target_cost){
-        current_id++;
-        target_cost += part_cost;
-      }
-      set_id_blgp(current_node,current_id);
-      outEdgeNum = getEdgeNum(current_node);
-      cout << outEdgeNum << endl;
-      out_edge = current_node->p_out_edge;
-      for(j = 0;j < outEdgeNum;j++){
-        next_node = out_edge->p_t_node;
-        if(getpeinfo(next_node) != 1 && next_node->p_block->name() != argv[3]){
-          next_node->p_block->peinfo("1");
-          wait_queue.push_back(next_node);
-        }
-        out_edge = out_edge->p_out_edge;
-      }
-      for(j = 0;j < (int)wait_queue.size();j++){
-        cout << wait_queue[i]->p_block->name() << endl;
-      }
-    }
-  }
+	}
+	while(!wait_queue.empty()){
+		//cout << "tekk" << endl;
+		//実行可能ノードを選出
+		for(j = 0;j < (int)wait_queue.size();j++){
+			current_node = wait_queue[j];
+			//cout << wait_queue[j]->p_block->name() << endl;
+			bledge_T* inEdge = current_node->p_in_edge;
+			int alreadyCheckFlag = 1;
+			while(inEdge != NULL){
+				blnode_T* search_node = inEdge->p_s_node;
+				if(get_id_blgp(search_node) == -1){
+					cout << search_node->p_block->name() << endl;
+					alreadyCheckFlag = 0;
+				}
+				inEdge = inEdge->p_in_edge;
+			}
+			if(alreadyCheckFlag == 1 || wait_queue[j]->p_block->blocktype() == "UnitDelay"){
+				cout << "wait:" << j << ":" << wait_queue[j]->p_block->name() << endl;
+				wait_queue.erase(wait_queue.begin() + j);
+				break;
+			}
+		}
+			
+		//デバッグ用
+		//cout << current_node->p_block->name() << endl;
+		current_cost += getNodePerformance(current_node,1);
+		if(current_cost > target_cost){
+			current_id++;
+			target_cost += part_cost;
+		}
+		set_id_blgp(current_node,current_id);
+		outEdgeNum = getEdgeNum(current_node);
+		cout << outEdgeNum << endl;
+		out_edge = current_node->p_out_edge;
+		for(j = 0;j < outEdgeNum;j++){
+			next_node = out_edge->p_t_node;
+			//if(getpeinfo(next_node) != 1 && next_node->p_block->name() != argv[3]){
+			if(getpeinfo(next_node) != 1 && next_node->p_block->blocktype() != "UnitDelay"){
+				next_node->p_block->peinfo("1");
+				wait_queue.push_back(next_node);
+			}
+			out_edge = out_edge->p_out_edge;
+		}
+		for(j = 0;j < (int)wait_queue.size();j++){
+			//cout << wait_queue[j]->p_block->name() << endl;
+		}
+	}
+  
   
   cout << "end" << endl;
   
   print_node_info(blgp);
+  
   
   cout << "-----result-----" << endl;
   for(i = 0;i < blgp_size;i++){
@@ -213,6 +216,7 @@ int main(int argc, char *argv[])
     idcounter[blgp[i].getid1()]++;
     dividepf[blgp[i].getid1()] += getNodePerformance(current_node,1);
   }
+  
   for(i = 0;i < DIVIDE ;i++){
     printf("ID %d : %d\t%d\t\n",i,idcounter[i],dividepf[i]);
   }
@@ -246,10 +250,16 @@ int getNodePerformance(blnode_T *node,int flag)
   ps = node->p_block->performance();
   
   if(ps.begin() == ps.end()){//performanceタグがなかった場合
-    if(node->p_block->blocktype() == "Inport" || node->p_block->blocktype() == "Outport"){
+    if(node->p_block->blocktype() == "Inport" 
+    || node->p_block->blocktype() == "Outport"
+    || node->p_block->blocktype() == "Mux"
+    || node->p_block->blocktype() == "Demux"
+    || node->p_block->blocktype() == "Goto"
+    || node->p_block->blocktype() == "From"
+    ){
       cost = 0;;
     }else{
-      cost = 0;
+      cost = 10;
     }
   }else{//performanceタグがあった場合
     if(node->p_block->blocktype() == "UnitDelay"){
@@ -304,6 +314,24 @@ int set_id_blgp(blnode_T *node,int num)
   return 0;//最後まで見つけられなければ0を返す
 }
 
+int get_id_blgp(blnode_T* node)
+{
+	int i;
+  blnode_T* tmp_node;
+  
+  string blk_name = node->p_block->name();
+  
+	for(i = 0;i < blgp_size;i++){
+    tmp_node = blgp[i].getblnode();
+    if(tmp_node->p_block->name() == blk_name){
+      //blgp[i]->p_block->peinfo(str_tmp);
+      int num = blgp[i].getid1();
+      return num;//途中で見つければ成功として1を返す
+    }
+  }
+  return -1;
+}
+
 // ノードを入力としてエッジの本数を返す
 int getEdgeNum(blnode_T *node)
 {
@@ -335,6 +363,25 @@ int getpeinfo(blnode_T *node)
   return i_tmp;
 }
 
+//int setpeinfo(blnode_T *node,int num)
+//{
+  //string str_tmp;
+  //string blk_name;
+  //int i;
+  
+  //str_tmp = itos_me(num);
+  //blk_name = node->p_block->name();
+  
+  //for(i = 0;i < node_list_size;i++){
+    //if(node_list[i]->p_block->name() == blk_name){
+      //node_list[i]->p_block->peinfo(str_tmp);
+      //return 1;//途中で見つければ成功として1を返す
+    //}
+  //}
+  
+  //return 0;//最後まで見つけられなければ0を返す
+//}
+
 //string型をint型にして返す
 int stoi_me(string str)
 {
@@ -355,8 +402,13 @@ void print_node_info(vector<BLNPlus> nl)
 {
   int i;
   blnode_T* node;
+  
+  //ここにファイル出力機構を追加
+  char filename[64] = "offset_info.csv";
+  std::ofstream writing_file(filename);
+  
   for(i = 0;i < (int)nl.size();i++){
     node = nl[i].getblnode();
-    cout << node->p_block->name() << ",," << nl[i].getid1() << endl;
+    writing_file << node->p_block->name() << ",," << nl[i].getid1() << endl;
   }
 }
