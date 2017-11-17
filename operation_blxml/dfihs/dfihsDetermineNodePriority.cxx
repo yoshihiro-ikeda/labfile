@@ -189,7 +189,9 @@ int getNodePerformance(blnode_T *node,int flag)
   ps = node->p_block->performance();
   
   if(ps.begin() == ps.end()){//performanceタグがなかった場合
-    if(node->p_block->blocktype() == "Inport" || node->p_block->blocktype() == "Outport"){
+    if(node->p_block->blocktype() == "Inport"
+    	|| node->p_block->blocktype() == "Outport"
+    	|| node->p_block->blocktype() == "ToWorkspace"){
       cost = 0;;
     }else{
       cost = 100;

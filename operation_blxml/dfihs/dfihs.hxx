@@ -14,6 +14,10 @@
 #include <xercesc/dom/DOM.hpp>
 #include <unistd.h>
 
+#include <time.h>
+#include <sys/time.h>
+
+
 #define CORE_NUM 2
 #define NOP -2
 #define FTIME 100000
@@ -55,7 +59,7 @@ class BLNPlus : public blnode_T{
     int costFromNode;
     int edgesFromNode;
     int nodePriorityNum;
-    blnode_T* node; 
+    blnode_T* node;
 };
 
 //最長パス保存用クラス
@@ -80,9 +84,9 @@ private:
 typedef struct CoreInfo_t{
 	int executeTaskNum;
 	int finishTime;
-	bool operator<(const CoreInfo_t&right)const{
-		return finishTime == right.finishTime ? executeTaskNum < right.executeTaskNum : finishTime < right.finishTime;
-	}
+//	bool operator>(const CoreInfo_t&right)const{
+//		return finishTime == right.finishTime ? executeTaskNum > right.executeTaskNum : finishTime > right.finishTime;
+//	}
 }coreinfo_t;
 
 //DF/IHS法の探索木ノード
@@ -117,7 +121,7 @@ class DFIHSTree
 
 		void addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> coreInfo);
 		vector<int> updateReadyTaskTable(dfihsnode_t* dfihsNode, int finishTaskNum);
-
+		//vector<dfihsnode_t*> calcResult(dfihsnode_t* leafNode);
 };
 
 //dfihsDetermineNodePriorityで使用
@@ -139,6 +143,10 @@ BLGraph deleteBus(BLGraph graph);
 BLGraph deleteEdgeBetNode(BLGraph graph,blnode_T* node,blnode_T* next_node);
 BLGraph reconnectNodes(BLGraph graph,blnode_T* node,blnode_T* next_node);
 BLGraph deleteBusNode(BLGraph graph,vector<blnode_T*> node_list);
+BLGraph deleteNormalSubsystemBlock(BLGraph graph);
+BLGraph deleteIoportBlockInSubsystem(BLGraph graph);
+BLGraph deleteConstantBlock(BLGraph graph);
+
 
 //dfihsCreateTreeで使用
 //void addDfihsNodeToTree(DFIHSTree dfihsTree, dfihsnode_t* dfihsNode,vector<coreinfo_t*> coreInfo);
@@ -146,11 +154,20 @@ int factorialMethod(int k);
 int calcCombination(int n,int k);
 vector<int> dictionaryOrder(vector<int> s_vec,int want_num);
 //vector<int> updateReadyTaskTable(DFIHSTree dfihsTree,dfihsnode_t* dfihsNode, int finishTaskNum);
-int compCoreInfo(coreinfo_t *core1,coreinfo_t *core2);
+bool compCoreInfo(const coreinfo_t *core1,const coreinfo_t *core2);
+void printCoreInfo(vector<coreinfo_t*> coreList);
+vector<int> createSelectedPointer(vector<int> s_vec, int sp_size, int want_num);
+
+//dfihsSetCoreinfoで使用
+vector<BLNPlus> setCoreinfoNum(vector<BLNPlus> blnp,vector<dfihsnode_t*> dfnodeList);
+
+//dfihsForMultirateで使用
+vector<string> split(const string& input, char delimiter);
+BLGraph extractBlocksFromBLGraph(BLGraph graph, int divid, double rate_l, double rate_s);
 
 //dfihs.cxxで定義
 vector<dfihsnode_t*> calcResult(dfihsnode_t* leafNode);
 void printDfihsNode(dfihsnode_t* dfihsNode);
+void print_usage();
 extern dfihsnode_t* interimSolution;
 extern double interimSolutionTime;
-

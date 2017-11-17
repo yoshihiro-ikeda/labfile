@@ -14,6 +14,16 @@
 // 一つでもコアが空いたらそこにタスクを埋めるかnopを入れるかのノードを生成
 void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> coreInfo)
 {
+	
+	static int id = 0;
+	id++;
+	cout << "id:" << id << endl;
+	cout << "------------------------------------------------------------------------" << endl;
+	//if(id > 2000)
+	//	return;
+	//if(dfihsNode->currentTime > 2800)
+		//return;
+
 	vector<BLNPlus> blp_list = blnode_priority_list;
 	//空きコア数とreadyTaskTableの個数に応じてループ回数が変化
 	//空いているコア数を計測
@@ -25,16 +35,26 @@ void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> co
 	}
 	int createNodeNum = calcCombination((int)(dfihsNode->readyTaskTable.size()),idleCoreNum);
 	//ここでcreatenodeNumが0になってしまっている
-	cout << "checkpoint" << endl;
+	//cout << "checkpoint" << endl;
 	if(dfihsNode->readyTaskTable.size() < CORE_NUM){
 		createNodeNum = 1;
-		//for(int i = (int)dfihsNode->readyTaskTable.size();i <= CORE_NUM;i++)
-			//dfihsNode->readyTaskTable.push_back(NOP);
 	}
 
-
-	//printDfihsNode(dfihsNode);
+	printCoreInfo(coreInfo);
+	printDfihsNode(dfihsNode);
+	cout << "createNodeNum:" << createNodeNum << endl;
 	//sleep(1);
+
+	vector<int> tmpPAlreadyTaskTable;
+	tmpPAlreadyTaskTable.resize(dfihsNode->alreadyFinishTaskTable.size());
+	copy(dfihsNode->alreadyFinishTaskTable.begin(),dfihsNode->alreadyFinishTaskTable.end(),tmpPAlreadyTaskTable.begin());
+
+	dfihsnode_t *tmpDfihsNode;
+	tmpDfihsNode = new dfihsnode_t;
+	memcpy(tmpDfihsNode,dfihsNode,sizeof(dfihsnode_t));
+	//cout << "parent" << tmpDfihsNode->degree << endl;
+	const double tmpFinishTime = (tmpDfihsNode->currentTime);
+	//cout << "-----------------------------------------tmp finish-----------------------------------------------" << tmpFinishTime << endl;
 
 	for(int i = 0;i < createNodeNum;i++){
 		//次のノードを定義
@@ -44,6 +64,18 @@ void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> co
 		nextDfihsNode->width = dfihsNode->width;
 		nextDfihsNode->width.push_back(i);
 		
+		//親ノード情報を追加
+		//dfihsNode->currentTime = tmpFinishTime;
+		nextDfihsNode->parentNode = new dfihsnode_t;
+//		memcpy(nextDfihsNode->parentNode,dfihsNode,sizeof(dfihsnode_t));
+//		tmpDfihsNode->alreadyFinishTaskTable.resize(tmpPAlreadyTaskTable.size());
+//		copy(tmpPAlreadyTaskTable.begin(),tmpPAlreadyTaskTable.end(),tmpDfihsNode->alreadyFinishTaskTable.begin());
+//		memcpy(nextDfihsNode->parentNode,tmpDfihsNode,sizeof(dfihsnode_t));
+//		memcpy(nextDfihsNode->parentNode,dfihsNode,sizeof(dfihsnode_t));
+
+		nextDfihsNode->parentNode = dfihsNode;
+		nextDfihsNode->parentNode->currentTime = tmpFinishTime;
+		//cout << nextDfihsNode->parentNode->currentTime << endl;
 		//selectedPointerを生成
 		vector<int> sourceSelectedPointer;
 		for(int j = 1;j <= (int)dfihsNode->readyTaskTable.size();j++){
@@ -51,113 +83,178 @@ void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> co
 		}
 		
 		
-		nextDfihsNode->selectedTaskPointer = dictionaryOrder(sourceSelectedPointer,i+1);
+		//nextDfihsNode->selectedTaskPointer = dictionaryOrder(sourceSelectedPointer,i+1);
+		
 
-		//readyTaskTableからexecuteTaskを決定
 		vector<int> tmpExecuteTask;
 		tmpExecuteTask.reserve(CORE_NUM);
-
-		int count = 0;//selected pointer用
-		nextDfihsNode->alreadyFinishTaskTable = dfihsNode->alreadyFinishTaskTable;
+		int spcounter = 0;
+		//使用しているコア情報を追加
 		for(int j = 0;j < CORE_NUM;j++){
-			if(coreInfo[j]->executeTaskNum == -1){
-				int tmpExecuteTaskNum = dfihsNode->readyTaskTable[nextDfihsNode->selectedTaskPointer[count] - 1];
-				int tmpFinishTime = 100;
-				//この行入れるとセグメントエラーする
-				//if(tmpExecuteTaskNum != NOP)
-				tmpFinishTime = dfihsNode->currentTime + getNodePerformance(blp_list[tmpExecuteTaskNum].getblnode(),1);
-				//cout << "nani:" << tmpFinishTime << endl;
-				coreinfo_t *tmpCoreInfo;
-				tmpCoreInfo = new coreinfo_t;
-				tmpCoreInfo->executeTaskNum = tmpExecuteTaskNum;
-				tmpCoreInfo->finishTime = tmpFinishTime;
-				nextDfihsNode->coreInfo.push_back(tmpCoreInfo);
-				nextDfihsNode->alreadyFinishTaskTable.push_back(tmpExecuteTaskNum);
-				nextDfihsNode->executeTaskTable.push_back(tmpExecuteTaskNum);
-				cout << tmpExecuteTaskNum << endl;
-				tmpExecuteTask.push_back(tmpExecuteTaskNum);
-				count++;
-				//ループを終了する場合
-				if((int)dfihsNode->readyTaskTable.size() == count){
-					cout << "----loop owari----" << endl;
-					for(int k = j+1;k < CORE_NUM;k++){
-						coreinfo_t *tmpCoreInfo;
-						tmpCoreInfo = new coreinfo_t;
-						tmpCoreInfo->executeTaskNum = -1;
-						tmpCoreInfo->finishTime = FTIME;
-						nextDfihsNode->coreInfo.push_back(tmpCoreInfo);
-					}
-					//printDfihsNode(nextDfihsNode);
-					break;
-				}
-//				if((int)nextDfihsNode->alreadyFinishTaskTable.size() == 9){
-//					cout << "-----------------------------------return-----------------------------------" << endl;
-//					return;
-//				}
-
+			if(coreInfo[j]->executeTaskNum != -1){
+				nextDfihsNode->coreInfo.push_back(coreInfo[j]);
+				tmpExecuteTask.push_back(coreInfo[j]->executeTaskNum);
+				//cout << "korejikkousareteiru" << endl;
+			}else{
+				spcounter++;
 			}
 		}
+		cout << "spcounter is " << spcounter << endl;
+		nextDfihsNode->selectedTaskPointer = createSelectedPointer(sourceSelectedPointer,spcounter,i+1);
+
+		//readyTaskTableからexecuteTaskを決定
+
+		//tmpExecuteTask = dfihsNode->executeTaskTable;
+		int count = 0;//selected pointer用
+		nextDfihsNode->alreadyFinishTaskTable.resize(tmpPAlreadyTaskTable.size());
+		copy(tmpPAlreadyTaskTable.begin(),tmpPAlreadyTaskTable.end(),nextDfihsNode->alreadyFinishTaskTable.begin());
+		dfihsNode->alreadyFinishTaskTable.resize(tmpPAlreadyTaskTable.size());
+		copy(tmpPAlreadyTaskTable.begin(),tmpPAlreadyTaskTable.end(),dfihsNode->alreadyFinishTaskTable.begin());
+		if((int)dfihsNode->readyTaskTable.size() != 0){//実行タスクアリでreadyTaskTableが空の時時間を経過させる必要がある
+			for(int j = 0;j < CORE_NUM;j++){
+				if(coreInfo[j]->executeTaskNum == -1){
+					int tmpExecuteTaskNum = dfihsNode->readyTaskTable[nextDfihsNode->selectedTaskPointer[count] - 1];
+					cout << "tmpnum:" <<tmpExecuteTaskNum << endl;
+					int tmpFinishTime = 100;
+					tmpFinishTime = dfihsNode->currentTime + getNodePerformance(blp_list[tmpExecuteTaskNum].getblnode(),1);
+					coreinfo_t *tmpCoreInfo;
+					tmpCoreInfo = new coreinfo_t;
+					tmpCoreInfo->executeTaskNum = tmpExecuteTaskNum;
+					tmpCoreInfo->finishTime = tmpFinishTime;
+					nextDfihsNode->coreInfo.push_back(tmpCoreInfo);
+					//nextDfihsNode->alreadyFinishTaskTable.push_back(tmpExecuteTaskNum);
+					//nextDfihsNode->executeTaskTable.push_back(tmpExecuteTaskNum);
+					cout << tmpExecuteTaskNum << endl;
+					tmpExecuteTask.push_back(tmpExecuteTaskNum);
+					count++;
+					//ループを終了する場合
+					if((int)dfihsNode->readyTaskTable.size() == count){
+						cout << "----loop owari----" << endl;
+						if(count != idleCoreNum){
+							for(int k = count;k < CORE_NUM;k++){
+								coreinfo_t *tmpCoreInfo;
+								tmpCoreInfo = new coreinfo_t;
+								tmpCoreInfo->executeTaskNum = -1;
+								tmpCoreInfo->finishTime = FTIME;
+								nextDfihsNode->coreInfo.push_back(tmpCoreInfo);
+							}
+						}
+						goto L4;
+					}
+				}
+			}
+		}else{
+			for(int j = (int)nextDfihsNode->coreInfo.size();j < CORE_NUM;j++){
+				coreinfo_t *tmpCoreInfo;
+				tmpCoreInfo = new coreinfo_t;
+				tmpCoreInfo->executeTaskNum = -1;
+				tmpCoreInfo->finishTime = FTIME;
+				nextDfihsNode->coreInfo.push_back(tmpCoreInfo);
+			}
+		}
+		L4:
 		//}
 		//readyTaskTableを更新
-		//dfihsNode->alreadyFinishTaskTable.push_back(tmpExecuteTask[0]);
-		nextDfihsNode->readyTaskTable = updateReadyTaskTable(dfihsNode,tmpExecuteTask[0]);
-		for(int j = 1;j < (int)tmpExecuteTask.size();j++){
-			//dfihsNode->alreadyFinishTaskTable.push_back(tmpExecuteTask[j]);
-			nextDfihsNode->readyTaskTable = updateReadyTaskTable(nextDfihsNode,tmpExecuteTask[j]);
-		}
-		//sort(nextDfihsNode->readyTaskTable.begin(),nextDfihsNode->readyTaskTable.end());
-		for(int j = 0;j < (int)tmpExecuteTask.size();j++){
-			vector<int>::iterator i = find(nextDfihsNode->readyTaskTable.begin(),nextDfihsNode->readyTaskTable.end(),tmpExecuteTask[j]);
-			if(i != nextDfihsNode->readyTaskTable.end())
-				i = nextDfihsNode->readyTaskTable.erase(i);
-		}
-		tmpExecuteTask.clear();
-		//親ノード情報を追加
-		nextDfihsNode->parentNode = dfihsNode;
+
 		//各必要情報を追加したnextDfihsNodeをdfihsTreeに追加
 		//再帰呼出し（readyTaskTableが空でなかったら）
 		//コアごとの終了タイミング
 		//この再帰関数の引数に空いているコア数じゃなくてcoreInfo渡せば解決するかなー
 		//dfihs法的にはコアが空いた時点で次の処理を行っていくはず
 		vector<coreinfo_t*> idleCoreInNextStep; 
-		if((int)nextDfihsNode->readyTaskTable.size() != 0){
-			//coreInfoを早く終わる順にソート
-			cout << "before:" << endl;
-			for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++)
-				cout << nextDfihsNode->coreInfo[j]->executeTaskNum << endl;
-			sort(nextDfihsNode->coreInfo.begin(),nextDfihsNode->coreInfo.end());
-			//for(int j = nextDfihsNode->coreInfo.begin();j < nextDfihsNode->coreInfo.end();j++)
-			cout << "after:" << endl;
-			for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++)
-				cout << nextDfihsNode->coreInfo[j]->executeTaskNum << endl;
-			for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++){
-				idleCoreInNextStep.clear();
-				if(nextDfihsNode->coreInfo[j]->finishTime == FTIME)
-					continue;
-				int tmpCallTime = nextDfihsNode->coreInfo[j]->finishTime;
-				//２コア限定の飛ばし方
-				if(j > 0 && tmpCallTime == nextDfihsNode->coreInfo[0]->finishTime)
-					continue;
-				for(int k = 0;k < (int)nextDfihsNode->coreInfo.size();k++){
-					if(tmpCallTime >= nextDfihsNode->coreInfo[k]->finishTime && tmpCallTime != FTIME){
-						coreinfo_t *tmpCoreInfo;
-						tmpCoreInfo = new coreinfo_t;
-						tmpCoreInfo->executeTaskNum = -1;
-						tmpCoreInfo->finishTime = FTIME;
-						idleCoreInNextStep.push_back(tmpCoreInfo);
-					}else{
-						cout << "kottikiteru" << endl;
-						idleCoreInNextStep.push_back(nextDfihsNode->coreInfo[k]);
-					}
+		//coreInfoを早く終わる順にソート
+		//cout << "before:" << endl;
+		//for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++)
+			//cout << nextDfihsNode->coreInfo[j]->executeTaskNum << endl;
+		sort(nextDfihsNode->coreInfo.begin(),nextDfihsNode->coreInfo.end(),compCoreInfo);
+		//cout << "after:" << endl;
+		//for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++)
+			//cout << nextDfihsNode->coreInfo[j]->executeTaskNum << endl;
 
+		//次ループのために各種テーブルを退避
+		vector<int> tmpAlreadyTaskTable;
+		tmpAlreadyTaskTable.resize(nextDfihsNode->alreadyFinishTaskTable.size());
+		copy(nextDfihsNode->alreadyFinishTaskTable.begin(),nextDfihsNode->alreadyFinishTaskTable.end(),tmpAlreadyTaskTable.begin());
+		vector<int> tmpReadyTaskTable;
+		tmpReadyTaskTable.resize(nextDfihsNode->readyTaskTable.size());
+		copy(nextDfihsNode->readyTaskTable.begin(),nextDfihsNode->readyTaskTable.end(),tmpReadyTaskTable.begin());
+//		nextDfihsNode->executeTaskTable.resize(tmpExecuteTaskTable.size());
+//		copy(tmpExecuteTaskTable.begin(),tmpExecuteTaskTable.end(),nextDfihsNode->executeTaskTable.begin());
+
+		//再帰呼出しループ
+		for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++){
+			idleCoreInNextStep.clear();
+			idleCoreInNextStep.reserve(CORE_NUM);
+			if(nextDfihsNode->coreInfo[j]->finishTime == FTIME)
+				continue;
+			int tmpCallTime = nextDfihsNode->coreInfo[j]->finishTime;
+			if(j > 0){
+				if(tmpCallTime == nextDfihsNode->coreInfo[j-1]->finishTime){
+					continue;
 				}
-				//次ノード呼び出し時の時間情報をnextDfihsNodeに追加
-				nextDfihsNode->currentTime = tmpCallTime;
-				cout << "currentTime:" << tmpCallTime << endl;
-				printDfihsNode(nextDfihsNode);
-				addDfihsNodeToTree(nextDfihsNode,idleCoreInNextStep);
 			}
-		}else{
+			vector<int>::iterator eitr = find(nextDfihsNode->executeTaskTable.begin(),nextDfihsNode->executeTaskTable.end(),nextDfihsNode->coreInfo[j]->executeTaskNum);
+			if(eitr != nextDfihsNode->executeTaskTable.end())
+				eitr = nextDfihsNode->executeTaskTable.erase(eitr);
+
+			//executeTasktableのクリア
+			nextDfihsNode->executeTaskTable.clear();
+
+			//あるコアの時間にした時に終わっていないタスクをそのまま残留させる
+			for(int k = 0;k < (int)nextDfihsNode->coreInfo.size();k++){
+				nextDfihsNode->executeTaskTable.push_back(nextDfihsNode->coreInfo[k]->executeTaskNum);
+				if(tmpCallTime >= nextDfihsNode->coreInfo[k]->finishTime && tmpCallTime != FTIME){
+					//cout << "task kousin:" << nextDfihsNode->coreInfo[k]->executeTaskNum << endl;
+					coreinfo_t *tmpCoreInfo;
+					tmpCoreInfo = new coreinfo_t;
+					tmpCoreInfo->executeTaskNum = -1;
+					tmpCoreInfo->finishTime = FTIME;
+					idleCoreInNextStep.push_back(tmpCoreInfo);
+					nextDfihsNode->alreadyFinishTaskTable.push_back(nextDfihsNode->coreInfo[k]->executeTaskNum);
+					nextDfihsNode->readyTaskTable = updateReadyTaskTable(dfihsNode,nextDfihsNode->coreInfo[k]->executeTaskNum);
+
+					vector<int>::iterator ritr = find(nextDfihsNode->readyTaskTable.begin(),nextDfihsNode->readyTaskTable.end(),nextDfihsNode->coreInfo[k]->executeTaskNum);
+					if(ritr != nextDfihsNode->readyTaskTable.end())
+						ritr = nextDfihsNode->readyTaskTable.erase(ritr);
+	//				for(int l = 0;l < (int)nextDfihsNode->readyTaskTable.size();l++)
+						//cout << nextDfihsNode->readyTaskTable[l] << endl;
+//					vector<int>::iterator eeitr = find(nextDfihsNode->executeTaskTable.begin(),nextDfihsNode->executeTaskTable.end(),nextDfihsNode->coreInfo[k]->executeTaskNum);
+//					if(eeitr != nextDfihsNode->executeTaskTable.end())
+//						eeitr = nextDfihsNode->executeTaskTable.erase(eeitr);
+//						}
+				}else{
+					//残留タスクをalreadyfinishtasktableから削除
+					vector<int>::iterator aitr = find(nextDfihsNode->alreadyFinishTaskTable.begin(),nextDfihsNode->alreadyFinishTaskTable.end(),nextDfihsNode->coreInfo[k]->executeTaskNum);
+					if(aitr != nextDfihsNode->alreadyFinishTaskTable.end())
+						aitr = nextDfihsNode->alreadyFinishTaskTable.erase(aitr);
+					vector<int>::iterator ritr = find(nextDfihsNode->readyTaskTable.begin(),nextDfihsNode->readyTaskTable.end(),nextDfihsNode->coreInfo[k]->executeTaskNum);
+					if(ritr != nextDfihsNode->readyTaskTable.end())
+						ritr = nextDfihsNode->readyTaskTable.erase(ritr);
+					coreinfo_t *tmpCoreInfo;
+					tmpCoreInfo = new coreinfo_t;
+					tmpCoreInfo->executeTaskNum = nextDfihsNode->coreInfo[k]->executeTaskNum;
+					tmpCoreInfo->finishTime = nextDfihsNode->coreInfo[k]->finishTime;
+					idleCoreInNextStep.push_back(tmpCoreInfo);
+				}
+				cout << "nodesize:" << (int)nextDfihsNode->alreadyFinishTaskTable.size() << endl;
+				printCoreInfo(nextDfihsNode->coreInfo);
+				//コアの終了タイミングが同じ場合（暫定的な処置）
+			}
+			//次ノード呼び出し時の時間情報をnextDfihsNodeに追加
+			nextDfihsNode->currentTime = tmpCallTime;
+			//cout << "currentTime:" << tmpCallTime << endl;
+			nextDfihsNode->parentNode->currentTime = tmpFinishTime;
+			//printDfihsNode(nextDfihsNode);
+			//printCoreInfo(idleCoreInNextStep);
+			if((int)nextDfihsNode->alreadyFinishTaskTable.size() != (int)blnode_priority_list.size()){
+				cout << nextDfihsNode->parentNode->currentTime << endl;
+				addDfihsNodeToTree(nextDfihsNode,idleCoreInNextStep);
+				nextDfihsNode->currentTime = tmpFinishTime;
+				nextDfihsNode->alreadyFinishTaskTable.resize(tmpAlreadyTaskTable.size());
+				copy(tmpAlreadyTaskTable.begin(),tmpAlreadyTaskTable.end(),nextDfihsNode->alreadyFinishTaskTable.begin());
+			}
+		}//end of for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++)
+		if((int)nextDfihsNode->readyTaskTable.size() == 0 && id < 2000){
 			//最後の実行時間の設定
 			int finishTime = 0;
 			for(int j = 0;j < (int)nextDfihsNode->coreInfo.size();j++){
@@ -167,13 +264,15 @@ void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> co
 					finishTime = nextDfihsNode->coreInfo[j]->finishTime;
 				}
 			}
+			if(finishTime == 0 && (int)nextDfihsNode->alreadyFinishTaskTable.size() != (int)blp_list.size())//暫定的な処置(2017/10/16)
+				//finishTime = FTIME;
 			nextDfihsNode->currentTime = finishTime;
 			cout << "-------------------this node is leaf-------------------" << endl;
 			cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 			printDfihsNode(nextDfihsNode);
 			cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 			if(interimSolutionTime > nextDfihsNode->currentTime){
-				cout << "kokookitenaikana" << endl;
+				//cout << "kokookitenaikana" << endl;
 				interimSolution = nextDfihsNode;
 				interimSolutionTime = nextDfihsNode->currentTime;
 			}
@@ -182,6 +281,8 @@ void DFIHSTree::addDfihsNodeToTree(dfihsnode_t* dfihsNode,vector<coreinfo_t*> co
 			//DFIHSTree::calcResult(nextDfihsNode);
 			//exit(1);
 		}
+		tmpExecuteTask.clear();
+
 	}//End for(int i = 0;i < createNodeNum;i++)
 }
 
@@ -200,10 +301,36 @@ vector<int> DFIHSTree::updateReadyTaskTable(dfihsnode_t* dfihsNode, int finishTa
 	vector<int> readyTaskTable = dfihsNode->readyTaskTable;
 	vector<int> alreadyFinishTaskTable = dfihsNode->alreadyFinishTaskTable;
 
+
+	
+	//UnitDelayの場合、後続のブロック追加をキャンセル
+	int unitdelayFlag = 0;
+	blnode_T* beforenode;
+	for(int i = 0;i < (int)blp_list.size();i++){
+		blnode_T* node = blp_list[i].getblnode();
+		int taskNum = blp_list[i].getPriorityNum();
+		if(taskNum == finishTaskNum){
+			if(node->p_block->blocktype() == "UnitDelay"){
+				vector<int>::iterator checkFinishTaskNum = find(dfihsNode->alreadyFinishTaskTable.begin(),dfihsNode->alreadyFinishTaskTable.end(),taskNum);
+				if(checkFinishTaskNum != dfihsNode->alreadyFinishTaskTable.end()){
+					unitdelayFlag = 1;
+					beforenode = node->p_in_edge->p_s_node;
+				}
+			}
+		}
+	}
+	
+	if(unitdelayFlag == 1)
+		goto L1;
+		
+	dfihsNode->alreadyFinishTaskTable.push_back(finishTaskNum);
+	alreadyFinishTaskTable = dfihsNode->alreadyFinishTaskTable;	
+	//unitdelay部分の対応(9/18)
+
 	//cout << "------------------------------------------------------------------------------------------------------------" << endl;
 	//printDfihsNode(dfihsNode);
 
-	alreadyFinishTaskTable.push_back(finishTaskNum);
+	//alreadyFinishTaskTable.push_back(finishTaskNum);
 
 	for(int i = 0;i < (int) blp_list.size();i++){
 		blnode_T* tmpBlNode = blp_list[i].getblnode();
@@ -252,6 +379,8 @@ vector<int> DFIHSTree::updateReadyTaskTable(dfihsnode_t* dfihsNode, int finishTa
 //	for(int i = 0;i < (int)tmpTaskTable.size();i++){
 //		cout << "num:" << tmpTaskTable[i] << endl;
 //	}
+
+	L1:
 	return tmpTaskTable;
 }
 
@@ -262,16 +391,18 @@ vector<int> DFIHSTree::updateReadyTaskTable(dfihsnode_t* dfihsNode, int finishTa
 // [返り値] 差分
 // [備考]
 // クイックソート関数で比較演算のために使用
-int compCoreInfo(coreinfo_t *core1,coreinfo_t *core2)
+bool compCoreInfo(const coreinfo_t *core1,const coreinfo_t *core2)
 {
-	coreinfo_t *tmp1,*tmp2;
-	tmp1 = core1;
-	tmp2 = core2;
+//	coreinfo_t *tmp1,*tmp2;
+//	tmp1 = core1;
+//	tmp2 = core2;
+//
+//	int ftime1 = core1->finishTime;
+//	int ftime2 = core2->finishTime;
+//
+//	return ftime1 - ftime2;
 
-	int ftime1 = core1->finishTime;
-	int ftime2 = core2->finishTime;
-
-	return ftime1 - ftime2;
+	return core1->finishTime == core2->finishTime ? core1->executeTaskNum < core2->executeTaskNum : core1->finishTime < core2->finishTime;
 }
 
 ////////////////////
@@ -351,4 +482,62 @@ vector<int> dictionaryOrder(vector<int> s_vec,int want_num)
 	  }
 	}
 	return determine_vec;
+}
+
+////////////////////
+// createSelectedPointer
+// [概要] dictionaryOrderの可変サイズ対応版
+// [引数] readytasktableのs_vec、コアの空き状況のsp_size、ほしい順番のwant_num
+// [返り値] selected pointer
+// [備考] 
+// 
+vector<int> createSelectedPointer(vector<int> s_vec, int sp_size, int want_num)
+{
+	int i;//第一要素を決めた場合の組み合わせ数
+	int j = 0;//現在見ている要素
+
+	vector<int> determine_vec;
+
+	int core_num = sp_size;//dictionaryOrderからの変更点
+	int s_vec_size = (int)s_vec.size();
+
+	if(s_vec_size < 2)
+		return s_vec;
+
+	if(calcCombination(s_vec_size,core_num) < want_num){
+		cout << "sonnnanonaiyo" << endl;
+		//exit(1);
+	}
+
+
+	while(core_num != 0){
+	  i = calcCombination(s_vec_size - 1,core_num - 1);
+	  if(want_num > i && i != 0){
+		want_num = want_num - i;
+		s_vec_size--;
+		j++;
+	  }
+	  else{
+		determine_vec.push_back(s_vec[j]);
+		s_vec_size--;
+		core_num--;
+		j++;
+	  }
+	}
+	return determine_vec;
+}
+
+////////////////////
+// printCoreInfo
+// [概要] コアの使用状況等を表示
+// [引数] coreinfo(vector)
+// [返り値]
+// [備考]
+//
+void printCoreInfo(vector<coreinfo_t*> coreList)
+{
+	cout << "coreNum:\t" << "executeTask:\t" << "finishTime:\t" << endl;
+	for(int i = 0;i < (int)coreList.size();i++){
+		cout << i << "\t" << coreList[i]->executeTaskNum << "\t" << coreList[i]->finishTime << endl;
+	}
 }
